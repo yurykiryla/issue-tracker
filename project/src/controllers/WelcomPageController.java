@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import interfaces.AbstractController;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +14,6 @@ import model.WebPagesParts;
 /**
  * Servlet implementation class WelcomPageController
  */
-@WebServlet("/WelcomPageController")
 public class WelcomPageController extends AbstractController {
 	private static final long serialVersionUID = 1L;
 
