@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>project</groupId>
   <artifactId>project</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <packaging>war</packaging>
   
   <dependencies>
@@ -16,6 +16,11 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <defaultGoal>package</defaultGoal>
+    <resources>
+    	<resource>
+    		<directory>src/resources</directory>
+    	</resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>

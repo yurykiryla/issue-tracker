@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues>
+	<issue id="0">
+		<priority>CRITICAL</priority>
+		<assignee>rem@tut.by</assignee>
+		<type>COSMETIC</type>
+		<status>NEW</status>
+		<summary>bug 0</summary>
+	</issue>
+	<issue id="1">
+		<priority>MAJOR</priority>
+		<assignee>rem@tut.by</assignee>
+		<type>BUG</type>
+		<status>ASSIGNED</status>
+		<summary>bug 1</summary>
+	</issue>
+	<issue id="2">
+		<priority>IMPORTANT</priority>
+		<assignee>new@tut.by</assignee>
+		<type>FEATURE</type>
+		<status>RESOLVED</status>
+		<summary>bug 2</summary>
+	</issue>
+	<issue id="3">
+		<priority>MINOR</priority>
+		<assignee>new@tut.by</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 3</summary>
+	</issue>
+</issues>

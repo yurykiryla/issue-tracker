@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user email="rem@tut.by">
+		<first-name>Aleh</first-name>
+		<last-name>Volski</last-name>
+		<role>ADMINISTRATOR</role>
+		<password>12345</password>
+	</user>
+	<user email="new@tut.by">
+		<first-name>Victar</first-name>
+		<last-name>Zlykau</last-name>
+		<role>USER</role>
+		<password>11111</password>
+	</user>
+	<user email="get@tut.by">
+		<first-name>Siarhey</first-name>
+		<last-name>Kabiakov</last-name>
+		<role>GUEST</role>
+		<password>22222</password>
+	</user>
+	
+</users>
