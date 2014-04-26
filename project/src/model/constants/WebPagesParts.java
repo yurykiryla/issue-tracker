@@ -1,6 +1,5 @@
 package model.constants;
 
-import model.beans.Role;
 import model.beans.User;
 
 /**
@@ -23,17 +22,17 @@ public class WebPagesParts {
 	public static String getUserMenu(User user){
 		StringBuilder builder = new StringBuilder();
 		if(user == null){
-			builder.append("<form action=\"#\">\n");
+			builder.append("<form name=\"loginForm\" action=\"/project/LoginController\" method=\"post\">\n");
 			builder.append("<div>\n");
 			builder.append("<label for=\"login\">Login</label>\n");
-			builder.append("<input type=\"text\" name=\"login\" id=\"login\">\n");
+			builder.append("<input type=\"text\" name=\"login\" id=\"login\" required=\"required\">\n");
 			builder.append("</div>\n");
 			builder.append("<div>\n");
 			builder.append("<label for=\"password\">Password</label>\n");
-			builder.append("<input type=\"text\" name=\"password\" id=\"password\">\n");
+			builder.append("<input type=\"password\" name=\"password\" id=\"password\" required=\"required\">\n");
 			builder.append("</div>\n");
 			builder.append("<div>\n");
-			builder.append("<a href=\"#\">Login</a>\n");
+			builder.append("<a href=\"JavaScript:document.loginForm.submit()\">Login</a>\n");
 			builder.append("</div>\n");
 			builder.append("</form>\n");
 		}else{

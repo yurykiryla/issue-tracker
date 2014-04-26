@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model.beans;
+package model.constants;
 
 /**
  * @author Yury Kiryla

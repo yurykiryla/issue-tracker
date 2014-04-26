@@ -3,6 +3,8 @@
  */
 package model.beans;
 
+import model.constants.Role;
+
 
 /**
  * @author Yury Kiryla
