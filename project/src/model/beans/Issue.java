@@ -12,7 +12,7 @@ import model.constants.Type;
  *
  */
 public class Issue {
-	private int id;
+	private final int id;
 	private Priority priority;
 	private User assignee;
 	private Type type;
@@ -38,9 +38,6 @@ public class Issue {
 	}
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public Priority getPriority() {
 		return priority;

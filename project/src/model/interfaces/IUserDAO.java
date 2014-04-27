@@ -11,4 +11,5 @@ import model.beans.User;
  */
 public interface IUserDAO {
 	public User getUser(String email, String password);
+	public User getUser(int id);
 }

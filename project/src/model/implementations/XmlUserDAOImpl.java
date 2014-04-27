@@ -4,7 +4,7 @@
 package model.implementations;
 
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -20,12 +20,12 @@ import model.interfaces.IUserDAO;
  *
  */
 public class XmlUserDAOImpl implements IUserDAO {
-
 	/**
 	 * 
 	 */
 	public XmlUserDAOImpl() {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	/* (non-Javadoc)
@@ -34,30 +34,49 @@ public class XmlUserDAOImpl implements IUserDAO {
 	@Override
 	public User getUser(String email, String password) {
 		// TODO Auto-generated method stub
-		User user = null;
-		try{
-			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(this.getClass().getClassLoader().getResourceAsStream("resources/Users.xml"));
-			Element rootElement = document.getRootElement();
-			Iterator<Element> iterator = rootElement.getChildren().iterator();
-			while(iterator.hasNext()){
-				Element userElement = iterator.next();
-				String userEmail = userElement.getAttributeValue("email");
-				String userPassword = userElement.getChildText("password");
-				if(email.equals(userEmail) && password.equals(userPassword)){
-					String firstName = userElement.getChildText("first-name");
-					String lastName = userElement.getChildText("last-name");
-					Role role = Role.valueOf(userElement.getChildText("role"));
-					user = new User(firstName, lastName, userEmail, role);
-					break;
-				}
+		for(Element element : getElements()){
+			User user = getUser(element);
+			String userEmail = user.getEmailAddress();
+			String userPassword = element.getChildText("password");
+			if(email.equals(userEmail) && password.equals(userPassword)){
+				return user;
 			}
-		}catch(JDOMException e){
-			e.printStackTrace();
-		}catch(IOException e){
-			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.interfaces.IUserDAO#getUser(int)
+	 */
+	@Override
+	public User getUser(int id) {
+		// TODO Auto-generated method stub
+		for(Element element : getElements()){
+			User user = getUser(element);
+			if(id == user.getId()){
+				return user;
+			}
+		}
+		return null;
+	}
+
+	private User getUser(Element element){
+		int id = Integer.parseInt(element.getAttributeValue("id"));
+		String firstName = element.getChildText("first-name");
+		String lastName = element.getChildText("last-name");
+		Role role = Role.valueOf(element.getChildText("role"));
+		String email = element.getChildText("email");
+		return new User(id, firstName, lastName, email, role);
+	}
+	
+	private List<Element> getElements(){
+		try {
+			SAXBuilder builder = new SAXBuilder();
+			Document document = builder.build(this.getClass().getClassLoader().getResourceAsStream("resources/Users.xml"));
+			return document.getRootElement().getChildren();
+		} catch (JDOMException | IOException e) {
+			// TODO: handle exception
+			throw new IllegalArgumentException();
+		}
+	}
 }

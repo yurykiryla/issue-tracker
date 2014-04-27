@@ -9,6 +9,7 @@ import java.util.Iterator;
 import model.beans.Issue;
 import model.constants.Priority;
 import model.interfaces.IIssueDAO;
+import model.interfaces.IUserDAO;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -16,15 +17,16 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 /**
- * @author Yury
+ * @author Yury Kiryla
  *
  */
 public class XmlIssueDAOImpl implements IIssueDAO{
 	private Iterator<Element> iterator;
+	private IUserDAO userDAO;
 	/**
 	 * 
 	 */
-	public XmlIssueDAOImpl() {
+	public XmlIssueDAOImpl(IUserDAO userDAO) {
 		// TODO Auto-generated constructor stub
 		try{
 			SAXBuilder builder = new SAXBuilder();
@@ -35,7 +37,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		this.userDAO = userDAO;
 	}
 	@Override
 	public boolean hasNextIssue() {

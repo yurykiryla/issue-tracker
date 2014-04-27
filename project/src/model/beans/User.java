@@ -11,31 +11,34 @@ import model.constants.Role;
  *
  */
 public class User {
+	private final int id;
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
 	private Role role;
-	/**
-	 * 
-	 */
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	/**
 	 * @param firstName
 	 * @param lastName
 	 * @param emailAddress
 	 * @param role
 	 */
-	public User(String firstName, String lastName, String emailAddress,
+	public User(int id, String firstName, String lastName, String emailAddress,
 			Role role) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailAddress = emailAddress;
 		this.role = role;
 	}
+	
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
 	/**
 	 * @return the firstName
 	 */
