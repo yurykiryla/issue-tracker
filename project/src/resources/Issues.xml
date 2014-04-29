@@ -2,30 +2,62 @@
 <issues>
 	<issue id="0">
 		<priority>CRITICAL</priority>
-		<assignee>rem@tut.by</assignee>
+		<assignee>0</assignee>
 		<type>COSMETIC</type>
 		<status>NEW</status>
 		<summary>bug 0</summary>
+		<description>some info about bug 0</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
 	</issue>
 	<issue id="1">
 		<priority>MAJOR</priority>
-		<assignee>rem@tut.by</assignee>
+		<assignee>1</assignee>
 		<type>BUG</type>
 		<status>ASSIGNED</status>
 		<summary>bug 1</summary>
+		<description>some info about bug 1</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-26</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
 	</issue>
 	<issue id="2">
 		<priority>IMPORTANT</priority>
-		<assignee>new@tut.by</assignee>
+		<assignee>1</assignee>
 		<type>FEATURE</type>
 		<status>RESOLVED</status>
 		<summary>bug 2</summary>
+		<description>some info about bug 2</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-23</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
 	</issue>
 	<issue id="3">
 		<priority>MINOR</priority>
-		<assignee>new@tut.by</assignee>
+		<assignee>2</assignee>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 3</summary>
+		<description>some info about bug 3</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
 	</issue>
 </issues>

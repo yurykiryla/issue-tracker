@@ -8,5 +8,25 @@ package model.constants;
  *
  */
 public enum Status {
-	NEW, ASSIGNED, IN_PROGRESS, RESOLVED, CLOSED, REOPENED
+	NEW("New"), 
+	ASSIGNED("Assigned"), 
+	IN_PROGRESS("In Progress"), 
+	RESOLVED("Resolved"), 
+	CLOSED("Closed"), 
+	REOPENED("Reopened");
+	
+	private String name;
+	
+	private Status(String name){
+		this.name = name;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Enum#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 }
