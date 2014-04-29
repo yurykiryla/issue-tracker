@@ -1,9 +1,10 @@
-package model.constants;
+package model.webelements;
 
 import java.util.List;
 
 import model.beans.Issue;
 import model.beans.User;
+import model.constants.Role;
 import model.factories.IssuesFactory;
 
 /**
@@ -50,7 +51,7 @@ public class WebPagesParts {
 			builder.append("<a href=\"#\">Change password</a>\n");
 			builder.append("</div>\n");
 			builder.append("<div>\n");
-			builder.append("<button>Logout</button>\n");
+			builder.append("<button onclick=\"location.href='/project/LogoutController'\">Logout</button>\n");
 			builder.append("</div>\n");
 			builder.append("<div>\n");
 			builder.append("<button>Submit Issue</button>\n");

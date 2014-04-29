@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.beans.User;
-import model.constants.WebPagesParts;
+import model.webelements.WebPagesParts;
 
 /**
  * Servlet implementation class WelcomPageController

@@ -13,7 +13,7 @@ public class IssuesCreateDateComparator implements Comparator<Issue> {
 	@Override
 	public int compare(Issue o1, Issue o2) {
 		// TODO Auto-generated method stub
-		return o1.getCreateDate().after(o2.getCreateDate())?1:-1;
+		return (int)(o2.getCreateDate().getTime() - o1.getCreateDate().getTime());
 	}
 
 }

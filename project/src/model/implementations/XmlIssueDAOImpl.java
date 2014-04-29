@@ -50,7 +50,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 				Collections.sort(issues, new IssuesCreateDateComparator());
 				int size = issues.size();
 				if(size > n){
-					issues = new ArrayList<>(issues.subList(size - n, size - 1));
+					issues = new ArrayList<>(issues.subList(0, n));
 				}
 			}else{
 				Iterator<Element> iterator = elements.iterator();
