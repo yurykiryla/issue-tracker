@@ -8,5 +8,23 @@ package model.constants;
  *
  */
 public enum Type {
-	COSMETIC, BUG, FEATURE, PERFOMANCE
+	COSMETIC("Cosmetic"), 
+	BUG("Bug"), 
+	FEATURE("Feature"), 
+	PERFOMANCE("Perfomance");
+	
+	private String name;
+	
+	private Type(String name){
+		this.name = name;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Enum#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 }

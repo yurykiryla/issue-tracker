@@ -1,6 +1,10 @@
 package model.constants;
 
+import java.util.List;
+
+import model.beans.Issue;
 import model.beans.User;
+import model.factories.IssuesFactory;
 
 /**
  * @author Yury Kiryla
@@ -86,19 +90,64 @@ public class WebPagesParts {
 	
 	public static String getIssuesList(User user){
 		StringBuilder builder = new StringBuilder();
+		List<Issue> issues = IssuesFactory.getClassFromFactory().getIssues(user, 10);
+		if(issues.isEmpty()){
+			builder.append("<div>\n");
+			if(user == null){
+				builder.append("Issues list is empty");
+			}else{
+				builder.append("Not assigned issues");
+			}
+			builder.append("</div>\n");
+		}else{
+			builder.append("<table>\n");
+			builder.append("<thead>\n");
+			builder.append("<tr>\n");
+			builder.append("<th>Id</th>\n");
+			builder.append("<th>Priority</th>\n");
+			builder.append("<th>Assignee</th>\n");
+			builder.append("<th>Type</th>\n");
+			builder.append("<th>Status</th>\n");
+			builder.append("<th>Summary</th>\n");
+			builder.append("</tr>\n");
+			builder.append("</thead>\n");
+			for(Issue issue : issues){
+				builder.append("<tr>\n");
+				builder.append("<td>");
+				if(user == null){
+					//view issue
+					builder.append("<a href=\"#\">");
+				}else{
+					//change issue
+					builder.append("<a href=\"#\">");
+				}
+				builder.append(issue.getId() + "</a>");
+				builder.append("</td>\n");
+				builder.append("<td class=\"");
+				switch(issue.getPriority()){
+					case CRITICAL:
+						builder.append("priority-critical");
+						break;
+					case IMPORTANT:
+						builder.append("priority-important");
+						break;
+					case MAJOR:
+						builder.append("priority-major");
+						break;
+					case MINOR:
+						builder.append("priority-minor");
+						break;
+				}
+				builder.append("\">" + issue.getPriority() + "</td>\n");
+				builder.append("<td>" + issue.getAssignee().getFirstName() + " " + issue.getAssignee().getLastName() + "</td>\n");
+				builder.append("<td>" + issue.getType() + "</td>\n");
+				builder.append("<td>" + issue.getStatus() + "</td>\n");
+				builder.append("<th>" + issue.getSummary() + "</th>\n");
+				builder.append("</tr>\n");
+			}
+			builder.append("</table>\n");
+		}
 		
-		builder.append("<table>\n");
-		builder.append("<thead>\n");
-		builder.append("<tr>\n");
-		builder.append("<th>Id</th>\n");
-		builder.append("<th>Priority</th>\n");
-		builder.append("<th>Assignee</th>\n");
-		builder.append("<th>Type</th>\n");
-		builder.append("<th>Status</th>\n");
-		builder.append("<th>Summary</th>\n");
-		builder.append("</tr>\n");
-		builder.append("</thead>\n");
-		builder.append("</table>\n");
 		
 		return builder.toString();
 	}
