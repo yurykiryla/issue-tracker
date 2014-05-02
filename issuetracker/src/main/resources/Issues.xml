@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues>
+	<issue id="0">
+		<priority>CRITICAL</priority>
+		<assignee>0</assignee>
+		<type>COSMETIC</type>
+		<status>NEW</status>
+		<summary>bug 0</summary>
+		<description>some info about bug 0</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="1">
+		<priority>MAJOR</priority>
+		<assignee>1</assignee>
+		<type>BUG</type>
+		<status>ASSIGNED</status>
+		<summary>bug 1</summary>
+		<description>some info about bug 1</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-26</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="2">
+		<priority>IMPORTANT</priority>
+		<assignee>1</assignee>
+		<type>FEATURE</type>
+		<status>RESOLVED</status>
+		<summary>bug 2</summary>
+		<description>some info about bug 2</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-23</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="3">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 3</summary>
+		<description>some info about bug 3</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="4">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 4</summary>
+		<description>some info about bug 4</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="5">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 5</summary>
+		<description>some info about bug 5</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="6">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 6</summary>
+		<description>some info about bug 6</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="7">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 7</summary>
+		<description>some info about bug 7</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="8">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 8</summary>
+		<description>some info about bug 8</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="9">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 9</summary>
+		<description>some info about bug 9</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="10">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 10</summary>
+		<description>some info about bug 10</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="11">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 11</summary>
+		<description>some info about bug 11</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="12">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 12</summary>
+		<description>some info about bug 12</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+	<issue id="13">
+		<priority>MINOR</priority>
+		<assignee>2</assignee>
+		<type>PERFOMANCE</type>
+		<status>CLOSED</status>
+		<summary>bug 13</summary>
+		<description>some info about bug 13</description>
+		<project>0</project>
+		<build-found>0</build-found>
+		<create-date>2014-04-25</create-date>
+		<created-by>0</created-by>
+		<modify-date></modify-date>
+		<modified-by></modified-by>
+		<resolution></resolution>
+	</issue>
+</issues>
