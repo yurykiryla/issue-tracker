@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.beans.User;
+import model.constants.Constants;
 import model.factories.UserFactory;
 import model.interfaces.IUserDAO;
 
@@ -28,14 +29,16 @@ public class LoginController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String email = request.getParameter("login");
-		String password = request.getParameter("password");
+		String email = request.getParameter(Constants.KEY_LOGIN);
+		String password = request.getParameter(Constants.KEY_PASSWORD);
 		IUserDAO userDAO = UserFactory.getClassFromFactory();
 		User user = userDAO.getUser(email, password);
-		request.getSession().setAttribute("user", user);
-		getServletContext().getRequestDispatcher("/WelcomPageController").forward(request, response);
+		request.getSession().setAttribute(Constants.KEY_USER, user);
+		getServletContext().getRequestDispatcher(Constants.URL_WELCOM_PAGE_CONTROLLER)
+			.forward(request, response);
 	}
 
 }

@@ -1,4 +1,4 @@
-package model.webelements;
+package controllers.elements;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class WebPagesParts {
 		StringBuilder builder = new StringBuilder();
 		builder.append("<div class=\"user-auth\">\n");
 		if(user == null){
-			builder.append("<form name=\"loginForm\" action=\"/project/LoginController\" method=\"post\" class=\"login-form\">\n");
+			builder.append("<form name=\"loginForm\" action=\"/issuetracker/LoginController\" method=\"post\" class=\"login-form\">\n");
 			builder.append("<label for=\"login\">E-mail</label>\n");
 			builder.append("<input type=\"text\" name=\"login\" id=\"login\" required=\"required\" class=\"input-login\">\n");
 			builder.append("<label for=\"password\">Password</label>\n");
@@ -50,7 +50,7 @@ public class WebPagesParts {
 			builder.append("<ul>\n");
 			builder.append("<li><a href=\"#\">Chahge preferences</a></li>\n");
 			builder.append("<li><a href=\"#\">Change password</a></li>\n");
-			builder.append("<li><a href=\"/project/LogoutController\">Logout</a></li>\n");
+			builder.append("<li><a href=\"/issuetracker/LogoutController\">Logout</a></li>\n");
 			builder.append("</ul>\n");
 			builder.append("</li>\n");
 			builder.append("</ul>\n");

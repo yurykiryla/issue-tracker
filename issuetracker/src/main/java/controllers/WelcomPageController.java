@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controllers.elements.WebPagesParts;
 import model.beans.User;
-import model.webelements.WebPagesParts;
+import model.constants.Constants;
 
 /**
  * Servlet implementation class WelcomPageController
@@ -30,8 +31,8 @@ public class WelcomPageController extends AbstractController {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		PrintWriter writer = response.getWriter();
-		writer.println(WebPagesParts.getPageHead("Welcom page / Dashboard"));
-		User user = (User) session.getAttribute("user");
+		writer.println(WebPagesParts.getPageHead(Constants.WELCOM_PAGE_TITLE));
+		User user = (User) session.getAttribute(Constants.KEY_USER);
 		writer.println(WebPagesParts.getUserMenu(user));
 		writer.println(WebPagesParts.getIssuesList(user));
 		writer.println(WebPagesParts.getPageEnd());
