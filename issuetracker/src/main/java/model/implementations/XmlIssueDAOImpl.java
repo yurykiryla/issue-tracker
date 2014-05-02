@@ -33,6 +33,15 @@ import model.interfaces.IUserDAO;
  */
 public class XmlIssueDAOImpl implements IIssueDAO{
 
+	
+	/**
+	 * 
+	 */
+	public XmlIssueDAOImpl() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	/* (non-Javadoc)
 	 * @see model.interfaces.IIssueDAO#getIssues(model.beans.User, int)
 	 */
@@ -44,7 +53,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 			SAXBuilder builder = new SAXBuilder();
 			Document document = builder.build(this.getClass().getClassLoader()
 					.getResourceAsStream(Constants.ISSUES_XML_FILENAME));
-			List<Element> elements = document.getRootElement().getChildren();			
+			List<Element> elements = document.getRootElement().getChildren();		
 			if(user == null){
 				for(Element element : elements){
 					issues.add(getIssue(element));
@@ -65,7 +74,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 					}
 				}
 			}
-		} catch (JDOMException | IOException e) {
+		} catch (IOException | JDOMException e) {
 			// TODO: handle exception
 			throw new IllegalArgumentException(e);
 		}
