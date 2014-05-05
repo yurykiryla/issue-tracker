@@ -17,6 +17,7 @@ public class Constants {
 	public static final String KEY_EMAIL = "email";
 	public static final String KEY_FIRST_NAME = "first-name";
 	public static final String KEY_ID = "id";
+	public static final String KEY_ISSUES = "issues";
 	public static final String KEY_LAST_NAME = "last-name";
 	public static final String KEY_LOGIN = "login";
 	public static final String KEY_MODIFIED_BY = "modified-by";
@@ -30,8 +31,8 @@ public class Constants {
 	public static final String KEY_SUMMARY = "summary";
 	public static final String KEY_TYPE = "type";
 	public static final String KEY_USER = "user";
-	public static final String URL_WELCOM_PAGE_CONTROLLER = "/WelcomPageController";
-	public static final String URL1_WELCOM_PAGE_CONTROLLER = "/issuetracker/WelcomPageController";
+	public static final String URL_WELCOM_PAGE_CONTROLLER = "/WelcomePageController";
+	public static final String URL1_WELCOM_PAGE_CONTROLLER = "/issuetracker/WelcomePageController";
 	public static final String USERS_XML_FILENAME = "Users.xml";
 	public static final String WELCOM_PAGE_TITLE = "Welcom page / Dashboard";
 }

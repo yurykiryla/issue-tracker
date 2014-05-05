@@ -33,4 +33,9 @@ public abstract class AbstractController extends HttpServlet {
 
 	abstract protected void  performTask(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException;
+	
+	protected void forward(String url, HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException{
+		getServletContext().getRequestDispatcher(url).forward(request, response);
+	}
 }

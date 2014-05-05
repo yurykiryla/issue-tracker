@@ -3,9 +3,9 @@
   <display-name>issuetracker</display-name>
   <servlet>
     <description></description>
-    <display-name>WelcomPageController</display-name>
-    <servlet-name>WelcomPageController</servlet-name>
-    <servlet-class>controllers.WelcomPageController</servlet-class>
+    <display-name>WelcomePageController</display-name>
+    <servlet-name>WelcomePageController</servlet-name>
+    <servlet-class>controllers.WelcomePageController</servlet-class>
   </servlet>
   <servlet>
     <description></description>
@@ -20,8 +20,8 @@
     <servlet-class>controllers.LogoutController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>WelcomPageController</servlet-name>
-    <url-pattern>/WelcomPageController</url-pattern>
+    <servlet-name>WelcomePageController</servlet-name>
+    <url-pattern>/WelcomePageController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LoginController</servlet-name>
