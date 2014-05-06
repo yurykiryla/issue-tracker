@@ -36,5 +36,4 @@ public class WelcomePageController extends AbstractController {
 		request.setAttribute(Constants.KEY_ISSUES, issues);
 		forward(Constants.URL_WELCOM_PAGE, request, response);
 	}
-
 }
