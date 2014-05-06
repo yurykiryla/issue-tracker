@@ -32,9 +32,9 @@ public class WelcomePageController extends AbstractController {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(Constants.KEY_USER);
-		List<Issue> issues = IssuesFactory.getClassFromFactory().getIssues(user, 10);
+		List<Issue> issues = IssuesFactory.getClassFromFactory().getIssues(user, Constants.N_DEFAULT);
 		request.setAttribute(Constants.KEY_ISSUES, issues);
-		forward("/WelcomePage.jsp", request, response);
+		forward(Constants.URL_WELCOM_PAGE, request, response);
 	}
 
 }

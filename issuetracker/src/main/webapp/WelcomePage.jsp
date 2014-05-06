@@ -4,7 +4,7 @@
 <%@page import="model.constants.Constants" %>
 <%@page import="model.constants.Role" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -73,6 +73,71 @@
 				</div>
 			</div>
 			
+			<c:choose>
+				<c:when test="${f:length(issues) == 0 }">
+					<div>
+						<c:choose>
+							<c:when test="${user == null }">
+								Issues list is empty
+							</c:when>
+							<c:otherwise>
+								Not assigned issues
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<table class="issues-list">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Priority</th>
+								<th>Assignee</th>
+								<th>Type</th>
+								<th>Status</th>
+								<th>Summary</th>
+							</tr>
+						</thead>
+						<c:forEach items="${issues }" var="issue">
+							<tr class="issues-row">
+								<td class="id-tab">
+									<c:choose>
+										<c:when test="${user == null }">
+											<c:set var="idLink" value="#"></c:set>
+										</c:when>
+										<c:otherwise>
+											<c:set var="idLink" value="#"></c:set>
+										</c:otherwise>
+									</c:choose>
+									<a href="${idLink }">${issue.id }</a>
+								</td>
+								<c:choose>
+									<c:when test="${issue.priority == 'CRITICAL' }">
+										<c:set var="priorityClass" value="priority-critical"></c:set>
+									</c:when>
+									<c:when test="${issue.priority == 'IMPORTANT' }">
+										<c:set var="priorityClass" value="priority-important"></c:set>
+									</c:when>
+									<c:when test="${issue.priority == 'MAJOR' }">
+										<c:set var="priorityClass" value="priority-major"></c:set>
+									</c:when>
+									<c:when test="${issue.priority == 'MINOR' }">
+										<c:set var="priorityClass" value="priority-minor"></c:set>
+									</c:when>
+								</c:choose>
+								<td class="${priorityClass} priority-col">${issue.priority.toString()}</td>
+								<td>
+									${issue.assignee.firstName}
+									${issue.assignee.lastName}
+								</td>
+								<td>${issue.type.toString()}</td>
+								<td>${issue.status.toString()}</td>
+								<td class="summary-col">${issue.summary}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:otherwise>
+			</c:choose>
 			
 			
 		</div>

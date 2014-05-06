@@ -31,6 +31,8 @@ public class Constants {
 	public static final String KEY_SUMMARY = "summary";
 	public static final String KEY_TYPE = "type";
 	public static final String KEY_USER = "user";
+	public static final int N_DEFAULT = 10;
+	public static final String URL_WELCOM_PAGE = "/WelcomePage.jsp";
 	public static final String URL_WELCOM_PAGE_CONTROLLER = "/WelcomePageController";
 	public static final String URL1_WELCOM_PAGE_CONTROLLER = "/issuetracker/WelcomePageController";
 	public static final String USERS_XML_FILENAME = "Users.xml";
