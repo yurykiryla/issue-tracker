@@ -4,7 +4,7 @@
     <groupId>by.training</groupId>
     <artifactId>issuetracker</artifactId>
     <packaging>war</packaging>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <name>Issue Tracker</name>
     <url>http://maven.apache.org</url>
 
@@ -32,6 +32,13 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.10.2.0</version>
+		</dependency>
+            
     </dependencies>
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
