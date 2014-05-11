@@ -3,6 +3,7 @@
  */
 package model.factories;
 
+import model.implementations.SQLUserDAOImpl;
 import model.implementations.XmlUserDAOImpl;
 import model.interfaces.IUserDAO;
 
@@ -12,6 +13,6 @@ import model.interfaces.IUserDAO;
  */
 public class UserFactory {
 	public static IUserDAO getClassFromFactory(){
-		return new XmlUserDAOImpl();
+		return new SQLUserDAOImpl();
 	}
 }

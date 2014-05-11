@@ -2,7 +2,7 @@
 <issues>
 	<issue id="0">
 		<priority>CRITICAL</priority>
-		<assignee>0</assignee>
+		<assignee>1</assignee>
 		<type>COSMETIC</type>
 		<status>NEW</status>
 		<summary>bug 0</summary>

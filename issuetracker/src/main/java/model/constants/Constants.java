@@ -8,6 +8,11 @@ package model.constants;
  *
  */
 public class Constants {
+	public static final int INDEX_EMAIL_ADDRESS = 4;
+	public static final int INDEX_FIRST_NAME = 2;
+	public static final int INDEX_ID = 1;
+	public static final int INDEX_LAST_NAME = 3;
+	public static final int INDEX_ROLE = 5;
 	public static final String ISSUES_XML_FILENAME = "Issues.xml";
 	public static final String KEY_ASSIGNEE = "assignee";
 	public static final String KEY_BUILD_FOUND = "build-found";

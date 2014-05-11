@@ -43,4 +43,16 @@ public class SQLRequests {
 				+ "role LONG VARCHAR NOT NULL, "
 				+ "password LONG VARCHAR NOT NULL"
 			+ ")";
+	
+	public static final String SELECT_USER_BY_ID = 
+			"SELECT * FROM users WHERE id=";
+	
+	public static final String SELECT_USER_BY_EMAIL_PASSWORD_1 = 
+			"SELECT * FROM users WHERE (CAST(email_address AS VARCHAR(32672))='";
+	
+	public static final String SELECT_USER_BY_EMAIL_PASSWORD_2 = 
+			"') AND (CAST(password AS VARCHAR(32672))='";
+	
+	public static final String SELECT_USER_BY_EMAIL_PASSWORD_3 = 
+			"')";
 }

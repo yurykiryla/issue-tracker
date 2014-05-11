@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun May 11 02:01:22 FET 2014:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0145-e85e-8d6d-000003004d50 
+Sun May 11 16:48:35 FET 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0145-eb8a-d31c-00000301ef70 
 on database directory E:\Git\issue-tracker\issuetracker\src\main\resources\projectdb with class loader sun.misc.Launcher$AppClassLoader@5c9aa764 
 Loaded from file:/C:/Users/Yury/.m2/repository/org/apache/derby/derby/10.10.2.0/derby-10.10.2.0.jar
 java.vendor=Oracle Corporation

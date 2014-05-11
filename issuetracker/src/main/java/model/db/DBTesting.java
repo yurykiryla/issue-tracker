@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.implementations.SQLUserDAOImpl;
+import model.interfaces.IUserDAO;
+
 public class DBTesting {
 
 	public static void main(String[] args) {
@@ -24,6 +27,10 @@ public class DBTesting {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		IUserDAO dao = new SQLUserDAOImpl();
+		System.out.println(dao.getUser(1));
+		System.out.println(dao.getUser("user", "user"));
 	}
 
 }
