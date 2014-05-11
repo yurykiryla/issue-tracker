@@ -44,6 +44,12 @@ public class SQLRequests {
 				+ "password LONG VARCHAR NOT NULL"
 			+ ")";
 	
+	public static final String SELECT_ASSEGNEE_ISSUES = 
+			"SELECT * FROM issues WHERE assignee_id=";
+	
+	public static final String SELECT_DEFAULT_ISSUES = 
+			"SELECT * FROM issues ORDER BY create_date DESC";
+	
 	public static final String SELECT_USER_BY_ID = 
 			"SELECT * FROM users WHERE id=";
 	

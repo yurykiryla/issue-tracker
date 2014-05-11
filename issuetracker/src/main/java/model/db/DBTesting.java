@@ -5,7 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.implementations.SQLIssueDAOImpl;
 import model.implementations.SQLUserDAOImpl;
+import model.interfaces.IIssueDAO;
 import model.interfaces.IUserDAO;
 
 public class DBTesting {
@@ -31,6 +33,12 @@ public class DBTesting {
 		IUserDAO dao = new SQLUserDAOImpl();
 		System.out.println(dao.getUser(1));
 		System.out.println(dao.getUser("user", "user"));
+		
+		
+		
+		IIssueDAO issueDAO = new SQLIssueDAOImpl();
+		System.out.println(issueDAO.getIssues(null, 5));
+		System.out.println(issueDAO.getIssues(dao.getUser("user", "user"), 5));
 	}
 
 }

@@ -4,7 +4,6 @@
 package model.factories;
 
 import model.implementations.SQLUserDAOImpl;
-import model.implementations.XmlUserDAOImpl;
 import model.interfaces.IUserDAO;
 
 /**

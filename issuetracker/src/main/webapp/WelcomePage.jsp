@@ -17,7 +17,7 @@
 			<jsp:include page="userMenu.jsp"></jsp:include>
 			<c:choose>
 				<c:when test="${f:length(issues) == 0 }">
-					<div>
+					<div class="empty-issues-list">
 						<c:choose>
 							<c:when test="${user == null }">
 								Issues list is empty
@@ -69,8 +69,10 @@
 								</c:choose>
 								<td class="${priorityClass} priority-col">${issue.priority.toString()}</td>
 								<td>
-									${issue.assignee.firstName}
-									${issue.assignee.lastName}
+									<c:if test="${issue.assignee != null }">
+										${issue.assignee.firstName}
+										${issue.assignee.lastName}
+									</c:if>
 								</td>
 								<td>${issue.type.toString()}</td>
 								<td>${issue.status.toString()}</td>
