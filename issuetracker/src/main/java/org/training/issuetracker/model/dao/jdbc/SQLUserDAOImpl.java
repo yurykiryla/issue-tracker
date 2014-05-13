@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IUserDAO;
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.enums.Role;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
@@ -24,7 +25,7 @@ public class SQLUserDAOImpl implements IUserDAO {
 	 * @see org.training.issuetracker.model.dao.IUserDAO#getUser(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public User getUser(String email, String password) {
+	public User getUser(String email, String password) throws DAOException{
 		// TODO Auto-generated method stub
 		return getUser(SQLRequests.SELECT_USER_BY_EMAIL_PASSWORD_1 + email + SQLRequests.SELECT_USER_BY_EMAIL_PASSWORD_2 + password + SQLRequests.SELECT_USER_BY_EMAIL_PASSWORD_3);
 	}
@@ -33,12 +34,12 @@ public class SQLUserDAOImpl implements IUserDAO {
 	 * @see org.training.issuetracker.model.dao.IUserDAO#getUser(int)
 	 */
 	@Override
-	public User getUser(int id) {
+	public User getUser(int id) throws DAOException{
 		// TODO Auto-generated method stub
 		return getUser(SQLRequests.SELECT_USER_BY_ID + id);
 	}
 
-	private User getUser(String sqlRequest){
+	private User getUser(String sqlRequest) throws DAOException{
 		User user = null;
 		try(DBConnection dbConnection = new DBConnection()){
 			Statement statement = dbConnection.getConnection().createStatement();
@@ -55,7 +56,7 @@ public class SQLUserDAOImpl implements IUserDAO {
 			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			throw new IllegalArgumentException(e);
+			throw new DAOException(e);
 		}
 		return user;
 		

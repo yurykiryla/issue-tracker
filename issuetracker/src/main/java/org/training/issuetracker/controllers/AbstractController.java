@@ -38,4 +38,10 @@ public abstract class AbstractController extends HttpServlet {
 			throws ServletException, IOException{
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
+	
+	protected void errorForward(Throwable e, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
+		request.setAttribute(Constants.KEY_ERROR, e.getMessage());
+		forward(Constants.URL_ERROR_PAGE, request, response);
+	}
 }

@@ -12,6 +12,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IUserDAO;
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.enums.Role;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*; 
@@ -33,7 +34,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 	 * @see org.training.issuetracker.model.dao.IUserDAO#getUser(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public User getUser(String email, String password) {
+	public User getUser(String email, String password) throws DAOException {
 		// TODO Auto-generated method stub
 		for(Element element : getElements()){
 			User user = getUser(element);
@@ -50,7 +51,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 	 * @see org.training.issuetracker.model.dao.IUserDAO#getUser(int)
 	 */
 	@Override
-	public User getUser(int id) {
+	public User getUser(int id) throws DAOException {
 		// TODO Auto-generated method stub
 		for(Element element : getElements()){
 			User user = getUser(element);
@@ -70,7 +71,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 		return new User(id, firstName, lastName, email, role);
 	}
 	
-	private List<Element> getElements(){
+	private List<Element> getElements() throws DAOException{
 		try {
 			SAXBuilder builder = new SAXBuilder();
 			Document document = builder.build(this.getClass().getClassLoader()
@@ -78,7 +79,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 			return document.getRootElement().getChildren();
 		} catch (JDOMException | IOException e) {
 			// TODO: handle exception
-			throw new IllegalArgumentException();
+			throw new DAOException(e);
 		}
 	}
 }

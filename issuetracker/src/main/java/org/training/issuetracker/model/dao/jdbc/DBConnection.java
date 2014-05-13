@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.properties.Config;
 
 
@@ -23,7 +24,7 @@ public class DBConnection implements AutoCloseable{
 	private static final String CREATE_DB = ";create=true";
 	
 	
-	public DBConnection(){
+	public DBConnection() throws DAOException{
 		try{
 			Class.forName(DRIVER_NAME);
 			try {
@@ -39,11 +40,11 @@ public class DBConnection implements AutoCloseable{
 					statement.close();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
-					throw new IllegalArgumentException(e1);
+					throw new DAOException(e1);
 				}
 			}
 		}catch(ClassNotFoundException e){
-			throw new IllegalArgumentException(e);
+			throw new DAOException(e);
 		}
 	}
 
@@ -60,7 +61,7 @@ public class DBConnection implements AutoCloseable{
 	 * @see java.lang.AutoCloseable#close()
 	 */
 	@Override
-	public void close() throws SQLException{
+	public void close() throws DAOException{
 		// TODO Auto-generated method stub
 		
 	}

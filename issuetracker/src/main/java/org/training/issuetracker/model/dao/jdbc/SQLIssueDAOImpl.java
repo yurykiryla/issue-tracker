@@ -15,6 +15,7 @@ import org.training.issuetracker.model.beans.Project;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IIssueDAO;
 import org.training.issuetracker.model.dao.IUserDAO;
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.factories.UserFactory;
 import org.training.issuetracker.model.enums.Priority;
 import org.training.issuetracker.model.enums.Resolution;
@@ -33,7 +34,7 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 	 * @see org.training.issuetracker.model.dao.IIssueDAO#getIssues(org.training.issuetracker.model.beans.User, int)
 	 */
 	@Override
-	public List<Issue> getIssues(User user, int n) {
+	public List<Issue> getIssues(User user, int n) throws DAOException{
 		// TODO Auto-generated method stub
 		List<Issue> issues = new ArrayList<>();
 		try(DBConnection dbConnection = new DBConnection()){
@@ -94,7 +95,7 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			throw new IllegalArgumentException(e);
+			throw new DAOException(e);
 		}
 		return issues;
 	}

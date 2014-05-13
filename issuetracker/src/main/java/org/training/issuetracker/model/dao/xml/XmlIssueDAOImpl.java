@@ -19,6 +19,7 @@ import org.training.issuetracker.model.beans.Project;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IIssueDAO;
 import org.training.issuetracker.model.dao.IUserDAO;
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.factories.UserFactory;
 import org.training.issuetracker.model.enums.Priority;
 import org.training.issuetracker.model.enums.Resolution;
@@ -46,7 +47,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 	 * @see org.training.issuetracker.model.dao.IIssueDAO#getIssues(org.training.issuetracker.model.beans.User, int)
 	 */
 	@Override
-	public List<Issue> getIssues(User user, int n) {
+	public List<Issue> getIssues(User user, int n) throws DAOException {
 		// TODO Auto-generated method stub
 		List<Issue> issues = new ArrayList<>();
 		try {
@@ -81,7 +82,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 		return issues;
 	}
 	
-	private Issue getIssue(Element element){
+	private Issue getIssue(Element element) throws DAOException{
 		int id = Integer.parseInt(element.getAttributeValue(KEY_ID));
 		Priority priority = Priority.valueOf(element.getChildText(KEY_PRIORITY));
 		IUserDAO userDAO = UserFactory.getClassFromFactory();

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.User;
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.factories.IssuesFactory;
 
 /**
@@ -29,10 +30,14 @@ public class WelcomePageController extends AbstractController {
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute(Constants.KEY_USER);
-		List<Issue> issues = IssuesFactory.getClassFromFactory().getIssues(user, Constants.N_DEFAULT);
-		request.setAttribute(Constants.KEY_ISSUES, issues);
-		forward(Constants.URL_WELCOM_PAGE, request, response);
+		try{
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute(Constants.KEY_USER);
+			List<Issue> issues = IssuesFactory.getClassFromFactory().getIssues(user, Constants.N_DEFAULT);
+			request.setAttribute(Constants.KEY_ISSUES, issues);
+			forward(Constants.URL_WELCOM_PAGE, request, response);
+		}catch(DAOException e){
+			errorForward(e, request, response);
+		}
 	}
 }

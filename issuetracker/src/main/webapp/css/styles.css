@@ -175,3 +175,12 @@ html,body,.main {
 .empty-issues-list {
 	margin: 10px;
 }
+
+.error-message{
+	margin: 10px;
+}
+
+.error-message h3, .error-message p{
+	padding: 5px;
+	margin: 5px;
+}
