@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.constants.Constants;
 import org.training.issuetracker.model.dao.factories.IssuesFactory;
 
 /**

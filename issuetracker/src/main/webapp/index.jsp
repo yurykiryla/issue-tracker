@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="org.training.issuetracker.controllers.Constants"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,6 @@
 <title>Index</title>
 </head>
 <body>
-	<jsp:forward page="/WelcomePageController"></jsp:forward>
+	<jsp:forward page='<%=Constants.URL_WELCOM_PAGE_CONTROLLER %>'></jsp:forward>
 </body>
 </html>

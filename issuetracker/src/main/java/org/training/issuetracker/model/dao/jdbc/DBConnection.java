@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.training.issuetracker.model.constants.SQLRequests;
 import org.training.issuetracker.model.properties.Config;
 
 

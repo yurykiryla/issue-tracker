@@ -11,9 +11,10 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.constants.Constants;
-import org.training.issuetracker.model.constants.Role;
 import org.training.issuetracker.model.dao.IUserDAO;
+import org.training.issuetracker.model.enums.Role;
+
+import static org.training.issuetracker.model.dao.xml.Constants.*; 
 
 /**
  * @author Yury Kiryla
@@ -37,7 +38,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 		for(Element element : getElements()){
 			User user = getUser(element);
 			String userEmail = user.getEmailAddress();
-			String userPassword = element.getChildText(Constants.KEY_PASSWORD);
+			String userPassword = element.getChildText(KEY_PASSWORD);
 			if(email.equals(userEmail) && password.equals(userPassword)){
 				return user;
 			}
@@ -61,11 +62,11 @@ public class XmlUserDAOImpl implements IUserDAO {
 	}
 
 	private User getUser(Element element){
-		int id = Integer.parseInt(element.getAttributeValue(Constants.KEY_ID));
-		String firstName = element.getChildText(Constants.KEY_FIRST_NAME);
-		String lastName = element.getChildText(Constants.KEY_LAST_NAME);
-		Role role = Role.valueOf(element.getChildText(Constants.KEY_ROLE));
-		String email = element.getChildText(Constants.KEY_EMAIL);
+		int id = Integer.parseInt(element.getAttributeValue(KEY_ID));
+		String firstName = element.getChildText(KEY_FIRST_NAME);
+		String lastName = element.getChildText(KEY_LAST_NAME);
+		Role role = Role.valueOf(element.getChildText(KEY_ROLE));
+		String email = element.getChildText(KEY_EMAIL);
 		return new User(id, firstName, lastName, email, role);
 	}
 	
@@ -73,7 +74,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 		try {
 			SAXBuilder builder = new SAXBuilder();
 			Document document = builder.build(this.getClass().getClassLoader()
-					.getResourceAsStream(Constants.USERS_XML_FILENAME));
+					.getResourceAsStream(USERS_XML_FILENAME));
 			return document.getRootElement().getChildren();
 		} catch (JDOMException | IOException e) {
 			// TODO: handle exception

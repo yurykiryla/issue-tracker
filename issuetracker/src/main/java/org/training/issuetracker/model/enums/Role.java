@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.training.issuetracker.model.constants;
+package org.training.issuetracker.model.enums;
 
 /**
  * @author Yury Kiryla

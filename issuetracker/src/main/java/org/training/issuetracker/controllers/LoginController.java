@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.constants.Constants;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.factories.UserFactory;
 

@@ -1,22 +1,21 @@
 /**
  * 
  */
-package org.training.issuetracker.model.constants;
+package org.training.issuetracker.model.enums;
 
 /**
- * @author Yury
+ * @author Yury Kiryla
  *
  */
-public enum Resolution {
-	FIXED("Fixed"),
-	INVALID("Invalid"), 
-	WONTFIX("Wontfix"), 
-	WORKSFORME("Worksforme");
+public enum Type {
+	COSMETIC("Cosmetic"), 
+	BUG("Bug"), 
+	FEATURE("Feature"), 
+	PERFOMANCE("Perfomance");
 	
-
 	private String name;
 	
-	private Resolution(String name){
+	private Type(String name){
 		this.name = name;
 	}
 

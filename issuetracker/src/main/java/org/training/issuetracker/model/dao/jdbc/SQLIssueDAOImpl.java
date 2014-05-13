@@ -13,15 +13,15 @@ import java.util.List;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Project;
 import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.constants.Constants;
-import org.training.issuetracker.model.constants.Priority;
-import org.training.issuetracker.model.constants.Resolution;
-import org.training.issuetracker.model.constants.SQLRequests;
-import org.training.issuetracker.model.constants.Status;
-import org.training.issuetracker.model.constants.Type;
 import org.training.issuetracker.model.dao.IIssueDAO;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.factories.UserFactory;
+import org.training.issuetracker.model.enums.Priority;
+import org.training.issuetracker.model.enums.Resolution;
+import org.training.issuetracker.model.enums.Status;
+import org.training.issuetracker.model.enums.Type;
+
+import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 
 /**
  * @author Yury
@@ -46,43 +46,43 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 				resultSet = statement.executeQuery(SQLRequests.SELECT_ASSEGNEE_ISSUES + user.getId());
 			}
 			while(resultSet.next()){
-				int id = resultSet.getInt(Constants.INDEX_ID);
+				int id = resultSet.getInt(INDEX_ID);
 				
-				Priority priority = Priority.valueOf(resultSet.getString(Constants.INDEX_PRIORITY));
+				Priority priority = Priority.valueOf(resultSet.getString(INDEX_PRIORITY));
 				
 				IUserDAO userDAO = UserFactory.getClassFromFactory();
 				User assignee = null;
-				int assigneeId = resultSet.getInt(Constants.INDEX_ASSIGNEE_ID);
+				int assigneeId = resultSet.getInt(INDEX_ASSIGNEE_ID);
 				if(assigneeId != 0){
 					assignee = userDAO.getUser(assigneeId);
 				}
 				
-				Type type = Type.valueOf(resultSet.getString(Constants.INDEX_TYPE));
+				Type type = Type.valueOf(resultSet.getString(INDEX_TYPE));
 				
-				Status status = Status.valueOf(resultSet.getString(Constants.INDEX_STATUS));
+				Status status = Status.valueOf(resultSet.getString(INDEX_STATUS));
 				
-				String summary = resultSet.getString(Constants.INDEX_SUMMARY);
+				String summary = resultSet.getString(INDEX_SUMMARY);
 				
-				String description = resultSet.getString(Constants.INDEX_DESCRIPTION);
+				String description = resultSet.getString(INDEX_DESCRIPTION);
 				
-				Project project = new Project(resultSet.getInt(Constants.INDEX_PROJECT_ID), null, null, null, null);
+				Project project = new Project(resultSet.getInt(INDEX_PROJECT_ID), null, null, null, null);
 				
-				String buildFound = resultSet.getString(Constants.INDEX_BUILD_FOUND_ID);
+				String buildFound = resultSet.getString(INDEX_BUILD_FOUND_ID);
 				
-				Date createDate = resultSet.getDate(Constants.INDEX_CREATE_DATE);
+				Date createDate = resultSet.getDate(INDEX_CREATE_DATE);
 				
-				User createdBy = userDAO.getUser(resultSet.getInt(Constants.INDEX_CREATED_BY_ID));
+				User createdBy = userDAO.getUser(resultSet.getInt(INDEX_CREATED_BY_ID));
 				
-				Date modifyDate = resultSet.getDate(Constants.INDEX_MODIFY_DATE);
+				Date modifyDate = resultSet.getDate(INDEX_MODIFY_DATE);
 
 				User modifiedBy = null;
-				int modifiedById = resultSet.getInt(Constants.INDEX_MODIFIED_BY_ID);
+				int modifiedById = resultSet.getInt(INDEX_MODIFIED_BY_ID);
 				if(modifiedById != 0){
 					modifiedBy = userDAO.getUser(modifiedById);
 				}
 				
 				Resolution resolution = null;
-				String resolutionStr = resultSet.getString(Constants.INDEX_RESOLUTION);
+				String resolutionStr = resultSet.getString(INDEX_RESOLUTION);
 				if(resolutionStr != null){
 					resolution = Resolution.valueOf(resolutionStr);
 				}

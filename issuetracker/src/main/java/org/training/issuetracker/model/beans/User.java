@@ -3,7 +3,7 @@
  */
 package org.training.issuetracker.model.beans;
 
-import org.training.issuetracker.model.constants.Role;
+import org.training.issuetracker.model.enums.Role;
 
 
 /**

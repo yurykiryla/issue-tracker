@@ -6,8 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.training.issuetracker.model.constants.Constants;
-
 /**
  * Servlet implementation class LogoutController
  */
@@ -29,7 +27,7 @@ public class LogoutController extends AbstractController {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getSession().invalidate();
-		response.sendRedirect(Constants.URL1_WELCOM_PAGE_CONTROLLER);
+		response.sendRedirect(request.getContextPath() + Constants.URL_WELCOM_PAGE_CONTROLLER);
 	}
 
 }

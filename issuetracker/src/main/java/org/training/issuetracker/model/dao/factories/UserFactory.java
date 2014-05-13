@@ -12,6 +12,7 @@ import org.training.issuetracker.model.dao.jdbc.SQLUserDAOImpl;
  */
 public class UserFactory {
 	public static IUserDAO getClassFromFactory(){
+		//return new XmlUserDAOImpl();
 		return new SQLUserDAOImpl();
 	}
 }

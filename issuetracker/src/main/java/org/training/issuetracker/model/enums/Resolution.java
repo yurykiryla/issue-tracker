@@ -1,21 +1,22 @@
 /**
  * 
  */
-package org.training.issuetracker.model.constants;
+package org.training.issuetracker.model.enums;
 
 /**
- * @author Yury Kiryla
+ * @author Yury
  *
  */
-public enum Priority {
-	CRITICAL ("Critical"), 
-	MAJOR ("Major"), 
-	IMPORTANT ("Important"), 
-	MINOR ("Minor");
+public enum Resolution {
+	FIXED("Fixed"),
+	INVALID("Invalid"), 
+	WONTFIX("Wontfix"), 
+	WORKSFORME("Worksforme");
 	
+
 	private String name;
 	
-	private Priority(String name){
+	private Resolution(String name){
 		this.name = name;
 	}
 
@@ -27,6 +28,4 @@ public enum Priority {
 		// TODO Auto-generated method stub
 		return name;
 	}
-	
-	
 }

@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.constants.Constants;
-import org.training.issuetracker.model.constants.Role;
-import org.training.issuetracker.model.constants.SQLRequests;
 import org.training.issuetracker.model.dao.IUserDAO;
+import org.training.issuetracker.model.enums.Role;
+
+import static org.training.issuetracker.model.dao.jdbc.Constants.*;
+
 
 /**
  * @author Yury
@@ -43,11 +44,11 @@ public class SQLUserDAOImpl implements IUserDAO {
 			Statement statement = dbConnection.getConnection().createStatement();
 			ResultSet resultSet = statement.executeQuery(sqlRequest);
 			if(resultSet.next()){
-				int id = resultSet.getInt(Constants.INDEX_ID);
-				String firstName = resultSet.getString(Constants.INDEX_FIRST_NAME);
-				String lastName = resultSet.getString(Constants.INDEX_LAST_NAME);
-				Role role = Role.valueOf(resultSet.getString(Constants.INDEX_ROLE));
-				String email = resultSet.getString(Constants.INDEX_EMAIL_ADDRESS);
+				int id = resultSet.getInt(INDEX_ID);
+				String firstName = resultSet.getString(INDEX_FIRST_NAME);
+				String lastName = resultSet.getString(INDEX_LAST_NAME);
+				Role role = Role.valueOf(resultSet.getString(INDEX_ROLE));
+				String email = resultSet.getString(INDEX_EMAIL_ADDRESS);
 				user = new User(id, firstName, lastName, email, role);
 			}
 			resultSet.close();

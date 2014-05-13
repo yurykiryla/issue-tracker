@@ -1,21 +1,21 @@
 /**
  * 
  */
-package org.training.issuetracker.model.constants;
+package org.training.issuetracker.model.enums;
 
 /**
  * @author Yury Kiryla
  *
  */
-public enum Type {
-	COSMETIC("Cosmetic"), 
-	BUG("Bug"), 
-	FEATURE("Feature"), 
-	PERFOMANCE("Perfomance");
+public enum Priority {
+	CRITICAL ("Critical"), 
+	MAJOR ("Major"), 
+	IMPORTANT ("Important"), 
+	MINOR ("Minor");
 	
 	private String name;
 	
-	private Type(String name){
+	private Priority(String name){
 		this.name = name;
 	}
 
@@ -27,4 +27,6 @@ public enum Type {
 		// TODO Auto-generated method stub
 		return name;
 	}
+	
+	
 }

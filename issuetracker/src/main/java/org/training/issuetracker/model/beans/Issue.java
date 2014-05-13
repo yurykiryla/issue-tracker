@@ -5,10 +5,10 @@ package org.training.issuetracker.model.beans;
 
 import java.sql.Date;
 
-import org.training.issuetracker.model.constants.Priority;
-import org.training.issuetracker.model.constants.Resolution;
-import org.training.issuetracker.model.constants.Status;
-import org.training.issuetracker.model.constants.Type;
+import org.training.issuetracker.model.enums.Priority;
+import org.training.issuetracker.model.enums.Resolution;
+import org.training.issuetracker.model.enums.Status;
+import org.training.issuetracker.model.enums.Type;
 
 /**
  * @author Yury Kiryla
