@@ -25,6 +25,7 @@ import org.training.issuetracker.model.enums.Priority;
 import org.training.issuetracker.model.enums.Resolution;
 import org.training.issuetracker.model.enums.Status;
 import org.training.issuetracker.model.enums.Type;
+import org.training.issuetracker.model.properties.Config;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
@@ -52,8 +53,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 		List<Issue> issues = new ArrayList<>();
 		try {
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(this.getClass().getClassLoader()
-					.getResourceAsStream(ISSUES_XML_FILENAME));
+			Document document = builder.build(Config.GetConfig().getPath() + ISSUES_XML_FILENAME);
 			List<Element> elements = document.getRootElement().getChildren();		
 			if(user == null){
 				for(Element element : elements){

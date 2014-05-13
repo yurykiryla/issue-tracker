@@ -14,6 +14,7 @@ import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.enums.Role;
+import org.training.issuetracker.model.properties.Config;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*; 
 
@@ -74,8 +75,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 	private List<Element> getElements() throws DAOException{
 		try {
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(this.getClass().getClassLoader()
-					.getResourceAsStream(USERS_XML_FILENAME));
+			Document document = builder.build(Config.GetConfig().getPath() + USERS_XML_FILENAME);
 			return document.getRootElement().getChildren();
 		} catch (JDOMException | IOException e) {
 			// TODO: handle exception
