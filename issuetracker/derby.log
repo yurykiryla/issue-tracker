@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Sun May 11 20:18:15 FET 2014:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0145-ec4a-c6c6-000002fe6ac8 
-on database directory E:\Git\issue-tracker\issuetracker\src\main\resources\projectdb with class loader sun.misc.Launcher$AppClassLoader@5c9aa764 
-Loaded from file:/C:/Users/Yury/.m2/repository/org/apache/derby/derby/10.10.2.0/derby-10.10.2.0.jar
+Mon May 12 13:47:12 FET 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0145-f00b-2028-000000aa4b18 
+on database directory E:\URY\git\issue-tracker\issuetracker\src\main\resources\projectdb with class loader sun.misc.Launcher$AppClassLoader@df6ccd 
+Loaded from file:/D:/Documents%20and%20Settings/%d0%9e%d0%bb%d1%8f/.m2/repository/org/apache/derby/derby/10.10.2.0/derby-10.10.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_55-b13
-user.dir=E:\Git\issue-tracker\issuetracker
-os.name=Windows 8.1
-os.arch=amd64
-os.version=6.3
+user.dir=E:\URY\git\issue-tracker\issuetracker
+os.name=Windows XP
+os.arch=x86
+os.version=5.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

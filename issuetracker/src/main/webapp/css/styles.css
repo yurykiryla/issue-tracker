@@ -1,174 +1,177 @@
-html{
-    background: gray;
+html {
+	background: gray;
 }
 
 body {
-    width: 800px;
-    padding-left: 50%;
+	width: 800px;
+	padding-left: 50%;
 }
 
 .main {
-    width: 800px;
-    margin-left: -400px;
-    background: #1f8e81;
-    border: 1px solid gray;
+	width: 800px;
+	margin-left: -400px;
+	background: #1f8e81;
+	border: 1px solid gray;
 }
 
-html, body, .main{
+html,body,.main {
 	height: 100%;
 }
 
 .logo {
-    background: #2c45d1;
+	background: #2c45d1;
 }
 
 .user-auth {
-    background: #7b2bc9;
-    font-size: 13px;
-    width: 100%;
-    display: table;
+	background: #7b2bc9;
+	font-size: 13px;
+	width: 100%;
+	display: table;
 }
 
 .login-form {
-    padding: 5px;
-    display: table-cell;
+	padding: 5px;
+	display: table-cell;
 }
 
 .user-welcome {
-    display: table-cell;
-    padding: 5px;
+	display: table-cell;
+	padding: 5px;
 }
 
 .administrator-menu {
-    display: table-cell;
-    padding: 5px;
-    width: 10em;
+	display: table-cell;
+	padding: 5px;
+	width: 10em;
 }
 
 .submit-issue-block {
-    display: table-cell;;
-    padding: 5px;
-    width: 8em;
+	display: table-cell;;
+	padding: 5px;
+	width: 8em;
 }
 
 .search-block {
-    padding: 5px;
-    display: table-cell;
-    width: 3em;
+	padding: 5px;
+	display: table-cell;
+	width: 3em;
 }
 
-.input-login, .input-password{
-    margin-left: 5px;
-    margin-right: 10px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.input-login,.input-password {
+	margin-left: 5px;
+	margin-right: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
-.login-button, .submit-issue-button, .search-button{
-    background: black;
-    color: white;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.login-button,.submit-issue-button,.search-button {
+	background: black;
+	color: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
-
 
 .issues-list {
-    margin: 20px;
-    width: 760px;
-    border-collapse: collapse;
-    border: 2px solid;
+	margin: 20px;
+	width: 760px;
+	border-collapse: collapse;
+	border: 2px solid;
 }
 
-.issues-list thead{
-    background-color: gray;
+.issues-list thead {
+	background-color: gray;
 }
 
-.issues-list td{
-    background-color: #636f6e;
+.issues-list td {
+	background-color: #636f6e;
 }
 
-.issues-list td, .issues-list th{
-    border: 1px solid black;
-    padding: 0px 2px;
-}
-.priority-critical{
-    color: red;
-}
-.priority-major{
-    color: orange;
-}
-.priority-important{
-    color: yellow;
-}
-.priority-minor{
-    color: green;
+.issues-list td,.issues-list th {
+	border: 1px solid black;
+	padding: 0px 2px;
 }
 
-.id-tab a{
-    color: black;
+.priority-critical {
+	color: red;
 }
 
-
-.menu{
-    display: inline-block;
-    padding: 5px;
+.priority-major {
+	color: orange;
 }
 
-.menu, .menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.priority-important {
+	color: yellow;
 }
 
-.menu ul{
-    position: absolute;
-    display: none;
-    margin-top: 0px;
+.priority-minor {
+	color: green;
 }
 
-.menu li ul{
-    border: 1px solid #ccc;
+.id-tab a {
+	color: black;
 }
 
-.menu ul li a{
-    display: block;
-    padding: 5px;
-    text-decoration: none;
-    color: black;
-    background-color: #6cacaf;
-    border-bottom: none;
-    opacity: 1;
+.menu {
+	display: inline-block;
+	padding: 5px;
 }
 
-.menu li:hover ul{
-    display: block;
+.menu,.menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.menu ul li:hover a{
-    background-color: #7b2bc9;
+.menu ul {
+	position: absolute;
+	display: none;
+	margin-top: 0px;
 }
-.user-welcome-name, .administrator-menu-name {
-    text-decoration: underline;
+
+.menu li ul {
+	border: 1px solid #ccc;
+}
+
+.menu ul li a {
+	display: block;
+	padding: 5px;
+	text-decoration: none;
+	color: black;
+	background-color: #6cacaf;
+	border-bottom: none;
+	opacity: 1;
+}
+
+.menu li:hover ul {
+	display: block;
+}
+
+.menu ul li:hover a {
+	background-color: #7b2bc9;
+}
+
+.user-welcome-name,.administrator-menu-name {
+	text-decoration: underline;
 }
 
 .br {
-    border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 
-.issues-row{
+.issues-row {
 	text-align: center;
 }
 
-.summary-col{
+.summary-col {
 	text-align: left;
 }
 
-.priority-col{
+.priority-col {
 	font-weight: bold;
 }
 
-.empty-issues-list{
+.empty-issues-list {
 	margin: 10px;
 }
