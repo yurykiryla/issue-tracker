@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues>
+<issues  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Issues.xsd">
 	<issue id="0">
 		<priority>CRITICAL</priority>
 		<assignee>1</assignee>
@@ -11,9 +11,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="1">
 		<priority>MAJOR</priority>
@@ -26,9 +23,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-26</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="2">
 		<priority>IMPORTANT</priority>
@@ -41,9 +35,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-23</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="3">
 		<priority>MINOR</priority>
@@ -56,9 +47,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="4">
 		<priority>MINOR</priority>
@@ -71,9 +59,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="5">
 		<priority>MINOR</priority>
@@ -86,9 +71,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="6">
 		<priority>MINOR</priority>
@@ -101,9 +83,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="7">
 		<priority>MINOR</priority>
@@ -116,9 +95,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="8">
 		<priority>MINOR</priority>
@@ -131,9 +107,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="9">
 		<priority>MINOR</priority>
@@ -146,9 +119,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="10">
 		<priority>MINOR</priority>
@@ -161,9 +131,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="11">
 		<priority>MINOR</priority>
@@ -176,9 +143,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="12">
 		<priority>MINOR</priority>
@@ -191,9 +155,6 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 	<issue id="13">
 		<priority>MINOR</priority>
@@ -206,8 +167,5 @@
 		<build-found>0</build-found>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
-		<modify-date></modify-date>
-		<modified-by></modified-by>
-		<resolution></resolution>
 	</issue>
 </issues>
