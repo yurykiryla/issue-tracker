@@ -2,7 +2,6 @@ package org.training.issuetracker.controllers;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 
 import org.training.issuetracker.model.properties.Config;
 
@@ -10,7 +9,6 @@ import org.training.issuetracker.model.properties.Config;
  * Application Lifecycle Listener implementation class PropertiesListener
  *
  */
-@WebListener
 public class PropertiesListener implements ServletContextListener {
 
     /**

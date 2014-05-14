@@ -16,6 +16,7 @@ public class User {
 	private String lastName;
 	private String emailAddress;
 	private Role role;
+	private Password password;
 	/**
 	 * @param firstName
 	 * @param lastName
@@ -32,6 +33,25 @@ public class User {
 		this.role = role;
 	}
 	
+	/**
+	 * @param id
+	 * @param firstName
+	 * @param lastName
+	 * @param emailAddress
+	 * @param role
+	 * @param password
+	 */
+	public User(int id, String firstName, String lastName, String emailAddress,
+			Role role, Password password) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.role = role;
+		this.password = password;
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -86,6 +106,20 @@ public class User {
 	 */
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public Password getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(Password password) {
+		this.password = password;
 	}
 
 	/* (non-Javadoc)

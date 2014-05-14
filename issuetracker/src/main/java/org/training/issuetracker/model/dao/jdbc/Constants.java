@@ -12,6 +12,7 @@ public class Constants {
 	public static final int INDEX_LAST_NAME = 3;
 	public static final int INDEX_MODIFIED_BY_ID = 13;
 	public static final int INDEX_MODIFY_DATE = 12;
+	public static final int INDEX_PASSWORD = 6;
 	public static final int INDEX_PRIORITY = 6;
 	public static final int INDEX_PROJECT_ID = 7;
 	public static final int INDEX_RESOLUTION = 14;

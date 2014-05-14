@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.training.issuetracker.model.beans.Password;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
@@ -27,7 +28,12 @@ public class SQLUserDAOImpl implements IUserDAO {
 	@Override
 	public User getUser(String email, String password) throws DAOException{
 		// TODO Auto-generated method stub
-		return getUser(SQLRequests.SELECT_USER_BY_EMAIL_PASSWORD_1 + email + SQLRequests.SELECT_USER_BY_EMAIL_PASSWORD_2 + password + SQLRequests.SELECT_USER_BY_EMAIL_PASSWORD_3);
+		User user = getUser(SQLRequests.SELECT_USER_BY_EMAIL_1 + email 
+				+ SQLRequests.SELECT_USER_BY_EMAIL_2);
+		if(user != null && user.getPassword().checkPassword(password)){
+			return user;
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +56,8 @@ public class SQLUserDAOImpl implements IUserDAO {
 				String lastName = resultSet.getString(INDEX_LAST_NAME);
 				Role role = Role.valueOf(resultSet.getString(INDEX_ROLE));
 				String email = resultSet.getString(INDEX_EMAIL_ADDRESS);
-				user = new User(id, firstName, lastName, email, role);
+				Password password = new Password(resultSet.getString(INDEX_PASSWORD));
+				user = new User(id, firstName, lastName, email, role, password);
 			}
 			resultSet.close();
 			statement.close();

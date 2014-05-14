@@ -5,7 +5,7 @@
 	<groupId>org.training</groupId>
 	<artifactId>issuetracker</artifactId>
 	<packaging>war</packaging>
-	<version>0.2.10</version>
+	<version>0.2.11</version>
 	<name>Issue Tracker</name>
 	<url>http://maven.apache.org</url>
 
@@ -43,7 +43,7 @@
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
-		<defaultGoal>package</defaultGoal>
+		<defaultGoal>compile</defaultGoal>
 
 		<plugins>
 			<plugin>
@@ -55,13 +55,6 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.0</version>
-			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -70,6 +63,7 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 </project>

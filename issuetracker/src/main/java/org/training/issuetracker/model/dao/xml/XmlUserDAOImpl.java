@@ -10,6 +10,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.training.issuetracker.model.beans.Password;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
@@ -40,8 +41,7 @@ public class XmlUserDAOImpl implements IUserDAO {
 		for(Element element : getElements()){
 			User user = getUser(element);
 			String userEmail = user.getEmailAddress();
-			String userPassword = element.getChildText(KEY_PASSWORD);
-			if(email.equals(userEmail) && password.equals(userPassword)){
+			if(email.equals(userEmail) && user.getPassword().checkPassword(password)){
 				return user;
 			}
 		}
@@ -69,7 +69,8 @@ public class XmlUserDAOImpl implements IUserDAO {
 		String lastName = element.getChildText(KEY_LAST_NAME);
 		Role role = Role.valueOf(element.getChildText(KEY_ROLE));
 		String email = element.getChildText(KEY_EMAIL);
-		return new User(id, firstName, lastName, email, role);
+		Password password = new Password(element.getChildText(KEY_PASSWORD));
+		return new User(id, firstName, lastName, email, role, password);
 	}
 	
 	private List<Element> getElements() throws DAOException{
