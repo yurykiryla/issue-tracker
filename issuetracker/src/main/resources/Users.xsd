@@ -15,6 +15,6 @@
 			<xsd:element name="email" type="xsd:string"/>
 			<xsd:element name="password" type="xsd:string"/>
 		</xsd:sequence>
-		<xsd:attribute name="id" type="xsd:int"/>
+		<xsd:attribute name="id" type="xsd:int" use="required"/>
 	</xsd:complexType>
 </xsd:schema>

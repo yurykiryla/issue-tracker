@@ -10,19 +10,19 @@
 	<xsd:complexType name="Issue">
 		<xsd:sequence>
 			<xsd:element name="priority" type="xsd:string"/>
-			<xsd:element name="assignee" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="assignee-id" type="xsd:int" minOccurs="0"/>
 			<xsd:element name="type" type="xsd:string"/>
 			<xsd:element name="status" type="xsd:string"/>
 			<xsd:element name="summary" type="xsd:string"/>
 			<xsd:element name="description" type="xsd:string"/>
-			<xsd:element name="project" type="xsd:int"/>
-			<xsd:element name="build-found" type="xsd:int"/>
+			<xsd:element name="project-id" type="xsd:int"/>
+			<xsd:element name="build-found-id" type="xsd:int"/>
 			<xsd:element name="create-date" type="xsd:date"/>
 			<xsd:element name="created-by" type="xsd:int" />
 			<xsd:element name="modify-date" type="xsd:date" minOccurs="0"/>
-			<xsd:element name="modified-by" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="modified-by-id" type="xsd:int" minOccurs="0"/>
 			<xsd:element name="resolution" type="xsd:string" minOccurs="0"/>
 		</xsd:sequence>
-		<xsd:attribute name="id" type="xsd:int"/>
+		<xsd:attribute name="id" type="xsd:int" use="required"/>
 	</xsd:complexType>
 </xsd:schema>

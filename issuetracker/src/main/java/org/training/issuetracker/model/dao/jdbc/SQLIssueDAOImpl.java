@@ -66,7 +66,7 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 				
 				String description = resultSet.getString(INDEX_DESCRIPTION);
 				
-				Project project = new Project(resultSet.getInt(INDEX_PROJECT_ID), null, null, null, null);
+				Project project = null;
 				
 				String buildFound = resultSet.getString(INDEX_BUILD_FOUND_ID);
 				

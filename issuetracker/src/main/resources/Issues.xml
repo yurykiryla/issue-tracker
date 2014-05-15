@@ -2,169 +2,169 @@
 <issues  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Issues.xsd">
 	<issue id="0">
 		<priority>CRITICAL</priority>
-		<assignee>1</assignee>
+		<assignee-id>1</assignee-id>
 		<type>COSMETIC</type>
 		<status>NEW</status>
 		<summary>bug 0</summary>
 		<description>some info about bug 0</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="1">
 		<priority>MAJOR</priority>
-		<assignee>1</assignee>
+		<assignee-id>1</assignee-id>
 		<type>BUG</type>
 		<status>ASSIGNED</status>
 		<summary>bug 1</summary>
 		<description>some info about bug 1</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-26</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="2">
 		<priority>IMPORTANT</priority>
-		<assignee>1</assignee>
+		<assignee-id>1</assignee-id>
 		<type>FEATURE</type>
 		<status>RESOLVED</status>
 		<summary>bug 2</summary>
 		<description>some info about bug 2</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-23</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="3">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 3</summary>
 		<description>some info about bug 3</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="4">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 4</summary>
 		<description>some info about bug 4</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="5">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 5</summary>
 		<description>some info about bug 5</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="6">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 6</summary>
 		<description>some info about bug 6</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="7">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 7</summary>
 		<description>some info about bug 7</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="8">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 8</summary>
 		<description>some info about bug 8</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="9">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 9</summary>
 		<description>some info about bug 9</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="10">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 10</summary>
 		<description>some info about bug 10</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="11">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 11</summary>
 		<description>some info about bug 11</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="12">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 12</summary>
 		<description>some info about bug 12</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>
 	<issue id="13">
 		<priority>MINOR</priority>
-		<assignee>2</assignee>
+		<assignee-id>2</assignee-id>
 		<type>PERFOMANCE</type>
 		<status>CLOSED</status>
 		<summary>bug 13</summary>
 		<description>some info about bug 13</description>
-		<project>0</project>
-		<build-found>0</build-found>
+		<project-id>0</project-id>
+		<build-found-id>0</build-found-id>
 		<create-date>2014-04-25</create-date>
 		<created-by>0</created-by>
 	</issue>

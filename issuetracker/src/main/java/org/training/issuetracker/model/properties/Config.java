@@ -3,6 +3,8 @@
  */
 package org.training.issuetracker.model.properties;
 
+import org.training.issuetracker.model.enums.Implementations;
+
 /**
  * @author Yury Kiryla
  *
@@ -10,14 +12,16 @@ package org.training.issuetracker.model.properties;
 public class Config {
 	private static Config config = null;
 	private final String path;
+	private final Implementations implementation;
 	
-	private Config(String path){
+	private Config(String path, String implementation){
 		this.path = path;
+		this.implementation = Implementations.valueOf(implementation.toUpperCase());
 	}
 	
-	public static void setConfig(String path){
+	public static void setConfig(String path, String implementation){
 		if(config == null){
-			config = new Config(path);
+			config = new Config(path, implementation);
 		}else{
 			throw new RuntimeException();
 		}
@@ -33,4 +37,12 @@ public class Config {
 	public String getPath() {
 		return path;
 	}
+
+	/**
+	 * @return the implementation
+	 */
+	public Implementations getImplementation() {
+		return implementation;
+	}
+	
 }

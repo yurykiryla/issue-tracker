@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Projects.xsd">
+  <project id="1">
+    <name>proj1</name>
+    <description>some about project1</description>
+    <manager-id>1</manager-id>
+  </project>
+</projects>

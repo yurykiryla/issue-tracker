@@ -20,6 +20,7 @@ import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IIssueDAO;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.factories.ProjectFactory;
 import org.training.issuetracker.model.dao.factories.UserFactory;
 import org.training.issuetracker.model.enums.Priority;
 import org.training.issuetracker.model.enums.Resolution;
@@ -93,8 +94,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 		String summary = element.getChildText(KEY_SUMMARY);
 		String description = element.getChildText(KEY_DESCRIPTION);
 		//correct project value after include projectsDao
-		Project project = new Project(Integer.parseInt(element.getChildText(KEY_PROJECT)),
-				null, null, null, null);
+		Project project = ProjectFactory.getClassFromFactory().getProject(Integer.parseInt(element.getChildText(KEY_PROJECT_ID)));
 		String buildFound = element.getChildText(KEY_BUILD_FOUND);
 		Date createDate = Date.valueOf(element.getChildText(KEY_CREATE_DATE));
 		User createdBy = userDAO.getUser(Integer.parseInt(element

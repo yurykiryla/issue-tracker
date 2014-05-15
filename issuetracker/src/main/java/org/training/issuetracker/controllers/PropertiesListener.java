@@ -23,8 +23,10 @@ public class PropertiesListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent arg0) {
         // TODO Auto-generated method stub
-    	String path = arg0.getServletContext().getRealPath("/") + "WEB-INF\\classes\\";
-    	Config.setConfig(path);
+    	String path = arg0.getServletContext().getRealPath(Constants.ROOT_PATH) 
+    			+ Constants.RESOURCES_PATH;
+    	String impl = arg0.getServletContext().getInitParameter(Constants.KEY_IMPLEMENTATION);
+    	Config.setConfig(path, impl);
     }
 
 	/**

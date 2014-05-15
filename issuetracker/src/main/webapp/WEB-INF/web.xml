@@ -7,6 +7,10 @@
 	<listener>
 		<listener-class>org.training.issuetracker.controllers.PropertiesListener</listener-class>
 	</listener>
+	<context-param>
+		<param-name>implementation</param-name>
+		<param-value>xml</param-value>
+	</context-param>
 	<servlet>
 		<description></description>
 		<display-name>WelcomePageController</display-name>

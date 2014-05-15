@@ -1,10 +1,13 @@
 package org.training.issuetracker.model.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Project {
 	private final int id;
 	private String name;
 	private String description;
-	private String build;
+	private List<Build> builds;
 	private User manager;
 	/**
 	 * @param id
@@ -13,15 +16,34 @@ public class Project {
 	 * @param build
 	 * @param manager
 	 */
-	public Project(int id, String name, String description, String build,
+	public Project(int id, String name, String description, Build build,
 			User manager) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.build = build;
+		builds = new ArrayList<>();
+		builds.add(build);
 		this.manager = manager;
 	}
+	
+	/**
+	 * @param id
+	 * @param name
+	 * @param description
+	 * @param builds
+	 * @param manager
+	 */
+	public Project(int id, String name, String description, List<Build> builds,
+			User manager) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.builds = builds;
+		this.manager = manager;
+	}
+
 	/**
 	 * @return the name
 	 */
@@ -46,18 +68,21 @@ public class Project {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	/**
-	 * @return the build
+	 * @return the builds
 	 */
-	public String getBuild() {
-		return build;
+	public List<Build> getBuilds() {
+		return builds;
 	}
+
 	/**
-	 * @param build the build to set
+	 * @param builds the builds to set
 	 */
-	public void setBuild(String build) {
-		this.build = build;
+	public void setBuilds(List<Build> builds) {
+		this.builds = builds;
 	}
+
 	/**
 	 * @return the manager
 	 */
@@ -76,5 +101,4 @@ public class Project {
 	public int getId() {
 		return id;
 	}
-	
 }
