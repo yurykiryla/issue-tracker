@@ -23,12 +23,40 @@ public class Issue {
 	private String summary;
 	private String description;
 	private Project project;
-	private String buildFound;
+	private Build buildFound;
 	private final Date createDate;
 	private final User createdBy;
 	private Date modifyDate;
 	private User modifiedBy;
 	private Resolution resolution;
+	/**
+	 * @param id
+	 * @param priority
+	 * @param type
+	 * @param status
+	 * @param summary
+	 * @param description
+	 * @param project
+	 * @param buildFound
+	 * @param createDate
+	 * @param createdBy
+	 */
+	public Issue(int id, Priority priority, Type type, Status status,
+			String summary, String description, Project project,
+			Build buildFound, Date createDate, User createdBy) {
+		super();
+		this.id = id;
+		this.priority = priority;
+		this.type = type;
+		this.status = status;
+		this.summary = summary;
+		this.description = description;
+		this.project = project;
+		this.buildFound = buildFound;
+		this.createDate = createDate;
+		this.createdBy = createdBy;
+	}
+
 	/**
 	 * @param id
 	 * @param priority
@@ -44,7 +72,7 @@ public class Issue {
 	 */
 	public Issue(int id, Priority priority, User assignee, Type type,
 			Status status, String summary, String description, Project project,
-			String buildFound, Date createDate, User createdBy) {
+			Build buildFound, Date createDate, User createdBy) {
 		super();
 		this.id = id;
 		this.priority = priority;
@@ -77,7 +105,7 @@ public class Issue {
 	 */
 	public Issue(int id, Priority priority, User assignee, Type type,
 			Status status, String summary, String description, Project project,
-			String buildFound, Date createDate, User createdBy,
+			Build buildFound, Date createDate, User createdBy,
 			Date modifyDate, User modifiedBy, Resolution resolution) {
 		super();
 		this.id = id;
@@ -183,13 +211,13 @@ public class Issue {
 	/**
 	 * @return the buildFound
 	 */
-	public String getBuildFound() {
+	public Build getBuildFound() {
 		return buildFound;
 	}
 	/**
 	 * @param buildFound the buildFound to set
 	 */
-	public void setBuildFound(String buildFound) {
+	public void setBuildFound(Build buildFound) {
 		this.buildFound = buildFound;
 	}
 	/**

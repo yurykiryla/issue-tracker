@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Users.xsd">
-	<user id="0">
-		<first-name>Aleh</first-name>
-		<last-name>Volski</last-name>
-		<role>ADMINISTRATOR</role>
-		<email>rem@tut.by</email>
-		<password>12345</password>
-	</user>
 	<user id="1">
-		<first-name>Victar</first-name>
-		<last-name>Zlykau</last-name>
-		<role>USER</role>
-		<email>new@tut.by</email>
-		<password>11111</password>
+		<first-name>admin</first-name>
+		<last-name>admin</last-name>
+		<role>ADMINISTRATOR</role>
+		<email>admin</email>
+		<password>admin</password>
 	</user>
 	<user id="2">
-		<first-name>Siarhey</first-name>
-		<last-name>Kabiakov</last-name>
+		<first-name>user</first-name>
+		<last-name>user</last-name>
 		<role>USER</role>
-		<email>get@tut.by</email>
-		<password>22222</password>
+		<email>user</email>
+		<password>user</password>
 	</user>
 </users>

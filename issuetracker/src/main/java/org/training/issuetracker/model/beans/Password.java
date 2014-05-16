@@ -8,42 +8,36 @@ package org.training.issuetracker.model.beans;
  *
  */
 public class Password {
-	private String password;
+	private String encryptedPassword;
 	/**
 	 * 
 	 */
 	public Password() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * @param password
-	 */
-	public Password(String password) {
-		super();
-		this.password = password;
+	
+	public Password(String password){
+		encryptedPassword = encryptPassword(password);
 	}
 	/**
-	 * @return the password
+	 * @return the encryptedPassword
 	 */
-	public String getPassword() {
-		return password;
-	}
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public String getEncryptedPassword() {
+		return encryptedPassword;
 	}
 
-	public void encryptPassword(String password){
-		this.password = password;
+	/**
+	 * @param encryptedPassword the encryptedPassword to set
+	 */
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
 	}
-	
+
 	public boolean checkPassword(String password){
-		return decryptPassword().equals(password);
+		return this.encryptedPassword.equals(encryptPassword(password));
 	}
-	
-	private String decryptPassword(){
+	private String encryptPassword(String password){
 		return password;
 	}
 }

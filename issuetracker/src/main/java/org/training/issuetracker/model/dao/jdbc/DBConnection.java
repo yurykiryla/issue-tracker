@@ -20,7 +20,7 @@ public class DBConnection implements AutoCloseable{
 	private Connection connection = null;
 	
 	private static final String DRIVER_NAME = "org.apache.derby.jdbc.EmbeddedDriver";
-	private static final String DATA_RESOURCE = "jdbc:derby:" + Config.GetConfig().getPath() + "projectdb";
+	private static final String DATA_RESOURCE = "jdbc:derby:" + Config.getConfig().getPath() + "projectdb";
 	private static final String CREATE_DB = ";create=true";
 	
 	

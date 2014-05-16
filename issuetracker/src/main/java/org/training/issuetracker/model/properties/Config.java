@@ -27,7 +27,7 @@ public class Config {
 		}
 	}
 	
-	public static Config GetConfig(){
+	public static Config getConfig(){
 		return config;
 	}
 

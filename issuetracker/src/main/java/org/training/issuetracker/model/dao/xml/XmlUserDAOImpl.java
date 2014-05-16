@@ -69,14 +69,15 @@ public class XmlUserDAOImpl implements IUserDAO {
 		String lastName = element.getChildText(KEY_LAST_NAME);
 		Role role = Role.valueOf(element.getChildText(KEY_ROLE));
 		String email = element.getChildText(KEY_EMAIL);
-		Password password = new Password(element.getChildText(KEY_PASSWORD));
+		Password password = new Password();
+		password.setEncryptedPassword(element.getChildText(KEY_PASSWORD));
 		return new User(id, firstName, lastName, email, role, password);
 	}
 	
 	private List<Element> getElements() throws DAOException{
 		try {
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(Config.GetConfig().getPath() + USERS_XML_FILENAME);
+			Document document = builder.build(Config.getConfig().getPath() + USERS_XML_FILENAME);
 			return document.getRootElement().getChildren();
 		} catch (JDOMException | IOException e) {
 			// TODO: handle exception

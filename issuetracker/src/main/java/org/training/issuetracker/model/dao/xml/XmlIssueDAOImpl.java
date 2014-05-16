@@ -14,12 +14,14 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Project;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IIssueDAO;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.factories.BuildFactory;
 import org.training.issuetracker.model.dao.factories.ProjectFactory;
 import org.training.issuetracker.model.dao.factories.UserFactory;
 import org.training.issuetracker.model.enums.Priority;
@@ -54,7 +56,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 		List<Issue> issues = new ArrayList<>();
 		try {
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(Config.GetConfig().getPath() + ISSUES_XML_FILENAME);
+			Document document = builder.build(Config.getConfig().getPath() + ISSUES_XML_FILENAME);
 			List<Element> elements = document.getRootElement().getChildren();		
 			if(user == null){
 				for(Element element : elements){
@@ -84,36 +86,55 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 	}
 	
 	private Issue getIssue(Element element) throws DAOException{
+		
 		int id = Integer.parseInt(element.getAttributeValue(KEY_ID));
+		
 		Priority priority = Priority.valueOf(element.getChildText(KEY_PRIORITY));
+		
 		IUserDAO userDAO = UserFactory.getClassFromFactory();
-		User assignee = userDAO.getUser(Integer.parseInt(element
-				.getChildText(KEY_ASSIGNEE)));
+		String assigneeIdStr = element.getChildText(KEY_ASSIGNEE_ID);
+		User assignee = null;
+		if(assigneeIdStr != null && !assigneeIdStr.isEmpty()){
+			assignee = userDAO.getUser(Integer.parseInt(assigneeIdStr));
+		}
+		
 		Type type = Type.valueOf(element.getChildText(KEY_TYPE));
+		
 		Status status = Status.valueOf(element.getChildText(KEY_STATUS));
+		
 		String summary = element.getChildText(KEY_SUMMARY);
+		
 		String description = element.getChildText(KEY_DESCRIPTION);
-		//correct project value after include projectsDao
-		Project project = ProjectFactory.getClassFromFactory().getProject(Integer.parseInt(element.getChildText(KEY_PROJECT_ID)));
-		String buildFound = element.getChildText(KEY_BUILD_FOUND);
+		
+		Project project = ProjectFactory.getClassFromFactory()
+				.getProject(Integer.parseInt(element.getChildText(KEY_PROJECT_ID)));
+		
+		Build buildFound = BuildFactory.getClassFromFactory()
+				.getBuild(Integer.parseInt(element.getChildText(KEY_BUILD_FOUND_ID)));
+
 		Date createDate = Date.valueOf(element.getChildText(KEY_CREATE_DATE));
+		
 		User createdBy = userDAO.getUser(Integer.parseInt(element
-				.getChildText(KEY_CREATED_BY)));
+				.getChildText(KEY_CREATED_BY_ID)));
+		
 		String modifyDateStr = element.getChildText(KEY_MODIFY_DATE);
 		Date modifyDate = null;
-		if(!modifyDateStr.isEmpty()){
+		if(modifyDateStr != null && !modifyDateStr.isEmpty()){
 			modifyDate = Date.valueOf(modifyDateStr);
 		}
+		
 		User modifiedBy = null;
-		String modifiedByStr = element.getChildText(KEY_MODIFIED_BY);
-		if(!modifiedByStr.isEmpty()){
+		String modifiedByStr = element.getChildText(KEY_MODIFIED_BY_ID);
+		if(modifiedByStr != null && !modifiedByStr.isEmpty()){
 			modifiedBy = userDAO.getUser(Integer.parseInt(modifiedByStr));
 		}
+		
 		Resolution resolution = null;
 		String resolutionStr = element.getChildText(KEY_RESOLUTION);
-		if(!resolutionStr.isEmpty()){
+		if(resolutionStr != null && !resolutionStr.isEmpty()){
 			resolution = Resolution.valueOf(resolutionStr);
 		}
+		
 		return new Issue(id, priority, assignee, type, status, summary, description, project, 
 				buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution);
 	}

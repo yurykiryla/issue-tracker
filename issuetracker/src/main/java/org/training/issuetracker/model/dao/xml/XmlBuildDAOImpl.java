@@ -5,7 +5,6 @@ package org.training.issuetracker.model.dao.xml;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -38,7 +37,8 @@ public class XmlBuildDAOImpl implements IBuildDAO {
 	@Override
 	public Build getBuild(int id) throws DAOException{
 		// TODO Auto-generated method stub
-		for(Build build : getBuilds()){
+		for(Element element : getElements()){
+			Build build = getBuild(element);
 			if(build.getId() == id){
 				return build;
 			}
@@ -52,33 +52,28 @@ public class XmlBuildDAOImpl implements IBuildDAO {
 	@Override
 	public List<Build> getBuilds(int projectId) throws DAOException{
 		// TODO Auto-generated method stub
-		List<Build> builds = getBuilds();
-		Iterator<Build> iterator = builds.iterator();
-		while(iterator.hasNext()){
-			Build build = iterator.next();
-			if(build.getProjectId() != projectId){
-				iterator.remove();
+		List<Build> builds = new ArrayList<>();
+		for(Element element : getElements()){
+			if(projectId == Integer.parseInt(element.getChildText(KEY_PROJECT_ID))){
+				builds.add(getBuild(element));
 			}
 		}
 		return builds;
 	}
+
+	private Build getBuild(Element element){
+		int id = Integer.parseInt(element.getAttributeValue(KEY_ID));
+		String build = element.getChildText(KEY_BUILD);
+		return new Build(id, build);
+	}
 	
-	private List<Build> getBuilds() throws DAOException{
-		List<Build> builds = new ArrayList<>();
-		SAXBuilder saxBuilder = new SAXBuilder();
+	private List<Element> getElements() throws DAOException{
+		SAXBuilder builder = new SAXBuilder();
 		try {
-			Document document = saxBuilder.build(Config.GetConfig().getPath() + BUILDS_XML_FILENAME);
-			List<Element> elements = document.getRootElement().getChildren();
-			for(Element element : elements){
-				int id = Integer.parseInt(element.getAttributeValue(KEY_ID));
-				int projectId = Integer.parseInt(element.getChildText(KEY_PROJECT_ID));
-				String build = element.getChildText(KEY_BUILD_ID);
-				builds.add(new Build(id, projectId, build));
-			}
+			Document document = builder.build(Config.getConfig().getPath() + BUILDS_XML_FILENAME);
+			return document.getRootElement().getChildren();
 		} catch (JDOMException | IOException e) {
-			// TODO Auto-generated catch block
 			throw new DAOException(e);
 		}
-		return builds;
 	}
 }

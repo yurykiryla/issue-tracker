@@ -16,7 +16,7 @@ import org.training.issuetracker.model.properties.Config;
 public class UserFactory {
 	
 	public static IUserDAO getClassFromFactory() throws DAOException{
-		switch (Config.GetConfig().getImplementation()){
+		switch (Config.getConfig().getImplementation()){
 			case XML:
 				return new XmlUserDAOImpl();
 			case JDBC:

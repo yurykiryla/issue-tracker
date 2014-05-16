@@ -8,7 +8,7 @@ import org.training.issuetracker.model.properties.Config;
 
 public class IssuesFactory {
 	public static IIssueDAO getClassFromFactory() throws DAOException{
-		switch (Config.GetConfig().getImplementation()){
+		switch (Config.getConfig().getImplementation()){
 			case XML:
 				return new XmlIssueDAOImpl();
 			case JDBC:

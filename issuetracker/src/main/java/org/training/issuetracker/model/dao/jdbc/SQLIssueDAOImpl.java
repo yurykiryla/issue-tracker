@@ -88,8 +88,8 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 					resolution = Resolution.valueOf(resolutionStr);
 				}
 				
-				issues.add(new Issue(id, priority, assignee, type, status, summary, description, project, 
-						buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution));
+				issues.add(null/*new Issue(id, priority, assignee, type, status, summary, description, project, 
+						buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution)*/);
 			}
 			resultSet.close();
 			statement.close();

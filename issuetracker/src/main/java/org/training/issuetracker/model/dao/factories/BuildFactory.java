@@ -14,7 +14,7 @@ import org.training.issuetracker.model.properties.Config;
  */
 public class BuildFactory {
 	public static IBuildDAO getClassFromFactory() throws DAOException{
-		switch (Config.GetConfig().getImplementation()){
+		switch (Config.getConfig().getImplementation()){
 		case XML:
 			return new XmlBuildDAOImpl();
 		/*case JDBC:

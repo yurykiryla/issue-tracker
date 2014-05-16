@@ -43,15 +43,16 @@ public class XmlProjectDAOImpl implements IProjectDAO{
 		// TODO Auto-generated method stub
 		try {
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(Config.GetConfig().getPath() + PROJECTS_XML_FILENAME);
-			List<Element> elements = document.getRootElement().getChildren();
-			for(Element element : elements){
-				int tempId = Integer.parseInt(element.getAttributeValue(KEY_ID));
+			Document projectsDocument = builder.build(Config.getConfig().getPath() + PROJECTS_XML_FILENAME);
+			List<Element> projectElements = projectsDocument.getRootElement().getChildren();
+			for(Element projectElement : projectElements){
+				int tempId = Integer.parseInt(projectElement.getAttributeValue(KEY_ID));
 				if(tempId == id){
-					String name = element.getChildText(KEY_NAME);
-					String description = element.getChildText(KEY_DESCRIPTION);
+					String name = projectElement.getChildText(KEY_NAME);
+					String description = projectElement.getChildText(KEY_DESCRIPTION);
 					List<Build> builds = BuildFactory.getClassFromFactory().getBuilds(id);
-					User manager = UserFactory.getClassFromFactory().getUser(Integer.parseInt(element.getChildText(KEY_MANAGER_ID)));
+					User manager = UserFactory.getClassFromFactory()
+							.getUser(Integer.parseInt(projectElement.getChildText(KEY_MANAGER_ID)));
 					return new Project(id, name, description, builds, manager);
 				}
 			}
@@ -61,7 +62,4 @@ public class XmlProjectDAOImpl implements IProjectDAO{
 		}
 		return null;
 	}
-	
-	
-
 }
