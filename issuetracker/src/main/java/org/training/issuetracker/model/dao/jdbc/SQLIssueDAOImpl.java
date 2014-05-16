@@ -10,12 +10,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Project;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.IIssueDAO;
 import org.training.issuetracker.model.dao.IUserDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.factories.BuildFactory;
+import org.training.issuetracker.model.dao.factories.ProjectFactory;
 import org.training.issuetracker.model.dao.factories.UserFactory;
 import org.training.issuetracker.model.enums.Priority;
 import org.training.issuetracker.model.enums.Resolution;
@@ -23,6 +26,7 @@ import org.training.issuetracker.model.enums.Status;
 import org.training.issuetracker.model.enums.Type;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
+import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 /**
  * @author Yury
@@ -38,15 +42,15 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 		// TODO Auto-generated method stub
 		List<Issue> issues = new ArrayList<>();
 		try(DBConnection dbConnection = new DBConnection()){
-			Statement statement = dbConnection.getConnection().createStatement();
+			Statement statement = dbConnection.getStatement();
 			statement.setMaxRows(n);
 			ResultSet resultSet;
 			if(user == null){
-				resultSet = statement.executeQuery(SQLRequests.SELECT_DEFAULT_ISSUES);
+				resultSet = statement.executeQuery(SELECT_DEFAULT_ISSUES);
 			}else{
-				resultSet = statement.executeQuery(SQLRequests.SELECT_ASSEGNEE_ISSUES + user.getId());
+				resultSet = statement.executeQuery(SELECT_ASSIGNEE_ISSUES + user.getId());
 			}
-			while(resultSet.next()){
+			while(resultSet != null && resultSet.next()){
 				int id = resultSet.getInt(INDEX_ID);
 				
 				Priority priority = Priority.valueOf(resultSet.getString(INDEX_PRIORITY));
@@ -66,9 +70,11 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 				
 				String description = resultSet.getString(INDEX_DESCRIPTION);
 				
-				Project project = null;
+				Project project = ProjectFactory.getClassFromFactory()
+						.getProject(resultSet.getInt(INDEX_PROJECT_ID));
 				
-				String buildFound = resultSet.getString(INDEX_BUILD_FOUND_ID);
+				Build buildFound = BuildFactory.getClassFromFactory()
+						.getBuild(resultSet.getInt(INDEX_BUILD_FOUND_ID));
 				
 				Date createDate = resultSet.getDate(INDEX_CREATE_DATE);
 				
@@ -88,11 +94,12 @@ public class SQLIssueDAOImpl implements IIssueDAO {
 					resolution = Resolution.valueOf(resolutionStr);
 				}
 				
-				issues.add(null/*new Issue(id, priority, assignee, type, status, summary, description, project, 
-						buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution)*/);
+				issues.add(new Issue(id, priority, assignee, type, status, summary, description, project, 
+						buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution));
 			}
-			resultSet.close();
-			statement.close();
+			if(resultSet != null){
+				resultSet.close();
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new DAOException(e);

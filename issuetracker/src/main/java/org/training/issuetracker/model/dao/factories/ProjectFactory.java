@@ -5,6 +5,7 @@ package org.training.issuetracker.model.dao.factories;
 
 import org.training.issuetracker.model.dao.IProjectDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.jdbc.SQLProjectDAOImpl;
 import org.training.issuetracker.model.dao.xml.XmlProjectDAOImpl;
 import org.training.issuetracker.model.properties.Config;
 
@@ -17,8 +18,8 @@ public class ProjectFactory {
 		switch (Config.getConfig().getImplementation()){
 		case XML:
 			return new XmlProjectDAOImpl();
-		/*case JDBC:
-			return new SQLProjectDAOImpl();*/
+		case JDBC:
+			return new SQLProjectDAOImpl();
 		default:
 			throw new DAOException();
 		}

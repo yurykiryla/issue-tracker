@@ -14,6 +14,7 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.enums.Role;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
+import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 
 /**
@@ -28,8 +29,7 @@ public class SQLUserDAOImpl implements IUserDAO {
 	@Override
 	public User getUser(String email, String password) throws DAOException{
 		// TODO Auto-generated method stub
-		User user = getUser(SQLRequests.SELECT_USER_BY_EMAIL_1 + email 
-				+ SQLRequests.SELECT_USER_BY_EMAIL_2);
+		User user = getUser(SELECT_USER_BY_EMAIL_1 + email + SELECT_USER_BY_EMAIL_2);
 		if(user != null && user.getPassword().checkPassword(password)){
 			return user;
 		}
@@ -42,25 +42,25 @@ public class SQLUserDAOImpl implements IUserDAO {
 	@Override
 	public User getUser(int id) throws DAOException{
 		// TODO Auto-generated method stub
-		return getUser(SQLRequests.SELECT_USER_BY_ID + id);
+		return getUser(SELECT_USER_BY_ID + id);
 	}
 
 	private User getUser(String sqlRequest) throws DAOException{
 		User user = null;
 		try(DBConnection dbConnection = new DBConnection()){
-			Statement statement = dbConnection.getConnection().createStatement();
+			Statement statement = dbConnection.getStatement();
 			ResultSet resultSet = statement.executeQuery(sqlRequest);
-			if(resultSet.next()){
+			if(resultSet != null && resultSet.next()){
 				int id = resultSet.getInt(INDEX_ID);
 				String firstName = resultSet.getString(INDEX_FIRST_NAME);
 				String lastName = resultSet.getString(INDEX_LAST_NAME);
 				Role role = Role.valueOf(resultSet.getString(INDEX_ROLE));
 				String email = resultSet.getString(INDEX_EMAIL_ADDRESS);
-				Password password = new Password(resultSet.getString(INDEX_PASSWORD));
+				Password password = new Password();
+				password.setEncryptedPassword(resultSet.getString(INDEX_PASSWORD));
 				user = new User(id, firstName, lastName, email, role, password);
+				resultSet.close();
 			}
-			resultSet.close();
-			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new DAOException(e);

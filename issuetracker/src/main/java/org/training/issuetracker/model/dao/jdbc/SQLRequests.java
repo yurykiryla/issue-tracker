@@ -8,6 +8,13 @@ package org.training.issuetracker.model.dao.jdbc;
  *
  */
 public class SQLRequests {
+	public static final String CREATE_BUILDS_TABLE = 
+			"CREATE TABLE builds ("
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
+				+ "project_id INT NOT NULL,"
+				+ "build LONG VARCHAR NOT NULL"
+			+ ")";
+	
 	public static final String CREATE_ISSUES_TABLE = 
 			"CREATE TABLE issues ("
 				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
@@ -34,6 +41,14 @@ public class SQLRequests {
 			"INSERT INTO users (first_name, last_name, email_address, role, password)"
 				+ "VALUES ('user', 'user', 'user', 'USER', 'user')";
 	
+	public static final String CREATE_PROJECTS_TABLE = 
+			"CREATE TABLE projects ("
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
+				+ "name LONG VARCHAR NOT NULL,"
+				+ "description LONG VARCHAR NOT NULL,"
+				+ "manager_id INT NOT NULL"
+			+ ")";
+	
 	public static final String CREATE_USERS_TABLE = 
 			"CREATE TABLE users ("
 				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "
@@ -44,11 +59,20 @@ public class SQLRequests {
 				+ "password LONG VARCHAR NOT NULL"
 			+ ")";
 	
-	public static final String SELECT_ASSEGNEE_ISSUES = 
+	public static final String SELECT_ASSIGNEE_ISSUES = 
 			"SELECT * FROM issues WHERE assignee_id=";
+	
+	public static final String SELECT_BUILD_BY_ID = 
+			"SELECT * FROM builds WHERE id=";
+	
+	public static final String SELECT_BUILDS_BY_PROJECT_ID = 
+			"SELECT * FROM builds WHERE project_id=";
 	
 	public static final String SELECT_DEFAULT_ISSUES = 
 			"SELECT * FROM issues ORDER BY create_date DESC";
+	
+	public static final String SELECT_PROJECT_BY_ID = 
+			"SELECT * FROM projects WHERE id=";
 	
 	public static final String SELECT_USER_BY_ID = 
 			"SELECT * FROM users WHERE id=";
