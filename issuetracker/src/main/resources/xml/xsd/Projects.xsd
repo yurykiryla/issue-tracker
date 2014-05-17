@@ -11,8 +11,14 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string"/>
 			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="builds" type="Builds"></xsd:element>
 			<xsd:element name="manager-id" type="xsd:int"/>
 		</xsd:sequence>
 		<xsd:attribute name="id" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="Builds">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
