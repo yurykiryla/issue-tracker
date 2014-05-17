@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<priorities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/Priorities.xsd">
+  <priority id="1">
+    <name>Critical</name>
+  </priority>
+  <priority id="2">
+    <name>Major</name>
+  </priority>
+  <priority id="3">
+    <name>Important</name>
+  </priority>
+  <priority id="4">
+    <name>Minor</name>
+  </priority>
+</priorities>

@@ -18,6 +18,7 @@ public class Constants {
 	public static final int N_DEFAULT = 10;
 	public static final String RESOURCES_PATH = "WEB-INF\\classes\\";
 	public static final String ROOT_PATH = "/";
+	public static final String SUBMIT_ISSUE_PAGE_TITLE = "Submit Issue";
 	public static final String URL_ERROR_PAGE = "/ErrorPage.jsp";
 	public static final String URL_WELCOM_PAGE = "/WelcomePage.jsp";
 	public static final String URL_WELCOM_PAGE_CONTROLLER = "/WelcomePageController";
