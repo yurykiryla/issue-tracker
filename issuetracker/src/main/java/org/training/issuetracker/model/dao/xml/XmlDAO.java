@@ -11,14 +11,16 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.training.issuetracker.model.beans.Beans;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.properties.Config;
 
 /**
  * @author Yury
  *
  */
-public abstract class XmlDAO<T> implements DAO<T> {
+public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 
 	/* (non-Javadoc)
 	 * @see org.training.issuetracker.model.dao.DAO#getOb(int)
@@ -57,7 +59,7 @@ public abstract class XmlDAO<T> implements DAO<T> {
 	private List<Element> getElements() throws DAOException{
 		try{
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(getFilename());
+			Document document = builder.build(Config.getConfig().getPath() + getFilename());
 			return document.getRootElement().getChildren();
 		}catch(JDOMException | IOException e){
 			throw new DAOException(e);

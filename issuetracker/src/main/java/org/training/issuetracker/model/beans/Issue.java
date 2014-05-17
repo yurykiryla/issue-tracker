@@ -5,16 +5,12 @@ package org.training.issuetracker.model.beans;
 
 import java.sql.Date;
 
-import org.training.issuetracker.model.enums.Priority;
-import org.training.issuetracker.model.enums.Resolution;
-import org.training.issuetracker.model.enums.Status;
-import org.training.issuetracker.model.enums.Type;
 
 /**
  * @author Yury Kiryla
  *
  */
-public class Issue {
+public class Issue implements Beans{
 	private final int id;
 	private Priority priority;
 	private User assignee;
@@ -23,7 +19,7 @@ public class Issue {
 	private String summary;
 	private String description;
 	private Project project;
-	private Build buildFound;
+	private String buildFound;
 	private final Date createDate;
 	private final User createdBy;
 	private Date modifyDate;
@@ -43,7 +39,7 @@ public class Issue {
 	 */
 	public Issue(int id, Priority priority, Type type, Status status,
 			String summary, String description, Project project,
-			Build buildFound, Date createDate, User createdBy) {
+			String buildFound, Date createDate, User createdBy) {
 		super();
 		this.id = id;
 		this.priority = priority;
@@ -72,7 +68,7 @@ public class Issue {
 	 */
 	public Issue(int id, Priority priority, User assignee, Type type,
 			Status status, String summary, String description, Project project,
-			Build buildFound, Date createDate, User createdBy) {
+			String buildFound, Date createDate, User createdBy) {
 		super();
 		this.id = id;
 		this.priority = priority;
@@ -105,7 +101,7 @@ public class Issue {
 	 */
 	public Issue(int id, Priority priority, User assignee, Type type,
 			Status status, String summary, String description, Project project,
-			Build buildFound, Date createDate, User createdBy,
+			String buildFound, Date createDate, User createdBy,
 			Date modifyDate, User modifiedBy, Resolution resolution) {
 		super();
 		this.id = id;
@@ -211,13 +207,13 @@ public class Issue {
 	/**
 	 * @return the buildFound
 	 */
-	public Build getBuildFound() {
+	public String getBuildFound() {
 		return buildFound;
 	}
 	/**
 	 * @param buildFound the buildFound to set
 	 */
-	public void setBuildFound(Build buildFound) {
+	public void setBuildFound(String buildFound) {
 		this.buildFound = buildFound;
 	}
 	/**

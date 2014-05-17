@@ -6,11 +6,12 @@ package org.training.issuetracker.model.beans;
 import org.training.issuetracker.model.enums.Role;
 
 
+
 /**
  * @author Yury Kiryla
  *
  */
-public class User {
+public class User implements Beans{
 	private final int id;
 	private String firstName;
 	private String lastName;

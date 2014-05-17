@@ -4,11 +4,9 @@
 package org.training.issuetracker.model.enums;
 
 /**
- * @author Yury Kiryla
+ * @author Yury
  *
  */
 public enum Role {
-	ADMINISTRATOR,
-	USER,
-	GUEST
+	ADMINISTRATOR, USER, GUEST
 }

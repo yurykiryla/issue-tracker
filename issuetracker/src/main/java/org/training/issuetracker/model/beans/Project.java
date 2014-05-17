@@ -3,11 +3,11 @@ package org.training.issuetracker.model.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Project {
+public class Project implements Beans{
 	private final int id;
 	private String name;
 	private String description;
-	private List<Build> builds;
+	private List<String> builds;
 	private User manager;
 	/**
 	 * @param id
@@ -16,7 +16,7 @@ public class Project {
 	 * @param build
 	 * @param manager
 	 */
-	public Project(int id, String name, String description, Build build,
+	public Project(int id, String name, String description, String build,
 			User manager) {
 		super();
 		this.id = id;
@@ -34,7 +34,7 @@ public class Project {
 	 * @param builds
 	 * @param manager
 	 */
-	public Project(int id, String name, String description, List<Build> builds,
+	public Project(int id, String name, String description, List<String> builds,
 			User manager) {
 		super();
 		this.id = id;
@@ -72,14 +72,14 @@ public class Project {
 	/**
 	 * @return the builds
 	 */
-	public List<Build> getBuilds() {
+	public List<String> getBuilds() {
 		return builds;
 	}
 
 	/**
 	 * @param builds the builds to set
 	 */
-	public void setBuilds(List<Build> builds) {
+	public void setBuilds(List<String> builds) {
 		this.builds = builds;
 	}
 

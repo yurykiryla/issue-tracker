@@ -2,15 +2,21 @@ package org.training.issuetracker.model.dao.xml;
 
 public class Constants {
 	
+
 	/**
 	 * {@value}
 	 */
-	public static final String BUILDS_XML_FILENAME = "Builds.xml";
+	public static final String XML_PATH = "xml/";
 	
 	/**
 	 * {@value}
 	 */
-	public static final String ISSUES_XML_FILENAME = "Issues.xml";
+	public static final String BUILDS_XML_FILENAME = XML_PATH + "Builds.xml";
+	
+	/**
+	 * {@value}
+	 */
+	public static final String ISSUES_XML_FILENAME = XML_PATH + "Issues.xml";
 	
 	/**
 	 * {@value}
@@ -145,10 +151,31 @@ public class Constants {
 	/**
 	 * {@value}
 	 */
-	public static final String PROJECTS_XML_FILENAME = "Projects.xml";
+	public static final String PRIORITIES_XML_FILENAME = XML_PATH + "Priorities.xml";
 	
 	/**
 	 * {@value}
 	 */
-	public static final String USERS_XML_FILENAME = "Users.xml";
+	public static final String PROJECTS_XML_FILENAME = XML_PATH + "Projects.xml";
+	
+	/**
+	 * {@value}
+	 */
+	public static final String RESOLUTIONS_XML_FILENAME = XML_PATH + "Resolutions.xml";
+	
+	/**
+	 * {@value}
+	 */
+	public static final String STATUSES_XML_FILENAME = XML_PATH + "Statuses.xml";
+	
+	/**
+	 * {@value}
+	 */
+	public static final String TYPES_XML_FILENAME = XML_PATH + "Types.xml";
+	
+	/**
+	 * {@value}
+	 */
+	public static final String USERS_XML_FILENAME = XML_PATH + "Users.xml";
+	
 }
