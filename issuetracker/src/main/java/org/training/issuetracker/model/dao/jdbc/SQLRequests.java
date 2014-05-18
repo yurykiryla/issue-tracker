@@ -10,7 +10,6 @@ package org.training.issuetracker.model.dao.jdbc;
 public class SQLRequests {
 	public static final String CREATE_BUILDS_TABLE = 
 			"CREATE TABLE builds ("
-				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
 				+ "project_id INT NOT NULL,"
 				+ "build LONG VARCHAR NOT NULL"
 			+ ")";
@@ -18,19 +17,19 @@ public class SQLRequests {
 	public static final String CREATE_ISSUES_TABLE = 
 			"CREATE TABLE issues ("
 				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
+				+ "priority_id INT NOT NULL,"
+				+ "assignee_id INT DEFAULT NULL,"
+				+ "type_id INT NOT NULL,"
+				+ "status_id INT NOT NULL,"
 				+ "summary LONG VARCHAR NOT NULL,"
 				+ "description LONG VARCHAR NOT NULL,"
-				+ "status LONG VARCHAR NOT NULL,"
-				+ "type LONG VARCHAR NOT NULL,"
-				+ "priority LONG VARCHAR NOT NULL,"
 				+ "project_id INT NOT NULL,"
-				+ "build_found_id INT NOT NULL,"
-				+ "assignee_id INT DEFAULT NULL,"
+				+ "build_found LONG VARCHAR NOT NULL,"
 				+ "create_date DATE NOT NULL,"
 				+ "created_by_id INT NOT NULL,"
 				+ "modify_date DATE DEFAULT NULL,"
 				+ "modified_by_id INT DEFAULT NULL,"
-				+ "resolution LONG VARCHAR DEFAULT NULL"
+				+ "resolution_id INT DEFAULT NULL"
 			+ ")";
 	
 	public static final String CREATE_DEFAULT_ADMINISTRATOR = 
@@ -41,12 +40,90 @@ public class SQLRequests {
 			"INSERT INTO users (first_name, last_name, email_address, role, password)"
 				+ "VALUES ('user', 'user', 'user', 'USER', 'user')";
 	
+	public static final String CREATE_PRIORITIES_TABLE = 
+			"CREATE TABLE priorities ("
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "
+				+ "name LONG VARCHAR NOT NULL"
+			+ ")";
+	
+	public static final String CREATE_PRIORITY_CRITICAL = 
+			"INSERT INTO priorities (name) VALUES ('Critical')";
+	
+	public static final String CREATE_PRIORITY_IMPORTANT = 
+			"INSERT INTO priorities (name) VALUES ('Important')";
+	
+	public static final String CREATE_PRIORITY_MAJOR = 
+			"INSERT INTO priorities (name) VALUES ('Major')";
+	
+	public static final String CREATE_PRIORITY_MINOR = 
+			"INSERT INTO priorities (name) VALUES ('Minor')";
+	
 	public static final String CREATE_PROJECTS_TABLE = 
 			"CREATE TABLE projects ("
 				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
 				+ "name LONG VARCHAR NOT NULL,"
 				+ "description LONG VARCHAR NOT NULL,"
 				+ "manager_id INT NOT NULL"
+			+ ")";
+
+	public static final String CREATE_RESOLUTION_INVALID = 
+			"INSERT INTO resolutions (name) VALUES ('Invalid')";
+	
+	public static final String CREATE_RESOLUTION_FIXED = 
+			"INSERT INTO resolutions (name) VALUES ('Fixed')";
+	
+	public static final String CREATE_RESOLUTION_WONTFIX = 
+			"INSERT INTO resolutions (name) VALUES ('Wontfix')";
+	
+	public static final String CREATE_RESOLUTION_WORKSFORME = 
+			"INSERT INTO resolutions (name) VALUES ('Worksforme')";
+	
+	public static final String CREATE_RESOLUTIONS_TABLE = 
+			"CREATE TABLE resolutions ("
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "
+				+ "name LONG VARCHAR NOT NULL"
+			+ ")";
+	
+	public static final String CREATE_STATUS_ASSIGNED = 
+			"INSERT INTO statuses (name) VALUES ('Assigned')";
+	
+	public static final String CREATE_STATUS_CLOSED = 
+			"INSERT INTO statuses (name) VALUES ('Closed')";
+	
+	public static final String CREATE_STATUS_IN_PROGRESS = 
+			"INSERT INTO statuses (name) VALUES ('In Progress')";
+	
+	public static final String CREATE_STATUS_NEW = 
+			"INSERT INTO statuses (name) VALUES ('New')";
+	
+	public static final String CREATE_STATUS_REOPENED = 
+			"INSERT INTO statuses (name) VALUES ('Reopened')";
+	
+	public static final String CREATE_STATUS_RESOLVED = 
+			"INSERT INTO statuses (name) VALUES ('Resolved')";
+	
+	public static final String CREATE_STATUSES_TABLE = 
+			"CREATE TABLE statuses ("
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "
+				+ "name LONG VARCHAR NOT NULL"
+			+ ")";
+	
+	public static final String CREATE_TYPE_BUG = 
+			"INSERT INTO types (name) VALUES ('Bug')";
+	
+	public static final String CREATE_TYPE_COSMETIC = 
+			"INSERT INTO types (name) VALUES ('Cosmetic')";
+	
+	public static final String CREATE_TYPE_FEATURE = 
+			"INSERT INTO types (name) VALUES ('Feature')";
+	
+	public static final String CREATE_TYPE_PERFOMANCE = 
+			"INSERT INTO types (name) VALUES ('Perfomance')";
+	
+	public static final String CREATE_TYPES_TABLE = 
+			"CREATE TABLE types ("
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "
+				+ "name LONG VARCHAR NOT NULL"
 			+ ")";
 	
 	public static final String CREATE_USERS_TABLE = 

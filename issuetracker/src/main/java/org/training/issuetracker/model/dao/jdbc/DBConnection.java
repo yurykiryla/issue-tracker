@@ -36,12 +36,41 @@ public class DBConnection implements AutoCloseable{
 				try {
 					connection = DriverManager.getConnection(DATA_RESOURCE + CREATE_DB);
 					statement = connection.createStatement();
-					statement.executeUpdate(CREATE_USERS_TABLE);
+					
 					statement.executeUpdate(CREATE_ISSUES_TABLE);
+					
+					statement.executeUpdate(CREATE_PRIORITIES_TABLE);
+					statement.executeUpdate(CREATE_PRIORITY_CRITICAL);
+					statement.executeUpdate(CREATE_PRIORITY_MAJOR);
+					statement.executeUpdate(CREATE_PRIORITY_IMPORTANT);
+					statement.executeUpdate(CREATE_PRIORITY_MINOR);
+					
+					statement.executeUpdate(CREATE_PROJECTS_TABLE);
+					statement.executeUpdate(CREATE_BUILDS_TABLE);
+					
+					statement.executeUpdate(CREATE_RESOLUTIONS_TABLE);
+					statement.executeUpdate(CREATE_RESOLUTION_FIXED);
+					statement.executeUpdate(CREATE_RESOLUTION_INVALID);
+					statement.executeUpdate(CREATE_RESOLUTION_WONTFIX);
+					statement.executeUpdate(CREATE_RESOLUTION_WORKSFORME);
+					
+					statement.executeUpdate(CREATE_STATUSES_TABLE);
+					statement.executeUpdate(CREATE_STATUS_NEW);
+					statement.executeUpdate(CREATE_STATUS_ASSIGNED);
+					statement.executeUpdate(CREATE_STATUS_IN_PROGRESS);
+					statement.executeUpdate(CREATE_STATUS_RESOLVED);
+					statement.executeUpdate(CREATE_STATUS_CLOSED);
+					statement.executeUpdate(CREATE_STATUS_REOPENED);
+					
+					statement.executeUpdate(CREATE_TYPES_TABLE);
+					statement.executeUpdate(CREATE_TYPE_COSMETIC);
+					statement.executeUpdate(CREATE_TYPE_BUG);
+					statement.executeUpdate(CREATE_TYPE_FEATURE);
+					statement.executeUpdate(CREATE_TYPE_PERFOMANCE);
+																	
+					statement.executeUpdate(CREATE_USERS_TABLE);
 					statement.executeUpdate(CREATE_DEFAULT_ADMINISTRATOR);
 					statement.executeUpdate(CREATE_DEFAULT_USER);
-					statement.executeUpdate(CREATE_BUILDS_TABLE);
-					statement.executeUpdate(CREATE_PROJECTS_TABLE);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					throw new DAOException(e1);
