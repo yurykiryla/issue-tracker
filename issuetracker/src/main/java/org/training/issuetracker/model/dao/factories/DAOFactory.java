@@ -12,6 +12,7 @@ import org.training.issuetracker.model.beans.Type;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
+import org.training.issuetracker.model.dao.UsersDAO;
 import org.training.issuetracker.model.dao.jdbc.SQLDAOFactory;
 import org.training.issuetracker.model.dao.xml.XmlDAOFactory;
 import org.training.issuetracker.model.properties.Config;
@@ -68,5 +69,9 @@ public class DAOFactory {
 	
 	public static IssuesDAO getIssuesDAO(){
 		return getFactory().getIssuesDAO();
+	}
+	
+	public static UsersDAO getUsersDAO(){
+		return getFactory().getUsersDAO();
 	}
 }

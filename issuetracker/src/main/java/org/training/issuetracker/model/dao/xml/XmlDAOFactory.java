@@ -12,6 +12,7 @@ import org.training.issuetracker.model.beans.Type;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
+import org.training.issuetracker.model.dao.UsersDAO;
 import org.training.issuetracker.model.dao.factories.AbstractFactory;
 
 /**
@@ -51,7 +52,7 @@ public class XmlDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Project> getProjectDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ProjectXmlDAO();
 	}
 
 	/* (non-Javadoc)
@@ -87,7 +88,7 @@ public class XmlDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<User> getUserDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new UserXmlDAO();
 	}
 
 	/* (non-Javadoc)
@@ -97,6 +98,15 @@ public class XmlDAOFactory implements AbstractFactory {
 	public IssuesDAO getIssuesDAO() {
 		// TODO Auto-generated method stub
 		return new IssuesXmlDAO();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.factories.AbstractFactory#getUsersDAO()
+	 */
+	@Override
+	public UsersDAO getUsersDAO() {
+		// TODO Auto-generated method stub
+		return new UserXmlDAO();
 	}
 
 }

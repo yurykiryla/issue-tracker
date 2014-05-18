@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.dao.factories.IssuesFactory;
+import org.training.issuetracker.model.dao.factories.DAOFactory;
 
 /**
  * Servlet implementation class WelcomePageController
@@ -33,7 +33,7 @@ public class WelcomePageController extends AbstractController {
 		try{
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute(Constants.KEY_USER);
-			List<Issue> issues = IssuesFactory.getClassFromFactory().getIssues(user, Constants.N_DEFAULT);
+			List<Issue> issues = DAOFactory.getIssuesDAO().getIssues(user, Constants.N_DEFAULT);
 			request.setAttribute(Constants.KEY_ISSUES, issues);
 			forward(Constants.URL_WELCOM_PAGE, request, response);
 		}catch(DAOException e){

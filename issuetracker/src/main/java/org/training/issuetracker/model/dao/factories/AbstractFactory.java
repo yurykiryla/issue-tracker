@@ -12,6 +12,7 @@ import org.training.issuetracker.model.beans.Type;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
+import org.training.issuetracker.model.dao.UsersDAO;
 
 /**
  * @author Yury
@@ -26,4 +27,5 @@ public interface AbstractFactory {
 	public DAO<Type> getTypeDAO();
 	public DAO<User> getUserDAO();
 	public IssuesDAO getIssuesDAO();
+	public UsersDAO getUsersDAO();
 }
