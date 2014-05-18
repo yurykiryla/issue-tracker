@@ -54,7 +54,7 @@ public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 	}
 	
 	protected abstract String getFilename();
-	protected abstract T getOb(Element element);
+	protected abstract T getOb(Element element) throws DAOException;
 	
 	protected List<Element> getElements() throws DAOException{
 		try{
