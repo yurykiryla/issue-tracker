@@ -9,10 +9,10 @@
 	</xsd:element>
 	<xsd:complexType name="Issue">
 		<xsd:sequence>
-			<xsd:element name="priority" type="xsd:string"/>
+			<xsd:element name="priority-id" type="xsd:int"/>
 			<xsd:element name="assignee-id" type="xsd:int" minOccurs="0"/>
-			<xsd:element name="type" type="xsd:string"/>
-			<xsd:element name="status" type="xsd:string"/>
+			<xsd:element name="type-id" type="xsd:int"/>
+			<xsd:element name="status-id" type="xsd:int"/>
 			<xsd:element name="summary" type="xsd:string"/>
 			<xsd:element name="description" type="xsd:string"/>
 			<xsd:element name="project-id" type="xsd:int"/>

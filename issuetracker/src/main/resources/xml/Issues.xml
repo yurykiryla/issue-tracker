@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <issues  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/Issues.xsd">
 	<issue id="1">
-		<priority>CRITICAL</priority>
+		<priority-id>1</priority-id>
 		<assignee-id>1</assignee-id>
-		<type>COSMETIC</type>
-		<status>NEW</status>
+		<type-id>1</type-id>
+		<status-id>1</status-id>
 		<summary>bug 0</summary>
 		<description>some info about bug 0</description>
 		<project-id>1</project-id>

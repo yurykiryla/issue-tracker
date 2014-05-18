@@ -89,7 +89,7 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 		
 		int id = Integer.parseInt(element.getAttributeValue(KEY_ID));
 		
-		Priority priority = Priority.valueOf(element.getChildText(KEY_PRIORITY));
+		Priority priority = Priority.valueOf(element.getChildText(KEY_PRIORITY_ID));
 		
 		IUserDAO userDAO = UserFactory.getClassFromFactory();
 		String assigneeIdStr = element.getChildText(KEY_ASSIGNEE_ID);
@@ -98,9 +98,9 @@ public class XmlIssueDAOImpl implements IIssueDAO{
 			assignee = userDAO.getUser(Integer.parseInt(assigneeIdStr));
 		}
 		
-		Type type = Type.valueOf(element.getChildText(KEY_TYPE));
+		Type type = Type.valueOf(element.getChildText(KEY_TYPE_ID));
 		
-		Status status = Status.valueOf(element.getChildText(KEY_STATUS));
+		Status status = Status.valueOf(element.getChildText(KEY_STATUS_ID));
 		
 		String summary = element.getChildText(KEY_SUMMARY);
 		

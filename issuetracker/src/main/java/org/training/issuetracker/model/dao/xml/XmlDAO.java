@@ -56,7 +56,7 @@ public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 	protected abstract String getFilename();
 	protected abstract T getOb(Element element);
 	
-	private List<Element> getElements() throws DAOException{
+	protected List<Element> getElements() throws DAOException{
 		try{
 			SAXBuilder builder = new SAXBuilder();
 			Document document = builder.build(Config.getConfig().getPath() + getFilename());

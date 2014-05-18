@@ -111,7 +111,7 @@ public class Constants {
 	/**
 	 * {@value}
 	 */
-	public static final String KEY_PRIORITY = "priority";
+	public static final String KEY_PRIORITY_ID = "priority-id";
 	
 	/**
 	 * {@value}
@@ -131,7 +131,7 @@ public class Constants {
 	/**
 	 * {@value}
 	 */
-	public static final String KEY_STATUS = "status";
+	public static final String KEY_STATUS_ID = "status-id";
 	
 	/**
 	 * {@value}
@@ -141,7 +141,7 @@ public class Constants {
 	/**
 	 * {@value}
 	 */
-	public static final String KEY_TYPE = "type";
+	public static final String KEY_TYPE_ID = "type-id";
 	
 	/**
 	 * {@value}
