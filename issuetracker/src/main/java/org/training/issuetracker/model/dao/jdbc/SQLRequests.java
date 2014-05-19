@@ -136,17 +136,37 @@ public class SQLRequests {
 				+ "password LONG VARCHAR NOT NULL"
 			+ ")";
 	
-	public static final String SELECT_ASSIGNEE_ISSUES = 
-			"SELECT * FROM issues WHERE assignee_id=";
-	
 	public static final String SELECT_BUILD_BY_ID = 
 			"SELECT * FROM builds WHERE id=";
 	
 	public static final String SELECT_BUILDS_BY_PROJECT_ID = 
 			"SELECT * FROM builds WHERE project_id=";
 	
-	public static final String SELECT_DEFAULT_ISSUES = 
-			"SELECT * FROM issues ORDER BY create_date DESC";
+	public static final String SELECT_ISSUE_BY_ID = 
+			"SELECT * FROM issues WHERE id=";
+	
+	public static final String SELECT_ISSUES = 
+			"SELECT * FROM issues";
+	
+	public static final String SELECT_N_ASSIGNED_ISSUES_1 = 
+			"SELECT * FROM "
+			+ "{SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
+				+ "FROM issues WHERE assignee_id=";
+	
+	public static final String SELECT_N_ASSIGNED_ISSUES_2 = 
+			"} AS tmp WHERE rownum <= ";
+	
+	public static final String SELECT_N_LAST_ISSUES = 
+			"SELECT * FROM "
+			+ "{SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
+				+ "FROM issues ORDER BY create_date DESC} AS tmp "
+			+ "WHERE rownum <= ";
+	
+	public static final String SELECT_PRIORITIES = 
+			"SELECT * FROM priorities";
+	
+	public static final String SELECT_PRIORITY_BY_ID = 
+			"SELECT * FROM priorities WHERE id=";
 	
 	public static final String SELECT_PROJECT_BY_ID = 
 			"SELECT * FROM projects WHERE id=";
