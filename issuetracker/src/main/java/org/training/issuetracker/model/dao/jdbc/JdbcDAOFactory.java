@@ -36,7 +36,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Issue> getIssueDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new IssuesJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -45,7 +45,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Priority> getPriorityDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new PriorityJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +54,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Project> getProjectDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ProjectJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -63,7 +63,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Resolution> getResolutionDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResolutionJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -72,7 +72,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Status> getStatusDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new StatusJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -81,7 +81,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Type> getTypeDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new TypeJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -90,7 +90,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<User> getUserDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new UserJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -99,7 +99,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public IssuesDAO getIssuesDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new IssuesJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -108,7 +108,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public UsersDAO getUsersDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new UserJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -117,7 +117,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public DAO<Build> getBuildDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new BuildsJdbcDAO();
 	}
 
 	/* (non-Javadoc)
@@ -126,7 +126,7 @@ public class JdbcDAOFactory implements AbstractFactory {
 	@Override
 	public BuildsDAO getBuildsDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new BuildsJdbcDAO();
 	}
 
 }

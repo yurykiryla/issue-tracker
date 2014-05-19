@@ -154,16 +154,16 @@ public class SQLRequests {
 	
 	public static final String SELECT_N_ASSIGNED_ISSUES_1 = 
 			"SELECT * FROM "
-			+ "{SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
+			+ "(SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
 				+ "FROM issues WHERE assignee_id=";
 	
 	public static final String SELECT_N_ASSIGNED_ISSUES_2 = 
-			"} AS tmp WHERE rownum <= ";
+			") AS tmp WHERE rownum <= ";
 	
 	public static final String SELECT_N_LAST_ISSUES = 
 			"SELECT * FROM "
-			+ "{SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
-				+ "FROM issues ORDER BY create_date DESC} AS tmp "
+			+ "(SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
+				+ "FROM issues ORDER BY create_date DESC) AS tmp "
 			+ "WHERE rownum <= ";
 	
 	public static final String SELECT_PRIORITIES = 
@@ -178,6 +178,24 @@ public class SQLRequests {
 	public static final String SELECT_PROJECTS = 
 			"SELECT * FROM projects";
 	
+	public static final String SELECT_RESOLUTION_BY_ID = 
+			"SELECT * FROM resolutions WHERE id=";
+	
+	public static final String SELECT_RESOLUTIONS = 
+			"SELECT * FROM resolutions";
+	
+	public static final String SELECT_STATUS_BY_ID = 
+			"SELECT * FROM statuses WHERE id=";
+	
+	public static final String SELECT_STATUSES = 
+			"SELECT * FROM statuses";
+	
+	public static final String SELECT_TYPE_BY_ID = 
+			"SELECT * FROM types WHERE id=";
+	
+	public static final String SELECT_TYPES = 
+			"SELECT * FROM types";
+	
 	public static final String SELECT_USER_BY_ID = 
 			"SELECT * FROM users WHERE id=";
 	
@@ -186,4 +204,7 @@ public class SQLRequests {
 	
 	public static final String SELECT_USER_BY_EMAIL_2 = 
 			"'";
+	
+	public static final String SELECT_USERS = 
+			"SELECT * FROM users";
 }
