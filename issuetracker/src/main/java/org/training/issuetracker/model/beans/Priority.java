@@ -52,7 +52,7 @@ public class Priority implements Beans {
 	 */
 	@Override
 	public String toString() {
-		return "Priority [id=" + id + ", name=" + name + "]";
+		return name;
 	}
 
 }

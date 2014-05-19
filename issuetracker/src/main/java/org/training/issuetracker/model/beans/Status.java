@@ -54,7 +54,7 @@ public class Status implements Beans {
 	 */
 	@Override
 	public String toString() {
-		return "Status [id=" + id + ", name=" + name + "]";
+		return name;
 	}
 
 }

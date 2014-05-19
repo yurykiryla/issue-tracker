@@ -4,7 +4,7 @@ public class Constants {
 	public static final int INDEX_ASSIGNEE_ID = 3;
 	public static final int INDEX_BUILD = 2;
 	public static final int INDEX_BUILD_FOUND = 9;
-	public static final int INDEX_BUILD_PROJECT_ID = 1;
+	public static final int INDEX_BUILD_PROJECT_ID = 3;
 	public static final int INDEX_CREATE_DATE = 10;
 	public static final int INDEX_CREATED_BY_ID = 11;
 	public static final int INDEX_EMAIL_ADDRESS = 4;

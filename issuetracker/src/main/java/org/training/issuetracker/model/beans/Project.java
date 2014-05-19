@@ -7,7 +7,7 @@ public class Project implements Beans{
 	private final int id;
 	private String name;
 	private String description;
-	private List<String> builds;
+	private List<Build> builds;
 	private User manager;
 	/**
 	 * @param id
@@ -16,7 +16,7 @@ public class Project implements Beans{
 	 * @param build
 	 * @param manager
 	 */
-	public Project(int id, String name, String description, String build,
+	public Project(int id, String name, String description, Build build,
 			User manager) {
 		super();
 		this.id = id;
@@ -34,7 +34,7 @@ public class Project implements Beans{
 	 * @param builds
 	 * @param manager
 	 */
-	public Project(int id, String name, String description, List<String> builds,
+	public Project(int id, String name, String description, List<Build> builds,
 			User manager) {
 		super();
 		this.id = id;
@@ -72,14 +72,14 @@ public class Project implements Beans{
 	/**
 	 * @return the builds
 	 */
-	public List<String> getBuilds() {
+	public List<Build> getBuilds() {
 		return builds;
 	}
 
 	/**
 	 * @param builds the builds to set
 	 */
-	public void setBuilds(List<String> builds) {
+	public void setBuilds(List<Build> builds) {
 		this.builds = builds;
 	}
 

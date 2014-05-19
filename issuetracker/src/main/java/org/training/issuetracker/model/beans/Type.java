@@ -43,6 +43,6 @@ public class Type implements Beans{
 	 */
 	@Override
 	public String toString() {
-		return "Type [id=" + id + ", name=" + name + "]";
+		return name;
 	}
 }

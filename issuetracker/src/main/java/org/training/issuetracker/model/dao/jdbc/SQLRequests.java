@@ -10,8 +10,9 @@ package org.training.issuetracker.model.dao.jdbc;
 public class SQLRequests {
 	public static final String CREATE_BUILDS_TABLE = 
 			"CREATE TABLE builds ("
-				+ "project_id INT NOT NULL,"
-				+ "build LONG VARCHAR NOT NULL"
+				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
+				+ "build LONG VARCHAR NOT NULL,"
+				+ "project_id INT NOT NULL"
 			+ ")";
 	
 	public static final String CREATE_ISSUES_TABLE = 
@@ -139,6 +140,9 @@ public class SQLRequests {
 	public static final String SELECT_BUILD_BY_ID = 
 			"SELECT * FROM builds WHERE id=";
 	
+	public static final String SELECT_BUILDS = 
+			"SELECT * FROM builds WHERE project_id=";
+	
 	public static final String SELECT_BUILDS_BY_PROJECT_ID = 
 			"SELECT * FROM builds WHERE project_id=";
 	
@@ -170,6 +174,9 @@ public class SQLRequests {
 	
 	public static final String SELECT_PROJECT_BY_ID = 
 			"SELECT * FROM projects WHERE id=";
+	
+	public static final String SELECT_PROJECTS = 
+			"SELECT * FROM projects";
 	
 	public static final String SELECT_USER_BY_ID = 
 			"SELECT * FROM users WHERE id=";

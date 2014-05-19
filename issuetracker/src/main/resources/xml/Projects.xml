@@ -3,9 +3,6 @@
   <project id="1">
     <name>proj1</name>
     <description>some about project1</description>
-    <builds>
-    	<name>beta1</name>
-    </builds>
     <manager-id>1</manager-id>
   </project>
 </projects>

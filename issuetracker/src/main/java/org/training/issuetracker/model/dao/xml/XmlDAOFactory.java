@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.xml;
 
+import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Priority;
 import org.training.issuetracker.model.beans.Project;
@@ -10,6 +11,7 @@ import org.training.issuetracker.model.beans.Resolution;
 import org.training.issuetracker.model.beans.Status;
 import org.training.issuetracker.model.beans.Type;
 import org.training.issuetracker.model.beans.User;
+import org.training.issuetracker.model.dao.BuildsDAO;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
 import org.training.issuetracker.model.dao.UsersDAO;
@@ -107,6 +109,24 @@ public class XmlDAOFactory implements AbstractFactory {
 	public UsersDAO getUsersDAO() {
 		// TODO Auto-generated method stub
 		return new UserXmlDAO();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.factories.AbstractFactory#getBuildDAO()
+	 */
+	@Override
+	public DAO<Build> getBuildDAO() {
+		// TODO Auto-generated method stub
+		return new BuildXmlDAO();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.factories.AbstractFactory#getBuildsDAO()
+	 */
+	@Override
+	public BuildsDAO getBuildsDAO() {
+		// TODO Auto-generated method stub
+		return new BuildXmlDAO();
 	}
 
 }

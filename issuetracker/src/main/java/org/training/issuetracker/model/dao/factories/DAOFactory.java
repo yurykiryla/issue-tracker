@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.factories;
 
+import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Priority;
 import org.training.issuetracker.model.beans.Project;
@@ -10,10 +11,11 @@ import org.training.issuetracker.model.beans.Resolution;
 import org.training.issuetracker.model.beans.Status;
 import org.training.issuetracker.model.beans.Type;
 import org.training.issuetracker.model.beans.User;
+import org.training.issuetracker.model.dao.BuildsDAO;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
 import org.training.issuetracker.model.dao.UsersDAO;
-import org.training.issuetracker.model.dao.jdbc.SQLDAOFactory;
+import org.training.issuetracker.model.dao.jdbc.JdbcDAOFactory;
 import org.training.issuetracker.model.dao.xml.XmlDAOFactory;
 import org.training.issuetracker.model.properties.Config;
 
@@ -32,7 +34,7 @@ public class DAOFactory {
 					factory = new XmlDAOFactory();
 					break;
 				case JDBC:
-					factory = new SQLDAOFactory();
+					factory = new JdbcDAOFactory();
 					break;
 			}
 		}
@@ -73,5 +75,13 @@ public class DAOFactory {
 	
 	public static UsersDAO getUsersDAO(){
 		return getFactory().getUsersDAO();
+	}
+	
+	public static DAO<Build> getBuildDAO(){
+		return getFactory().getBuildDAO();
+	}
+	
+	public static BuildsDAO getBuildsDAO(){
+		return getFactory().getBuildsDAO();
 	}
 }

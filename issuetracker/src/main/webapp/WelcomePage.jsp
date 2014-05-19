@@ -51,16 +51,16 @@
 									</c:otherwise>
 								</c:choose> <a href="${idLink }">${issue.id }</a></td>
 							<c:choose>
-								<c:when test="${issue.priority == 'CRITICAL' }">
+								<c:when test="${issue.priority.id == 1 }">
 									<c:set var="priorityClass" value="priority-critical"></c:set>
 								</c:when>
-								<c:when test="${issue.priority == 'IMPORTANT' }">
+								<c:when test="${issue.priority.id == 2 }">
 									<c:set var="priorityClass" value="priority-important"></c:set>
 								</c:when>
-								<c:when test="${issue.priority == 'MAJOR' }">
+								<c:when test="${issue.priority.id == 3 }">
 									<c:set var="priorityClass" value="priority-major"></c:set>
 								</c:when>
-								<c:when test="${issue.priority == 'MINOR' }">
+								<c:when test="${issue.priority.id == 4 }">
 									<c:set var="priorityClass" value="priority-minor"></c:set>
 								</c:when>
 							</c:choose>

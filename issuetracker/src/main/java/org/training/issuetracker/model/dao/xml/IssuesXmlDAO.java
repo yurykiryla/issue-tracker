@@ -112,7 +112,7 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 		if(user != null){
 			Iterator<Issue> iterator = issues.iterator();
 			while(iterator.hasNext() && n > 0){
-				if(iterator.next().getAssignee() != user){
+				if(iterator.next().getAssignee().getId() != user.getId()){
 					iterator.remove();
 				}else{
 					n--;
