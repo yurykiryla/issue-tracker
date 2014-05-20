@@ -1,3 +1,4 @@
+<%@page import="org.training.issuetracker.model.beans.Project"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="org.training.issuetracker.controllers.Constants"%>
@@ -11,6 +12,11 @@
 <title><%=Constants.SUBMIT_ISSUE_PAGE_TITLE %></title>
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/styles.css">
+<script type="text/javascript">
+	function showBuilds(projectId) {
+		document.getElementById(projectId).setAttribute('style', 'display: block;');
+	}
+</script>
 </head>
 <body>
 	<div class="main">
@@ -29,12 +35,12 @@
 				<tr>
 					<td><label>Status</label></td>
 					<td>
-						<select name="status" required="required">
+						<select name="status" id="status" required="required">
 							<option disabled="disabled">Select Status</option>
-							<option value=<%=DAOFactory.getStatusDAO().getOb(1)%>>
+							<option value=<%=DAOFactory.getStatusDAO().getOb(1).getId()%>>
 								<%=DAOFactory.getStatusDAO().getOb(1).toString()%>
 							</option>
-							<option value=<%=DAOFactory.getStatusDAO().getOb(2)%>>
+							<option value=<%=DAOFactory.getStatusDAO().getOb(2).getId()%>>
 								<%=DAOFactory.getStatusDAO().getOb(2).toString()%>
 							</option>
 						</select>
@@ -46,7 +52,7 @@
 						<select name="type" required="required">
 							<option disabled="disabled">Select Type</option>
 							<c:forEach items="<%=DAOFactory.getTypeDAO().getObs()%>" var="type">
-								<option value="${type}">
+								<option value="${type.id}">
 									<c:out value="${type}"></c:out>
 								</option>
 							</c:forEach>
@@ -59,7 +65,7 @@
 						<select name="priority" required="required">
 							<option disabled="disabled">Select Priority</option>
 							<c:forEach items="<%=DAOFactory.getPriorityDAO().getObs()%>" var="priority">
-								<option value="${priority}">
+								<option value="${priority.id}">
 									<c:out value="${priority}"></c:out>
 								</option>
 							</c:forEach>
@@ -72,7 +78,7 @@
 						<select name="project" required="required">
 							<option disabled="disabled">Select Project</option>
 							<c:forEach items="<%=DAOFactory.getProjectDAO().getObs()%>" var="project">
-								<option value="${project}">
+								<option value="${project.id}" onclick="showBuilds('${project.id}')">
 									<c:out value="${project}"></c:out>
 								</option>
 							</c:forEach>
@@ -82,9 +88,17 @@
 				<tr>
 					<td><label>Build found</label></td>
 					<td>
-						<select name="buildFound" required="required">
-							<option disabled="disabled">Select Build found</option>
+						<select name="buildFound">
+							<option disabled="disabled" selected="selected">Select Build found</option>
 							<option disabled="disabled">Select Project before</option>
+							<c:forEach items="<%=DAOFactory.getProjectDAO().getObs()%>" var="project">
+								<c:set var="buildsDAO" value="<%=DAOFactory.getBuildsDAO() %>"></c:set>
+								<c:forEach var="build" items="${buildsDAO.getBuilds(project.id) }">
+									<option id="${project.id}" value="${build.id}" style="display: none;">
+										<c:out value="${build}"></c:out>
+									</option>
+								</c:forEach>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -94,6 +108,11 @@
 						<select name="assigned" required="required">
 							<option disabled="disabled">Select Assigned User</option>
 							<option disabled="disabled">Select Status 'Assigned' before</option>
+							<c:forEach var="assignedUser" items="<%=DAOFactory.getUserDAO().getObs()%>">
+								<option value="${assignedUser.id}" style="display: none;">
+									<c:out value="${assignedUser}"></c:out>
+								</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

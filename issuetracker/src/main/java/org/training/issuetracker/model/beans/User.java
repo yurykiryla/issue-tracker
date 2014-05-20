@@ -128,9 +128,7 @@ public class User implements Beans{
 	 */
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", emailAddress=" + emailAddress + ", role="
-				+ role + "]";
+		return firstName + " " + lastName;
 	}
 
 	/* (non-Javadoc)
