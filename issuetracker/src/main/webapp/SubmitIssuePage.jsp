@@ -12,11 +12,7 @@
 <title><%=Constants.SUBMIT_ISSUE_PAGE_TITLE %></title>
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/styles.css">
-<script type="text/javascript">
-	function showBuilds(projectId) {
-		document.getElementById(projectId).setAttribute('style', 'display: block;');
-	}
-</script>
+<script type="text/javascript" src="js/SubmitIssue.js"></script>
 </head>
 <body>
 	<div class="main">
@@ -26,16 +22,16 @@
 			<table class="submit-issue-table">
 				<tr>
 					<td><label>Summary</label></td>
-					<td><input type="text" name="summary" required="required"/></td>
+					<td><input type="text" name="summary"/></td>
 				</tr>
 				<tr>
 					<td><label>Description</label></td>
-					<td><textarea rows="5" cols="50" name="description" required="required"></textarea></td>
+					<td><textarea rows="5" cols="50" name="description" ></textarea></td>
 				</tr>
 				<tr>
 					<td><label>Status</label></td>
 					<td>
-						<select name="status" id="status" required="required">
+						<select name="status" id="status">
 							<option disabled="disabled">Select Status</option>
 							<option value=<%=DAOFactory.getStatusDAO().getOb(1).getId()%>>
 								<%=DAOFactory.getStatusDAO().getOb(1).toString()%>
@@ -49,7 +45,7 @@
 				<tr>
 					<td><label>Type</label></td>
 					<td>
-						<select name="type" required="required">
+						<select name="type" >
 							<option disabled="disabled">Select Type</option>
 							<c:forEach items="<%=DAOFactory.getTypeDAO().getObs()%>" var="type">
 								<option value="${type.id}">
@@ -62,7 +58,7 @@
 				<tr>
 					<td><label>Priority</label></td>
 					<td>
-						<select name="priority" required="required">
+						<select name="priority" >
 							<option disabled="disabled">Select Priority</option>
 							<c:forEach items="<%=DAOFactory.getPriorityDAO().getObs()%>" var="priority">
 								<option value="${priority.id}">
@@ -75,10 +71,10 @@
 				<tr>
 					<td><label>Project</label></td>
 					<td>
-						<select name="project" required="required">
+						<select name="project" >
 							<option disabled="disabled">Select Project</option>
 							<c:forEach items="<%=DAOFactory.getProjectDAO().getObs()%>" var="project">
-								<option value="${project.id}" onclick="showBuilds('${project.id}')">
+								<option value="${project.id}">
 									<c:out value="${project}"></c:out>
 								</option>
 							</c:forEach>
@@ -104,16 +100,8 @@
 				</tr>
 				<tr>
 					<td><label>Assigned</label></td>
-					<td>
-						<select name="assigned" required="required">
-							<option disabled="disabled">Select Assigned User</option>
-							<option disabled="disabled">Select Status 'Assigned' before</option>
-							<c:forEach var="assignedUser" items="<%=DAOFactory.getUserDAO().getObs()%>">
-								<option value="${assignedUser.id}" style="display: none;">
-									<c:out value="${assignedUser}"></c:out>
-								</option>
-							</c:forEach>
-						</select>
+					<td id="assignedRow">
+						<select name="assigned" id="assignedSelect"></select>
 					</td>
 				</tr>
 			</table>
