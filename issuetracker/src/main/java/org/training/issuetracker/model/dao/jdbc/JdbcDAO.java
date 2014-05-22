@@ -65,7 +65,7 @@ public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 		} finally {
 			closeConnection();
 		}
-		return null;
+		return list;
 	}
 	
 	protected abstract String getRequestOb();

@@ -21,8 +21,7 @@ public class DBConnection implements AutoCloseable{
 	private Statement statement = null;
 	
 	private static final String DRIVER_NAME = "org.apache.derby.jdbc.EmbeddedDriver";
-	private static final String DATA_RESOURCE = "jdbc:derby:" + Config.getConfig().getPath() 
-			+ "projectdb";
+	private static final String DATA_RESOURCE = "jdbc:derby:" + Config.getConfig().getPath() + "projectdb";
 	private static final String CREATE_DB = ";create=true";
 	
 	
@@ -46,7 +45,9 @@ public class DBConnection implements AutoCloseable{
 					statement.executeUpdate(CREATE_PRIORITY_MINOR);
 					
 					statement.executeUpdate(CREATE_PROJECTS_TABLE);
+					statement.executeUpdate(CREATE_DEFAULT_PROJECT);
 					statement.executeUpdate(CREATE_BUILDS_TABLE);
+					statement.executeUpdate(CREATE_DEFAULT_BUILD);
 					
 					statement.executeUpdate(CREATE_RESOLUTIONS_TABLE);
 					statement.executeUpdate(CREATE_RESOLUTION_FIXED);

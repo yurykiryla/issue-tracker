@@ -11,7 +11,7 @@ public class SQLRequests {
 	public static final String CREATE_BUILDS_TABLE = 
 			"CREATE TABLE builds ("
 				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
-				+ "build LONG VARCHAR NOT NULL,"
+				+ "name LONG VARCHAR NOT NULL,"
 				+ "project_id INT NOT NULL"
 			+ ")";
 	
@@ -36,6 +36,14 @@ public class SQLRequests {
 	public static final String CREATE_DEFAULT_ADMINISTRATOR = 
 			"INSERT INTO users (first_name, last_name, email_address, role, password)"
 				+ "VALUES ('admin', 'admin', 'admin', 'ADMINISTRATOR', 'admin')";
+	
+	public static final String CREATE_DEFAULT_BUILD = 
+			"INSERT INTO builds (name, project_id)"
+				+ "VALUES ('1.0', 1)";
+	
+	public static final String CREATE_DEFAULT_PROJECT = 
+			"INSERT INTO projects (name, description, manager_id)"
+				+ "VALUES ('proj1', 'project 1', 1)";
 				
 	public static final String CREATE_DEFAULT_USER = 
 			"INSERT INTO users (first_name, last_name, email_address, role, password)"

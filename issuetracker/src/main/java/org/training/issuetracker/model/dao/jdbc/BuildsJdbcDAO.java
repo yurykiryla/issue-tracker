@@ -36,7 +36,7 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 		// TODO Auto-generated method stub
 		List<Build> builds = new ArrayList<>();
 		try{
-			resultSet = getResultSet(SELECT_BUILDS_BY_PROJECT_ID);
+			resultSet = getResultSet(SELECT_BUILDS_BY_PROJECT_ID + projectId);
 			while(resultSet != null && resultSet.next()){
 				builds.add(getOb(resultSet));
 			}
