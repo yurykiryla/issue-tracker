@@ -12,6 +12,7 @@
 <title><%=Constants.SUBMIT_ISSUE_PAGE_TITLE %></title>
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/styles.css">
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 	<div class="main">
@@ -117,33 +118,6 @@
 				<input type="button" value="Back" onclick="history.back()"/>
 			</div>
 		</form>
-		<script type="text/javascript">
-			function changedStatus(){
-				var statusSelect = document.getElementById("status");
-				var assigned = document.getElementById("assigned");
-				var notAssigned = document.getElementById("notAssigned");
-				if(statusSelect.value == 2){
-					notAssigned.style.display = "none";
-					assigned.style.display = "block";
-				}else{
-					assigned.style.display = "none";
-					notAssigned.style.display = "block";
-				}
-			}
-			
-			var projectId = 0;
-			function showBuilds(){
-				var projectSelect = document.getElementById("projectSelect");
-				if(projectId != 0){
-					var buildSelect = document.getElementById("buildSelect" + projectId);
-					buildSelect.style.display = "none";
-				}
-				projectId = projectSelect.value;
-				var buildSelect = document.getElementById("buildSelect" + projectId);
-				buildSelect.style.display = "block";
-				document.getElementById("notProjectSelect").style.display = "none";
-			}
-		</script>
 	</div>
 </body>
 </html>
