@@ -4,11 +4,13 @@
 package org.training.issuetracker.model.dao.jdbc;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Priority;
 import org.training.issuetracker.model.beans.Project;
@@ -96,7 +98,7 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 			
 			Project project = DAOFactory.getProjectDAO().getOb(resultSet.getInt(INDEX_ISSUE_PROJECT_ID));
 			
-			String buildFound = resultSet.getString(INDEX_BUILD_FOUND);
+			Build buildFound = DAOFactory.getBuildDAO().getOb(Integer.parseInt( resultSet.getString(INDEX_BUILD_FOUND)));
 			
 			Date createDate = resultSet.getDate(INDEX_CREATE_DATE);
 			
@@ -110,6 +112,44 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 			
 			return new Issue(id, priority, assignee, type, status, summary, description, project,
 					buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution);
+		}catch(SQLException e){
+			throw new DAOException(e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#getPreparedStatement(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	protected PreparedStatement getPreparedStatement(Issue ob)
+			throws DAOException {
+		// TODO Auto-generated method stub
+		try{
+			PreparedStatement ps = getPreparedStatement(INSERT_ISSUE);
+			ps.setInt(INDEX_ID, ob.getId());
+			ps.setInt(INDEX_PRIORITY_ID, ob.getPriority().getId());
+			User assignee = ob.getAssignee();
+			if(assignee != null){
+				ps.setInt(INDEX_ASSIGNEE_ID, assignee.getId());
+			}
+			ps.setInt(INDEX_TYPE_ID, ob.getType().getId());
+			ps.setInt(INDEX_STATUS_ID, ob.getStatus().getId());
+			ps.setString(INDEX_SUMMARY, ob.getSummary());
+			ps.setString(INDEX_ISSUE_DESCRIPTION, ob.getDescription());
+			ps.setInt(INDEX_ISSUE_PROJECT_ID, ob.getProject().getId());
+			ps.setInt(INDEX_BUILD_FOUND, ob.getBuildFound().getId());
+			ps.setDate(INDEX_CREATE_DATE, ob.getCreateDate());
+			ps.setInt(INDEX_CREATED_BY_ID, ob.getCreatedBy().getId());
+			ps.setDate(INDEX_MODIFY_DATE, ob.getModifyDate());
+			User modifiedBy = ob.getModifiedBy();
+			if(modifiedBy != null){
+				ps.setInt(INDEX_MODIFIED_BY_ID, modifiedBy.getId());
+			}
+			Resolution resolution = ob.getResolution();
+			if(resolution != null){
+				ps.setInt(INDEX_RESOLUTION_ID, resolution.getId());
+			}
+			return ps;
 		}catch(SQLException e){
 			throw new DAOException(e);
 		}

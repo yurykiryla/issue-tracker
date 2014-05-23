@@ -25,7 +25,7 @@ public class SQLRequests {
 				+ "summary LONG VARCHAR NOT NULL,"
 				+ "description LONG VARCHAR NOT NULL,"
 				+ "project_id INT NOT NULL,"
-				+ "build_found LONG VARCHAR NOT NULL,"
+				+ "build_found_id INT NOT NULL,"
 				+ "create_date DATE NOT NULL,"
 				+ "created_by_id INT NOT NULL,"
 				+ "modify_date DATE DEFAULT NULL,"
@@ -144,6 +144,9 @@ public class SQLRequests {
 				+ "role LONG VARCHAR NOT NULL, "
 				+ "password LONG VARCHAR NOT NULL"
 			+ ")";
+	
+	public static final String INSERT_ISSUE = 
+			"INSERT INTO issues VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
 	public static final String SELECT_BUILD_BY_ID = 
 			"SELECT * FROM builds WHERE id=";

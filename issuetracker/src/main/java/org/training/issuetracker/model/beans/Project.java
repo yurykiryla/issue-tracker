@@ -4,11 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project implements Beans{
+	private static int idCounter = 1;
 	private final int id;
 	private String name;
 	private String description;
 	private List<Build> builds;
 	private User manager;
+	
+	/**
+	 * @param name
+	 * @param description
+	 * @param build
+	 * @param manager
+	 */
+	public Project(String name, String description, Build build,
+			User manager) {
+		super();
+		id = idCounter;
+		idCounter++;
+		this.name = name;
+		this.description = description;
+		builds = new ArrayList<>();
+		builds.add(build);
+		this.manager = manager;
+	}
+	
 	/**
 	 * @param id
 	 * @param name

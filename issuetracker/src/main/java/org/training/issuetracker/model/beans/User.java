@@ -12,12 +12,34 @@ import org.training.issuetracker.model.enums.Role;
  *
  */
 public class User implements Beans{
+	private static int idCounter = 1;
 	private final int id;
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
 	private Role role;
 	private Password password;
+	
+	
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param emailAddress
+	 * @param role
+	 * @param password
+	 */
+	public User(String firstName, String lastName, String emailAddress,
+			Role role, Password password) {
+		super();
+		id = idCounter;
+		idCounter++;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.role = role;
+		this.password = password;
+	}
+
 	/**
 	 * @param firstName
 	 * @param lastName

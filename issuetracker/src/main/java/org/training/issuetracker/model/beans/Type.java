@@ -8,8 +8,19 @@ package org.training.issuetracker.model.beans;
  *
  */
 public class Type implements Beans{
+	private static int idCounter = 1;
 	private final int id;
 	private String name;
+	
+	/**
+	 * @param name
+	 */
+	public Type(String name) {
+		super();
+		id = idCounter;
+		idCounter++;
+		this.name = name;
+	}
 	/**
 	 * @param id
 	 * @param name

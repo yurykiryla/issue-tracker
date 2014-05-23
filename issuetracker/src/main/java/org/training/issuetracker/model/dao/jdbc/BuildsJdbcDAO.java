@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,5 +82,4 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 			throw new DAOException(e);
 		}
 	}
-
 }

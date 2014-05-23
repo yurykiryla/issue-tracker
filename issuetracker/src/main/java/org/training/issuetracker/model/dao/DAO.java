@@ -15,5 +15,5 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 public interface DAO<T extends Beans> {
 	public T getOb(int id) throws DAOException;
 	public List<T> getObs() throws DAOException;
-	//public void addOb(T ob) throws DAOException;
+	public void addOb(T ob) throws DAOException;
 }

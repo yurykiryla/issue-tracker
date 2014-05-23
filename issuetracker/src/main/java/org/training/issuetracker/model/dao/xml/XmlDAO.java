@@ -49,6 +49,15 @@ public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 		return list;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.DAO#addOb(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	public void addOb(T ob) throws DAOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 	protected int getId(Element element){
 		return Integer.parseInt(element.getAttributeValue(Constants.KEY_ID));
 	}

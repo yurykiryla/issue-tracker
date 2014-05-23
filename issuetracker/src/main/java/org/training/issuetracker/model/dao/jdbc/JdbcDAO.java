@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -68,9 +69,34 @@ public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 		return list;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.DAO#addOb(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	public void addOb(T ob) throws DAOException {
+		// TODO Auto-generated method stub
+		try {
+			getPreparedStatement(ob).executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new DAOException(e);
+		}		
+	}
+
 	protected abstract String getRequestOb();
 	protected abstract String getRequestObs();
 	protected abstract T getOb(ResultSet resultSet) throws DAOException;
+	protected abstract PreparedStatement getPreparedStatement(T ob) throws DAOException;
+	
+	protected PreparedStatement getPreparedStatement(String SQLRequest) throws DAOException{
+		dbConnection = new DBConnection();
+		try {
+			return dbConnection.getConnection().prepareStatement(SQLRequest);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new DAOException(e);
+		}
+	}
 	
 	protected ResultSet getResultSet(String SQLRequest) throws DAOException{
 		dbConnection = new DBConnection();

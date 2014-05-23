@@ -11,6 +11,7 @@ import java.sql.Date;
  *
  */
 public class Issue implements Beans{
+	private static int idCounter = 1;
 	private final int id;
 	private Priority priority;
 	private User assignee;
@@ -19,12 +20,51 @@ public class Issue implements Beans{
 	private String summary;
 	private String description;
 	private Project project;
-	private String buildFound;
+	private Build buildFound;
 	private final Date createDate;
 	private final User createdBy;
 	private Date modifyDate;
 	private User modifiedBy;
 	private Resolution resolution;
+	
+	
+	/**
+	 * @param priority
+	 * @param assignee
+	 * @param type
+	 * @param status
+	 * @param summary
+	 * @param description
+	 * @param project
+	 * @param buildFound
+	 * @param createDate
+	 * @param createdBy
+	 * @param modifyDate
+	 * @param modifiedBy
+	 * @param resolution
+	 */
+	public Issue(Priority priority, User assignee, Type type, Status status,
+			String summary, String description, Project project,
+			Build buildFound, Date createDate, User createdBy,
+			Date modifyDate, User modifiedBy, Resolution resolution) {
+		super();
+		id = idCounter;
+		idCounter++;
+		this.priority = priority;
+		this.assignee = assignee;
+		this.type = type;
+		this.status = status;
+		this.summary = summary;
+		this.description = description;
+		this.project = project;
+		this.buildFound = buildFound;
+		this.createDate = createDate;
+		this.createdBy = createdBy;
+		this.modifyDate = modifyDate;
+		this.modifiedBy = modifiedBy;
+		this.resolution = resolution;
+	}
+
 	/**
 	 * @param id
 	 * @param priority
@@ -39,7 +79,7 @@ public class Issue implements Beans{
 	 */
 	public Issue(int id, Priority priority, Type type, Status status,
 			String summary, String description, Project project,
-			String buildFound, Date createDate, User createdBy) {
+			Build buildFound, Date createDate, User createdBy) {
 		super();
 		this.id = id;
 		this.priority = priority;
@@ -68,7 +108,7 @@ public class Issue implements Beans{
 	 */
 	public Issue(int id, Priority priority, User assignee, Type type,
 			Status status, String summary, String description, Project project,
-			String buildFound, Date createDate, User createdBy) {
+			Build buildFound, Date createDate, User createdBy) {
 		super();
 		this.id = id;
 		this.priority = priority;
@@ -101,7 +141,7 @@ public class Issue implements Beans{
 	 */
 	public Issue(int id, Priority priority, User assignee, Type type,
 			Status status, String summary, String description, Project project,
-			String buildFound, Date createDate, User createdBy,
+			Build buildFound, Date createDate, User createdBy,
 			Date modifyDate, User modifiedBy, Resolution resolution) {
 		super();
 		this.id = id;
@@ -207,13 +247,13 @@ public class Issue implements Beans{
 	/**
 	 * @return the buildFound
 	 */
-	public String getBuildFound() {
+	public Build getBuildFound() {
 		return buildFound;
 	}
 	/**
 	 * @param buildFound the buildFound to set
 	 */
-	public void setBuildFound(String buildFound) {
+	public void setBuildFound(Build buildFound) {
 		this.buildFound = buildFound;
 	}
 	/**
