@@ -4,27 +4,33 @@
   <listener>
     <listener-class>org.training.issuetracker.controllers.PropertiesListener</listener-class>
   </listener>
+  <filter>
+    <filter-name>UsersControlFilter</filter-name>
+    <filter-class>org.training.issuetracker.controllers.filters.UsersControlFilter</filter-class>
+  </filter>
   <context-param>
     <param-name>implementation</param-name>
     <param-value>jdbc</param-value>
   </context-param>
   <servlet>
-    <description></description>
     <display-name>WelcomePageController</display-name>
     <servlet-name>WelcomePageController</servlet-name>
     <servlet-class>org.training.issuetracker.controllers.WelcomePageController</servlet-class>
   </servlet>
   <servlet>
-    <description></description>
     <display-name>LoginController</display-name>
     <servlet-name>LoginController</servlet-name>
     <servlet-class>org.training.issuetracker.controllers.LoginController</servlet-class>
   </servlet>
   <servlet>
-    <description></description>
     <display-name>LogoutController</display-name>
     <servlet-name>LogoutController</servlet-name>
     <servlet-class>org.training.issuetracker.controllers.LogoutController</servlet-class>
+  </servlet>
+  <servlet>
+  	<display-name>SubmitIssueController</display-name>
+  	<servlet-name>SubmitIssueController</servlet-name>
+  	<servlet-class>org.training.issuetracker.controllers.SubmitIssueController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WelcomePageController</servlet-name>
@@ -38,6 +44,15 @@
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/LogoutController</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SubmitIssueController</servlet-name>
+  	<url-pattern>/SubmitIssueController</url-pattern>
+  </servlet-mapping>
+  <filter-mapping>
+    <filter-name>UsersControlFilter</filter-name>
+    <servlet-name>SubmitIssueController</servlet-name>
+    <url-pattern>/SubmitIssuePage.jsp</url-pattern>
+  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

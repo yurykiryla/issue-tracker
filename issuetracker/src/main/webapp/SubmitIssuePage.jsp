@@ -33,12 +33,11 @@
 					<td>
 						<select name="status" id="status" onchange="changedStatus()">
 							<option selected="selected" disabled="disabled">Select Status</option>
-							<option value=<%=DAOFactory.getStatusDAO().getOb(1).getId()%>>
-								<%=DAOFactory.getStatusDAO().getOb(1).toString()%>
-							</option>
-							<option value=<%=DAOFactory.getStatusDAO().getOb(2).getId()%>>
-								<%=DAOFactory.getStatusDAO().getOb(2).toString()%>
-							</option>
+							<c:forEach var="status" items="${statuses}">
+								<option value="${status.id}">
+									<c:out value="${status}"></c:out>
+								</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

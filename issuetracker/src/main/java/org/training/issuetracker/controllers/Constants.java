@@ -20,6 +20,7 @@ public class Constants {
 	public static final String ROOT_PATH = "/";
 	public static final String SUBMIT_ISSUE_PAGE_TITLE = "Submit Issue";
 	public static final String URL_ERROR_PAGE = "/ErrorPage.jsp";
+	public static final String URL_SUBMIT_ISSUE_PAGE = "/SubmitIssuePage.jsp";
 	public static final String URL_WELCOM_PAGE = "/WelcomePage.jsp";
 	public static final String URL_WELCOM_PAGE_CONTROLLER = "/WelcomePageController";
 	public static final String USERS_XML_FILENAME = "Users.xml";

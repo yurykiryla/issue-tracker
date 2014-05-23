@@ -57,7 +57,7 @@
 					</div>
 				</c:if>
 				<div class="submit-issue-block">
-					<button class="submit-issue-button" onclick="location.href='SubmitIssuePage.jsp'">
+					<button class="submit-issue-button" onclick="location.href='/issuetracker/SubmitIssueController'">
 						Submit Issue
 					</button>
 				</div>
