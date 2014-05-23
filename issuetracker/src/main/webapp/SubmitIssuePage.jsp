@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="org.training.issuetracker.controllers.Constants"%>
-<%@page import="org.training.issuetracker.model.dao.factories.DAOFactory"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -46,7 +45,7 @@
 					<td>
 						<select name="type" >
 							<option selected="selected" disabled="disabled">Select Type</option>
-							<c:forEach items="<%=DAOFactory.getTypeDAO().getObs()%>" var="type">
+							<c:forEach items="${types}" var="type">
 								<option value="${type.id}">
 									<c:out value="${type}"></c:out>
 								</option>
@@ -59,7 +58,7 @@
 					<td>
 						<select name="priority" >
 							<option selected="selected" disabled="disabled">Select Priority</option>
-							<c:forEach items="<%=DAOFactory.getPriorityDAO().getObs()%>" var="priority">
+							<c:forEach items="${priorities}" var="priority">
 								<option value="${priority.id}">
 									<c:out value="${priority}"></c:out>
 								</option>
@@ -72,7 +71,6 @@
 					<td>
 						<select name="project" id="projectSelect" onchange="showBuilds()">
 							<option selected="selected" disabled="disabled">Select Project</option>
-							<c:set var="projects" value="<%=DAOFactory.getProjectDAO().getObs()%>"></c:set>
 							<c:forEach items="${projects}" var="project">
 								<option value="${project.id}">
 									<c:out value="${project}"></c:out>
@@ -103,7 +101,7 @@
 						<input type="text" id="notAssigned" value="Select Assigned status" readonly="readonly" style="display: block;">
 						<select name="assigned" id="assigned" style="display: none;">
 							<option selected="selected" disabled="disabled">Select User</option>
-							<c:forEach var="assignee" items="<%=DAOFactory.getUserDAO().getObs() %>">
+							<c:forEach var="assignee" items="${users}">
 								<option value="${assignee.id }">
 									<c:out value="${assignee }"></c:out>
 								</option>
