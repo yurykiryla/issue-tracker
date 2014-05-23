@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -53,6 +54,25 @@ public class StatusJdbcDAO extends JdbcDAO<Status>{
 		}catch(SQLException e){
 			throw new DAOException(e);
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#getPreparedStatement(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	protected PreparedStatement getPreparedStatement(Status ob)
+			throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#addOb(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	public void addOb(Status ob) throws DAOException {
+		// TODO Auto-generated method stub
+		throw new DAOException();
 	}
 
 	

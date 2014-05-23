@@ -28,9 +28,14 @@
     <servlet-class>org.training.issuetracker.controllers.LogoutController</servlet-class>
   </servlet>
   <servlet>
-  	<display-name>SubmitIssueController</display-name>
-  	<servlet-name>SubmitIssueController</servlet-name>
-  	<servlet-class>org.training.issuetracker.controllers.SubmitIssueController</servlet-class>
+    <display-name>SubmitIssueController</display-name>
+    <servlet-name>SubmitIssueController</servlet-name>
+    <servlet-class>org.training.issuetracker.controllers.SubmitIssueController</servlet-class>
+  </servlet>
+  <servlet>
+  	<display-name>AddIssueController</display-name>
+  	<servlet-name>AddIssueController</servlet-name>
+  	<servlet-class>org.training.issuetracker.controllers.AddIssueController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WelcomePageController</servlet-name>
@@ -45,12 +50,17 @@
     <url-pattern>/LogoutController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>SubmitIssueController</servlet-name>
-  	<url-pattern>/SubmitIssueController</url-pattern>
+    <servlet-name>SubmitIssueController</servlet-name>
+    <url-pattern>/SubmitIssueController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddIssueController</servlet-name>
+  	<url-pattern>/AddIssueController</url-pattern>
   </servlet-mapping>
   <filter-mapping>
     <filter-name>UsersControlFilter</filter-name>
     <servlet-name>SubmitIssueController</servlet-name>
+    <servlet-name>AddIssueController</servlet-name>
     <url-pattern>/SubmitIssuePage.jsp</url-pattern>
   </filter-mapping>
   <welcome-file-list>

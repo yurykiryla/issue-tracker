@@ -62,4 +62,15 @@ public class BuildXmlDAO extends XmlDAO<Build> implements BuildsDAO{
 		return builds;
 	}
 
+
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.BuildsDAO#addBuild(org.training.issuetracker.model.beans.Build, int)
+	 */
+	@Override
+	public void addBuild(Build build, int projectId) throws DAOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

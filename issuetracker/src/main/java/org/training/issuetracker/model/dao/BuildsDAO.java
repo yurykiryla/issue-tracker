@@ -14,4 +14,5 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
  */
 public interface BuildsDAO {
 	public List<Build> getBuilds(int projectId) throws DAOException;
+	public void addBuild(Build build, int projectId) throws DAOException;
 }

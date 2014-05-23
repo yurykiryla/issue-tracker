@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -52,6 +53,23 @@ public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 			return new Resolution(id, name);
 		}catch(SQLException e){
 			throw new DAOException(e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#getPreparedStatement(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	protected PreparedStatement getPreparedStatement(Resolution ob)
+			throws DAOException {
+		// TODO Auto-generated method stub
+		try{
+			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_RESOLUTION);
+			ps.setInt(Constants.INDEX_ID, ob.getId());
+			ps.setString(Constants.INDEX_NAME, ob.getName());
+			return ps;
+		}catch(SQLException e){
+			throw new DAOException();
 		}
 	}
 

@@ -21,7 +21,7 @@ import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
  *
  */
 public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
-
+	private int projectId = 0;
 	/**
 	 * 
 	 */
@@ -82,4 +82,46 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 			throw new DAOException(e);
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#addOb(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	public void addOb(Build ob) throws DAOException {
+		// TODO Auto-generated method stub
+		throw new DAOException();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#getPreparedStatement(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	protected PreparedStatement getPreparedStatement(Build ob)
+			throws DAOException {
+		// TODO Auto-generated method stub
+		if(projectId != 0){
+			try{
+				PreparedStatement ps = getPreparedStatement(INSERT_BUILD);
+				ps.setInt(INDEX_ID, ob.getId());
+				ps.setString(INDEX_NAME, ob.getName());
+				ps.setInt(INDEX_BUILD_PROJECT_ID, projectId);
+				return ps;
+			}catch(SQLException e){
+				throw new DAOException();
+			}
+		}
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.BuildsDAO#addBuild(org.training.issuetracker.model.beans.Build, int)
+	 */
+	@Override
+	public void addBuild(Build build, int projectId) throws DAOException {
+		// TODO Auto-generated method stub
+		this.projectId = projectId;
+		super.addOb(build);
+	}
+	
+	
 }

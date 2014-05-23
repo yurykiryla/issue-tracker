@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -87,5 +88,24 @@ public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 		}
 	}
 
-	
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#getPreparedStatement(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	protected PreparedStatement getPreparedStatement(User ob)
+			throws DAOException {
+		// TODO Auto-generated method stub
+		try{
+			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_USER);
+			ps.setInt(Constants.INDEX_ID, ob.getId());
+			ps.setString(INDEX_FIRST_NAME, ob.getFirstName());
+			ps.setString(INDEX_LAST_NAME, ob.getLastName());
+			ps.setString(INDEX_EMAIL_ADDRESS, ob.getEmailAddress());
+			ps.setString(INDEX_RESOLUTION_ID, ob.getRole().toString());
+			ps.setString(INDEX_PASSWORD, ob.getPassword().getEncryptedPassword());
+			return ps;
+		}catch(SQLException e){
+			throw new DAOException();
+		}
+	}
 }

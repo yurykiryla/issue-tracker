@@ -145,6 +145,9 @@ public class SQLRequests {
 				+ "password LONG VARCHAR NOT NULL"
 			+ ")";
 	
+	public static final String INSERT_BUILD = 
+			"INSERT INTO builds VALUES (?,?,?)";
+	
 	public static final String INSERT_ISSUE = 
 			"INSERT INTO issues VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
@@ -153,6 +156,15 @@ public class SQLRequests {
 	
 	public static final String INSERT_PROJECT = 
 			"INSERT INTO projects VALUES (?,?,?,?)";
+	
+	public static final String INSERT_RESOLUTION = 
+			"INSERT INTO resolutions VALUES (?,?)";
+	
+	public static final String INSERT_TYPE = 
+			"INSERT INTO types VALUES (?,?)";
+	
+	public static final String INSERT_USER = 
+			"INSERT INTO users VALUES (?,?,?,?,?,?)";
 	
 	public static final String SELECT_BUILD_BY_ID = 
 			"SELECT * FROM builds WHERE id=";
