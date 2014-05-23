@@ -3,6 +3,7 @@
  */
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -65,4 +66,24 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.training.issuetracker.model.dao.jdbc.JdbcDAO#getPreparedStatement(org.training.issuetracker.model.beans.Beans)
+	 */
+	@Override
+	protected PreparedStatement getPreparedStatement(Project ob)
+			throws DAOException {
+		// TODO Auto-generated method stub
+		try{
+			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PROJECT);
+			ps.setInt(Constants.INDEX_ID, ob.getId());
+			ps.setString(Constants.INDEX_NAME, ob.getName());
+			ps.setString(INDEX_PROJECT_DESCRIPTION, ob.getDescription());
+			ps.setInt(INDEX_MANAGER_ID, ob.getManager().getId());
+			return ps;
+		}catch(SQLException e){
+			throw new DAOException();
+		}
+	}
+
+	
 }

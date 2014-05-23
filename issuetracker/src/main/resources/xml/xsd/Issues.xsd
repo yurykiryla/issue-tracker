@@ -16,7 +16,7 @@
 			<xsd:element name="summary" type="xsd:string"/>
 			<xsd:element name="description" type="xsd:string"/>
 			<xsd:element name="project-id" type="xsd:int"/>
-			<xsd:element name="build-found" type="xsd:string"/>
+			<xsd:element name="build-found-id" type="xsd:int"/>
 			<xsd:element name="create-date" type="xsd:date"/>
 			<xsd:element name="created-by-id" type="xsd:int" />
 			<xsd:element name="modify-date" type="xsd:date" minOccurs="0"/>

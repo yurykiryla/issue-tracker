@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Element;
+import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Priority;
 import org.training.issuetracker.model.beans.Project;
@@ -74,7 +75,7 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 		
 		Project project = DAOFactory.getProjectDAO().getOb(Integer.parseInt(element.getChildText(KEY_PROJECT_ID)));
 		
-		String buildFound = element.getChildText(KEY_BUILD_FOUND);
+		Build buildFound = DAOFactory.getBuildDAO().getOb(Integer.parseInt(element.getChildText(KEY_BUILD_FOUND_ID)));
 		
 		Date createDate = Date.valueOf(element.getChildText(KEY_CREATE_DATE));
 		

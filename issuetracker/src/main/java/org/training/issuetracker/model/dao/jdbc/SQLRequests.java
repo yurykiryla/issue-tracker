@@ -148,6 +148,12 @@ public class SQLRequests {
 	public static final String INSERT_ISSUE = 
 			"INSERT INTO issues VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
+	public static final String INSERT_PRIORITY = 
+			"INSERT INTO priorities VALUES (?,?)";
+	
+	public static final String INSERT_PROJECT = 
+			"INSERT INTO projects VALUES (?,?,?,?)";
+	
 	public static final String SELECT_BUILD_BY_ID = 
 			"SELECT * FROM builds WHERE id=";
 	

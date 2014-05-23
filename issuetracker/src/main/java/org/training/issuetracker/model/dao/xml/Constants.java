@@ -36,7 +36,7 @@ public class Constants {
 	/**
 	 * {@value}
 	 */
-	public static final String KEY_BUILD_FOUND = "build-found";
+	public static final String KEY_BUILD_FOUND_ID = "build-found-id";
 	
 	/**
 	 * {@value}
