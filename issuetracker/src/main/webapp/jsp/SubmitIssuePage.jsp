@@ -21,16 +21,16 @@
 			<table class="submit-issue-table">
 				<tr>
 					<td><label>Summary</label></td>
-					<td><input type="text" name="summary"/></td>
+					<td><input type="text" name=<%=Constants.KEY_SUMMARY%>/></td>
 				</tr>
 				<tr>
 					<td><label>Description</label></td>
-					<td><textarea rows="5" cols="50" name="description" ></textarea></td>
+					<td><textarea rows="5" cols="50" name=<%=Constants.KEY_DESCRIPTION%>></textarea></td>
 				</tr>
 				<tr>
 					<td><label>Status</label></td>
 					<td>
-						<select name="status" id="status" onchange="changedStatus()">
+						<select name=<%=Constants.KEY_STATUS%> id="statusSelect" onchange="changedStatus()">
 							<option selected="selected" disabled="disabled">Select Status</option>
 							<c:forEach var="status" items="${statuses}">
 								<option value="${status.id}">
@@ -43,7 +43,7 @@
 				<tr>
 					<td><label>Type</label></td>
 					<td>
-						<select name="type" >
+						<select name=<%=Constants.KEY_TYPE%> >
 							<option selected="selected" disabled="disabled">Select Type</option>
 							<c:forEach items="${types}" var="type">
 								<option value="${type.id}">
@@ -56,7 +56,7 @@
 				<tr>
 					<td><label>Priority</label></td>
 					<td>
-						<select name="priority" >
+						<select name=<%=Constants.KEY_PRIORITY%> >
 							<option selected="selected" disabled="disabled">Select Priority</option>
 							<c:forEach items="${priorities}" var="priority">
 								<option value="${priority.id}">
@@ -69,7 +69,7 @@
 				<tr>
 					<td><label>Project</label></td>
 					<td>
-						<select name="project" id="projectSelect" onchange="showBuilds()">
+						<select name=<%=Constants.KEY_PROJECT%> id="projectSelect" onchange="showBuilds()">
 							<option selected="selected" disabled="disabled">Select Project</option>
 							<c:forEach items="${projects}" var="project">
 								<option value="${project.id}">
@@ -84,7 +84,7 @@
 					<td>
 						<input type="text" id="notProjectSelect" value="Select Project before" readonly="readonly" style="display: block;">
 						<c:forEach items="${projects}" var="project">
-							<select name="buildFound" id="buildSelect${project.id}" style="display: none;">
+							<select name=<%=Constants.KEY_BUILD_FOUND%> id="buildSelect${project.id}" style="display: none;">
 								<option disabled="disabled" selected="selected">Select Build found</option>
 								<c:forEach items="${project.getBuilds()}" var="build">
 									<option value="${build.id}">
@@ -99,7 +99,7 @@
 					<td><label>Assigned</label></td>
 					<td>
 						<input type="text" id="notAssigned" value="Select Assigned status" readonly="readonly" style="display: block;">
-						<select name="assigned" id="assigned" style="display: none;">
+						<select name=<%=Constants.KEY_ASSIGNEE%> id="assigned" style="display: none;">
 							<option selected="selected" disabled="disabled">Select User</option>
 							<c:forEach var="assignee" items="${users}">
 								<option value="${assignee.id }">

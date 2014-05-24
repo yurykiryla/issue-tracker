@@ -3,7 +3,7 @@
  */
 
 function changedStatus(){
-	var statusSelect = document.getElementById("status");
+	var statusSelect = document.getElementById("statusSelect");
 	var assigned = document.getElementById("assigned");
 	var notAssigned = document.getElementById("notAssigned");
 	if(statusSelect.value == 2){

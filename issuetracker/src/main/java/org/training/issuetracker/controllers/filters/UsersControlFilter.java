@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.training.issuetracker.controllers.Constants;
 import org.training.issuetracker.model.beans.User;
+import org.training.issuetracker.model.properties.Config;
 
 /**
  * Servlet Filter implementation class UsersControlFilter
@@ -43,7 +44,7 @@ public class UsersControlFilter implements Filter {
 		User user = (User)((HttpServletRequest)request).getSession()
 									.getAttribute(Constants.KEY_USER);
 		if(user == null){
-			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath() + Constants.URL_WELCOM_PAGE_CONTROLLER);
+			((HttpServletResponse)response).sendRedirect(Config.getConfig().getContextPath() + Constants.URL_WELCOM_PAGE_CONTROLLER);
 		}
 		
 		// pass the request along the filter chain

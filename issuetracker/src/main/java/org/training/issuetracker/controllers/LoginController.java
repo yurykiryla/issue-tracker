@@ -31,7 +31,7 @@ public class LoginController extends AbstractController {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try{
-			String email = request.getParameter(Constants.KEY_LOGIN);
+			String email = request.getParameter(Constants.KEY_EMAIL);
 			String password = request.getParameter(Constants.KEY_PASSWORD);
 			UsersDAO userDAO = DAOFactory.getUsersDAO();
 			User user = userDAO.getUser(email, password);

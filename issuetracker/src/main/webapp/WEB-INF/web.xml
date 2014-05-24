@@ -12,6 +12,10 @@
     <param-name>implementation</param-name>
     <param-value>jdbc</param-value>
   </context-param>
+  <context-param>
+  	<param-name>n</param-name>
+  	<param-value>10</param-value>
+  </context-param>
   <servlet>
     <display-name>WelcomePageController</display-name>
     <servlet-name>WelcomePageController</servlet-name>
@@ -61,7 +65,7 @@
     <filter-name>UsersControlFilter</filter-name>
     <servlet-name>SubmitIssueController</servlet-name>
     <servlet-name>AddIssueController</servlet-name>
-    <url-pattern>/SubmitIssuePage.jsp</url-pattern>
+    <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
   </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

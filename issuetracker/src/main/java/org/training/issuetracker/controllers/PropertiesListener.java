@@ -26,7 +26,9 @@ public class PropertiesListener implements ServletContextListener {
     	String path = arg0.getServletContext().getRealPath(Constants.ROOT_PATH) 
     			+ Constants.RESOURCES_PATH;
     	String impl = arg0.getServletContext().getInitParameter(Constants.KEY_IMPLEMENTATION);
-    	Config.setConfig(path, impl);
+    	String contextPath = arg0.getServletContext().getContextPath();
+    	int n = Integer.parseInt(arg0.getServletContext().getInitParameter(Constants.KEY_N));
+    	Config.setConfig(path, impl, contextPath, n);
     }
 
 	/**

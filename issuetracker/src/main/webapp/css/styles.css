@@ -184,3 +184,8 @@ html,body,.main {
 	padding: 5px;
 	margin: 5px;
 }
+
+.error-message textarea{
+	font-family: monospace;
+	font-size: 14px;
+}
