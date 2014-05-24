@@ -39,14 +39,10 @@ public class Issue implements Beans{
 	 * @param buildFound
 	 * @param createDate
 	 * @param createdBy
-	 * @param modifyDate
-	 * @param modifiedBy
-	 * @param resolution
 	 */
 	public Issue(Priority priority, User assignee, Type type, Status status,
 			String summary, String description, Project project,
-			Build buildFound, Date createDate, User createdBy,
-			Date modifyDate, User modifiedBy, Resolution resolution) {
+			Build buildFound, Date createDate, User createdBy) {
 		super();
 		id = idCounter;
 		idCounter++;
@@ -60,9 +56,9 @@ public class Issue implements Beans{
 		this.buildFound = buildFound;
 		this.createDate = createDate;
 		this.createdBy = createdBy;
-		this.modifyDate = modifyDate;
-		this.modifiedBy = modifiedBy;
-		this.resolution = resolution;
+		modifyDate = null;
+		modifiedBy = null;
+		resolution = null;
 	}
 
 	/**

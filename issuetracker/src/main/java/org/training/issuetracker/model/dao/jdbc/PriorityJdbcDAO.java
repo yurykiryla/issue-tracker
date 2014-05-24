@@ -48,8 +48,8 @@ public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 	protected Priority getOb(ResultSet resultSet) throws DAOException {
 		// TODO Auto-generated method stub
 		try{
-			int id = resultSet.getInt(Constants.INDEX_ID);
-			String name = resultSet.getString(Constants.INDEX_NAME);
+			int id = resultSet.getInt(Constants.INDEX_ID_SELECT);
+			String name = resultSet.getString(Constants.INDEX_NAME_SELECT);
 			return new Priority(id, name);
 		}catch(SQLException e){
 			throw new DAOException(e);
@@ -65,8 +65,8 @@ public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PRIORITY);
-			ps.setInt(Constants.INDEX_ID, ob.getId());
-			ps.setString(Constants.INDEX_NAME, ob.getName());
+			ps.setInt(Constants.INDEX_ID_SELECT, ob.getId());
+			ps.setString(Constants.INDEX_NAME_SELECT, ob.getName());
 			return ps;
 		}catch(SQLException e){
 			throw new DAOException();

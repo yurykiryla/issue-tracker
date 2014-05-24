@@ -11,6 +11,7 @@ import org.training.issuetracker.model.properties.Config;
  */
 public class Constants {
 	public static final String CONTEXT_PATH = Config.getConfig().getContextPath();
+	public static final String ADD_ISSUE_FORM_ACTION = CONTEXT_PATH + "/AddIssueController";
 	public static final String ERROR_PAGE_TITLE = "Error page";
 	public static final String KEY_ASSIGNEE = "assignee";
 	public static final String KEY_BUILD_FOUND = "buildFound";

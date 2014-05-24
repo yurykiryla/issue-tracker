@@ -17,11 +17,11 @@
 	<div class="main">
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="userMenu.jsp"></jsp:include>
-		<form class="submit-issue">
+		<form class="submit-issue" action=<%=Constants.ADD_ISSUE_FORM_ACTION%>>
 			<table class="submit-issue-table">
 				<tr>
 					<td><label>Summary</label></td>
-					<td><input type="text" name=<%=Constants.KEY_SUMMARY%>/></td>
+					<td><input type="text" name="summary"/></td>
 				</tr>
 				<tr>
 					<td><label>Description</label></td>

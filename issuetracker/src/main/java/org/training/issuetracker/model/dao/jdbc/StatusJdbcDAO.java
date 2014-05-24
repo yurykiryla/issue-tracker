@@ -48,8 +48,8 @@ public class StatusJdbcDAO extends JdbcDAO<Status>{
 	protected Status getOb(ResultSet resultSet) throws DAOException {
 		// TODO Auto-generated method stub
 		try{
-			int id = resultSet.getInt(Constants.INDEX_ID);
-			String name = resultSet.getString(Constants.INDEX_NAME);
+			int id = resultSet.getInt(Constants.INDEX_ID_SELECT);
+			String name = resultSet.getString(Constants.INDEX_NAME_SELECT);
 			return new Status(id, name);
 		}catch(SQLException e){
 			throw new DAOException(e);

@@ -55,11 +55,11 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 	protected Project getOb(ResultSet resultSet) throws DAOException {
 		// TODO Auto-generated method stub
 		try{
-			int id = resultSet.getInt(INDEX_ID);
-			String name = resultSet.getString(INDEX_NAME);
-			String description = resultSet.getString(INDEX_PROJECT_DESCRIPTION);
+			int id = resultSet.getInt(INDEX_ID_SELECT);
+			String name = resultSet.getString(INDEX_NAME_SELECT);
+			String description = resultSet.getString(INDEX_PROJECT_DESCRIPTION_SELECT);
 			List<Build> builds = DAOFactory.getBuildsDAO().getBuilds(id);
-			User manager = DAOFactory.getUserDAO().getOb(resultSet.getInt(INDEX_MANAGER_ID));
+			User manager = DAOFactory.getUserDAO().getOb(resultSet.getInt(INDEX_MANAGER_ID_SELECT));
 			return new Project(id, name, description, builds, manager);
 		}catch(SQLException e){
 			throw new DAOException(e);
@@ -75,10 +75,10 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PROJECT);
-			ps.setInt(Constants.INDEX_ID, ob.getId());
-			ps.setString(Constants.INDEX_NAME, ob.getName());
-			ps.setString(INDEX_PROJECT_DESCRIPTION, ob.getDescription());
-			ps.setInt(INDEX_MANAGER_ID, ob.getManager().getId());
+			ps.setInt(Constants.INDEX_ID_SELECT, ob.getId());
+			ps.setString(Constants.INDEX_NAME_SELECT, ob.getName());
+			ps.setString(INDEX_PROJECT_DESCRIPTION_SELECT, ob.getDescription());
+			ps.setInt(INDEX_MANAGER_ID_SELECT, ob.getManager().getId());
 			return ps;
 		}catch(SQLException e){
 			throw new DAOException();

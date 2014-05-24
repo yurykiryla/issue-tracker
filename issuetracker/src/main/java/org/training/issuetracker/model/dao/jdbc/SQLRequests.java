@@ -19,7 +19,7 @@ public class SQLRequests {
 			"CREATE TABLE issues ("
 				+ "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,"
 				+ "priority_id INT NOT NULL,"
-				+ "assignee_id INT DEFAULT NULL,"
+				+ "assignee_id INT,"
 				+ "type_id INT NOT NULL,"
 				+ "status_id INT NOT NULL,"
 				+ "summary LONG VARCHAR NOT NULL,"
@@ -28,9 +28,9 @@ public class SQLRequests {
 				+ "build_found_id INT NOT NULL,"
 				+ "create_date DATE NOT NULL,"
 				+ "created_by_id INT NOT NULL,"
-				+ "modify_date DATE DEFAULT NULL,"
-				+ "modified_by_id INT DEFAULT NULL,"
-				+ "resolution_id INT DEFAULT NULL"
+				+ "modify_date DATE,"
+				+ "modified_by_id INT,"
+				+ "resolution_id INT"
 			+ ")";
 	
 	public static final String CREATE_DEFAULT_ADMINISTRATOR = 
@@ -183,7 +183,7 @@ public class SQLRequests {
 	
 	public static final String SELECT_N_ASSIGNED_ISSUES_1 = 
 			"SELECT * FROM "
-			+ "(SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
+			+ "(SELECT issues.*, ROW_NUMBER() OVER() AS rownum "
 				+ "FROM issues WHERE assignee_id=";
 	
 	public static final String SELECT_N_ASSIGNED_ISSUES_2 = 
@@ -191,7 +191,7 @@ public class SQLRequests {
 	
 	public static final String SELECT_N_LAST_ISSUES = 
 			"SELECT * FROM "
-			+ "(SELECT ROW_NUMBER() OVER() AS rownum, issues.* "
+			+ "(SELECT issues.*, ROW_NUMBER() OVER() AS rownum "
 				+ "FROM issues ORDER BY create_date DESC) AS tmp "
 			+ "WHERE rownum <= ";
 	

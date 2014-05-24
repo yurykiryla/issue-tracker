@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,38 +82,39 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 	protected Issue getOb(ResultSet resultSet) throws DAOException{
 		// TODO Auto-generated method stub
 		try{
-			int id = resultSet.getInt(INDEX_ID);
+			int id = resultSet.getInt(INDEX_ID_SELECT);
 			
-			Priority priority = DAOFactory.getPriorityDAO().getOb(resultSet.getInt(INDEX_PRIORITY_ID));
+			Priority priority = DAOFactory.getPriorityDAO().getOb(resultSet.getInt(INDEX_PRIORITY_ID_SELECT));
 			
 			DAO<User> userDAO = DAOFactory.getUserDAO();
-			User assignee = userDAO.getOb(INDEX_ASSIGNEE_ID);
+			User assignee = userDAO.getOb(resultSet.getInt(INDEX_ASSIGNEE_ID_SELECT));
 			
-			Type type = DAOFactory.getTypeDAO().getOb(resultSet.getInt(INDEX_TYPE_ID));
+			Type type = DAOFactory.getTypeDAO().getOb(resultSet.getInt(INDEX_TYPE_ID_SELECT));
 			
-			Status status = DAOFactory.getStatusDAO().getOb(resultSet.getInt(INDEX_STATUS_ID));
+			Status status = DAOFactory.getStatusDAO().getOb(resultSet.getInt(INDEX_STATUS_ID_SELECT));
 			
-			String summary = resultSet.getString(INDEX_SUMMARY);
+			String summary = resultSet.getString(INDEX_SUMMARY_SELECT);
 			
-			String description = resultSet.getString(INDEX_ISSUE_DESCRIPTION);
+			String description = resultSet.getString(INDEX_ISSUE_DESCRIPTION_SELECT);
 			
-			Project project = DAOFactory.getProjectDAO().getOb(resultSet.getInt(INDEX_ISSUE_PROJECT_ID));
+			Project project = DAOFactory.getProjectDAO().getOb(resultSet.getInt(INDEX_ISSUE_PROJECT_ID_SELECT));
 			
-			Build buildFound = DAOFactory.getBuildDAO().getOb(Integer.parseInt( resultSet.getString(INDEX_BUILD_FOUND)));
+			Build buildFound = DAOFactory.getBuildDAO().getOb(Integer.parseInt( resultSet.getString(INDEX_BUILD_FOUND_SELECT)));
 			
-			Date createDate = resultSet.getDate(INDEX_CREATE_DATE);
+			Date createDate = resultSet.getDate(INDEX_CREATE_DATE_SELECT);
 			
-			User createdBy = userDAO.getOb(resultSet.getInt(INDEX_CREATED_BY_ID));
+			User createdBy = userDAO.getOb(resultSet.getInt(INDEX_CREATED_BY_ID_SELECT));
 			
-			Date modifyDate = resultSet.getDate(INDEX_MODIFY_DATE);
+			Date modifyDate = resultSet.getDate(INDEX_MODIFY_DATE_SELECT);
 			
-			User modifiedBy = userDAO.getOb(resultSet.getInt(INDEX_MODIFIED_BY_ID));
+			User modifiedBy = userDAO.getOb(resultSet.getInt(INDEX_MODIFIED_BY_ID_SELECT));
 			
-			Resolution resolution = DAOFactory.getResolutionDAO().getOb(resultSet.getInt(INDEX_RESOLUTION_ID));
+			Resolution resolution = DAOFactory.getResolutionDAO().getOb(resultSet.getInt(INDEX_RESOLUTION_ID_SELECT));
 			
 			return new Issue(id, priority, assignee, type, status, summary, description, project,
 					buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution);
 		}catch(SQLException e){
+			e.printStackTrace();
 			throw new DAOException(e);
 		}
 	}
@@ -126,31 +128,38 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(INSERT_ISSUE);
-			ps.setInt(INDEX_ID, ob.getId());
-			ps.setInt(INDEX_PRIORITY_ID, ob.getPriority().getId());
+			//ps.setInt(INDEX_ID_SELECT, ob.getId());
+			ps.setInt(INDEX_PRIORITY_ID_SELECT, ob.getPriority().getId());
 			User assignee = ob.getAssignee();
 			if(assignee != null){
-				ps.setInt(INDEX_ASSIGNEE_ID, assignee.getId());
+				ps.setInt(INDEX_ASSIGNEE_ID_SELECT, assignee.getId());
+			}else{
+				ps.setNull(INDEX_ASSIGNEE_ID_SELECT, Types.INTEGER);
 			}
-			ps.setInt(INDEX_TYPE_ID, ob.getType().getId());
-			ps.setInt(INDEX_STATUS_ID, ob.getStatus().getId());
-			ps.setString(INDEX_SUMMARY, ob.getSummary());
-			ps.setString(INDEX_ISSUE_DESCRIPTION, ob.getDescription());
-			ps.setInt(INDEX_ISSUE_PROJECT_ID, ob.getProject().getId());
-			ps.setInt(INDEX_BUILD_FOUND, ob.getBuildFound().getId());
-			ps.setDate(INDEX_CREATE_DATE, ob.getCreateDate());
-			ps.setInt(INDEX_CREATED_BY_ID, ob.getCreatedBy().getId());
-			ps.setDate(INDEX_MODIFY_DATE, ob.getModifyDate());
+			ps.setInt(INDEX_TYPE_ID_SELECT, ob.getType().getId());
+			ps.setInt(INDEX_STATUS_ID_SELECT, ob.getStatus().getId());
+			ps.setString(INDEX_SUMMARY_SELECT, ob.getSummary());
+			ps.setString(INDEX_ISSUE_DESCRIPTION_SELECT, ob.getDescription());
+			ps.setInt(INDEX_ISSUE_PROJECT_ID_SELECT, ob.getProject().getId());
+			ps.setInt(INDEX_BUILD_FOUND_SELECT, ob.getBuildFound().getId());
+			ps.setDate(INDEX_CREATE_DATE_SELECT, ob.getCreateDate());
+			ps.setInt(INDEX_CREATED_BY_ID_SELECT, ob.getCreatedBy().getId());
+			ps.setDate(INDEX_MODIFY_DATE_SELECT, ob.getModifyDate());
 			User modifiedBy = ob.getModifiedBy();
 			if(modifiedBy != null){
-				ps.setInt(INDEX_MODIFIED_BY_ID, modifiedBy.getId());
+				ps.setInt(INDEX_MODIFIED_BY_ID_SELECT, modifiedBy.getId());
+			}else{
+				ps.setNull(INDEX_MODIFIED_BY_ID_SELECT, Types.INTEGER);
 			}
 			Resolution resolution = ob.getResolution();
 			if(resolution != null){
-				ps.setInt(INDEX_RESOLUTION_ID, resolution.getId());
+				ps.setInt(INDEX_RESOLUTION_ID_SELECT, resolution.getId());
+			}else{
+				ps.setNull(INDEX_RESOLUTION_ID_SELECT, Types.INTEGER);
 			}
 			return ps;
 		}catch(SQLException e){
+			e.printStackTrace();
 			throw new DAOException(e);
 		}
 	}

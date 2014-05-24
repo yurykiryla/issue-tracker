@@ -67,10 +67,10 @@
 								</c:when>
 							</c:choose>
 							<td class="${priorityClass} priority-col">${issue.priority.toString()}</td>
-							<td><c:if test="${issue.assignee != null }">
-										${issue.assignee.firstName}
-										${issue.assignee.lastName}
-									</c:if></td>
+							<td>
+							<c:if test="${issue.assignee != null }">
+								${issue.assignee.firstName}	${issue.assignee.lastName}
+							</c:if></td>
 							<td>${issue.type.toString()}</td>
 							<td>${issue.status.toString()}</td>
 							<td class="summary-col">${issue.summary}</td>

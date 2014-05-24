@@ -1,8 +1,9 @@
-package org.training.issuetracker.controllers;
+package org.training.issuetracker.controllers.listeners;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.training.issuetracker.controllers.Constants;
 import org.training.issuetracker.model.properties.Config;
 
 /**

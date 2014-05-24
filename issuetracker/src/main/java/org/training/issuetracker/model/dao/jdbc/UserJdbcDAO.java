@@ -75,13 +75,13 @@ public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 	protected User getOb(ResultSet resultSet) throws DAOException {
 		// TODO Auto-generated method stub
 		try{
-			int id = resultSet.getInt(INDEX_ID);
-			String firstName = resultSet.getString(INDEX_FIRST_NAME);
-			String lastName = resultSet.getString(INDEX_LAST_NAME);
-			String emailAddress = resultSet.getString(INDEX_EMAIL_ADDRESS);
-			Role role = Role.valueOf(resultSet.getString(INDEX_ROLE));
+			int id = resultSet.getInt(INDEX_ID_SELECT);
+			String firstName = resultSet.getString(INDEX_FIRST_NAME_SELECT);
+			String lastName = resultSet.getString(INDEX_LAST_NAME_SELECT);
+			String emailAddress = resultSet.getString(INDEX_EMAIL_ADDRESS_SELECT);
+			Role role = Role.valueOf(resultSet.getString(INDEX_ROLE_SELECT));
 			Password password = new Password();
-			password.setEncryptedPassword(resultSet.getString(INDEX_PASSWORD));
+			password.setEncryptedPassword(resultSet.getString(INDEX_PASSWORD_SELECT));
 			return new User(id, firstName, lastName, emailAddress, role, password);
 		}catch (SQLException e) {
 			throw new DAOException(e);
@@ -97,12 +97,12 @@ public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_USER);
-			ps.setInt(Constants.INDEX_ID, ob.getId());
-			ps.setString(INDEX_FIRST_NAME, ob.getFirstName());
-			ps.setString(INDEX_LAST_NAME, ob.getLastName());
-			ps.setString(INDEX_EMAIL_ADDRESS, ob.getEmailAddress());
-			ps.setString(INDEX_RESOLUTION_ID, ob.getRole().toString());
-			ps.setString(INDEX_PASSWORD, ob.getPassword().getEncryptedPassword());
+			ps.setInt(Constants.INDEX_ID_SELECT, ob.getId());
+			ps.setString(INDEX_FIRST_NAME_SELECT, ob.getFirstName());
+			ps.setString(INDEX_LAST_NAME_SELECT, ob.getLastName());
+			ps.setString(INDEX_EMAIL_ADDRESS_SELECT, ob.getEmailAddress());
+			ps.setString(INDEX_RESOLUTION_ID_SELECT, ob.getRole().toString());
+			ps.setString(INDEX_PASSWORD_SELECT, ob.getPassword().getEncryptedPassword());
 			return ps;
 		}catch(SQLException e){
 			throw new DAOException();

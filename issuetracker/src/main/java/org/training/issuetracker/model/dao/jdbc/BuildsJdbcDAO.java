@@ -75,8 +75,8 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 	protected Build getOb(ResultSet resultSet) throws DAOException {
 		// TODO Auto-generated method stub
 		try{
-			int id = resultSet.getInt(INDEX_ID);
-			String name = resultSet.getString(INDEX_NAME);
+			int id = resultSet.getInt(INDEX_ID_SELECT);
+			String name = resultSet.getString(INDEX_NAME_SELECT);
 			return new Build(id, name);
 		}catch(SQLException e){
 			throw new DAOException(e);
@@ -102,9 +102,9 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 		if(projectId != 0){
 			try{
 				PreparedStatement ps = getPreparedStatement(INSERT_BUILD);
-				ps.setInt(INDEX_ID, ob.getId());
-				ps.setString(INDEX_NAME, ob.getName());
-				ps.setInt(INDEX_BUILD_PROJECT_ID, projectId);
+				ps.setInt(INDEX_ID_SELECT, ob.getId());
+				ps.setString(INDEX_NAME_SELECT, ob.getName());
+				ps.setInt(INDEX_BUILD_PROJECT_ID_SELECT, projectId);
 				return ps;
 			}catch(SQLException e){
 				throw new DAOException();
