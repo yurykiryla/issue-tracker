@@ -12,6 +12,7 @@ import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.factories.DAOFactory;
+import org.training.issuetracker.model.issues.sort.SortIssues;
 import org.training.issuetracker.model.properties.Config;
 
 /**
@@ -35,6 +36,7 @@ public class WelcomePageController extends AbstractController {
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute(Constants.KEY_USER);
 			List<Issue> issues = DAOFactory.getIssuesDAO().getIssues(user, Config.getConfig().getN());
+			SortIssues.sort(issues);
 			request.setAttribute(Constants.KEY_ISSUES, issues);
 			forward(Constants.URL_WELCOM_PAGE, request, response);
 		}catch(DAOException e){

@@ -10,7 +10,7 @@ import java.sql.Date;
  * @author Yury Kiryla
  *
  */
-public class Issue implements Beans{
+public class Issue implements Beans, Comparable<Issue>{
 	private static int idCounter = 1;
 	private final int id;
 	private Priority priority;
@@ -306,4 +306,15 @@ public class Issue implements Beans{
 	public User getCreatedBy() {
 		return createdBy;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Issue o) {
+		// TODO Auto-generated method stub
+		return id - o.id;
+	}
+	
+	
 }

@@ -11,7 +11,7 @@ import org.training.issuetracker.model.enums.Role;
  * @author Yury Kiryla
  *
  */
-public class User implements Beans{
+public class User implements Beans, Comparable<User>{
 	private static int idCounter = 1;
 	private final int id;
 	private String firstName;
@@ -179,6 +179,15 @@ public class User implements Beans{
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(User o) {
+		// TODO Auto-generated method stub
+		return id - o.id;
 	}
 
 }

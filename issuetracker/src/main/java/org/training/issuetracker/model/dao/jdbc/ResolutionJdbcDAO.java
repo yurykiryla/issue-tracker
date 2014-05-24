@@ -65,8 +65,7 @@ public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_RESOLUTION);
-			ps.setInt(Constants.INDEX_ID_SELECT, ob.getId());
-			ps.setString(Constants.INDEX_NAME_SELECT, ob.getName());
+			ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 			return ps;
 		}catch(SQLException e){
 			throw new DAOException();

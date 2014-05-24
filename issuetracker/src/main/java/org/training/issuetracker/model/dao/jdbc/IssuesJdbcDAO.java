@@ -128,34 +128,33 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(INSERT_ISSUE);
-			//ps.setInt(INDEX_ID_SELECT, ob.getId());
-			ps.setInt(INDEX_PRIORITY_ID_SELECT, ob.getPriority().getId());
+			ps.setInt(INDEX_PRIORITY_ID_INSERT, ob.getPriority().getId());
 			User assignee = ob.getAssignee();
 			if(assignee != null){
-				ps.setInt(INDEX_ASSIGNEE_ID_SELECT, assignee.getId());
+				ps.setInt(INDEX_ASSIGNEE_ID_INSERT, assignee.getId());
 			}else{
-				ps.setNull(INDEX_ASSIGNEE_ID_SELECT, Types.INTEGER);
+				ps.setNull(INDEX_ASSIGNEE_ID_INSERT, Types.INTEGER);
 			}
-			ps.setInt(INDEX_TYPE_ID_SELECT, ob.getType().getId());
-			ps.setInt(INDEX_STATUS_ID_SELECT, ob.getStatus().getId());
-			ps.setString(INDEX_SUMMARY_SELECT, ob.getSummary());
-			ps.setString(INDEX_ISSUE_DESCRIPTION_SELECT, ob.getDescription());
-			ps.setInt(INDEX_ISSUE_PROJECT_ID_SELECT, ob.getProject().getId());
-			ps.setInt(INDEX_BUILD_FOUND_SELECT, ob.getBuildFound().getId());
-			ps.setDate(INDEX_CREATE_DATE_SELECT, ob.getCreateDate());
-			ps.setInt(INDEX_CREATED_BY_ID_SELECT, ob.getCreatedBy().getId());
-			ps.setDate(INDEX_MODIFY_DATE_SELECT, ob.getModifyDate());
+			ps.setInt(INDEX_TYPE_ID_INSERT, ob.getType().getId());
+			ps.setInt(INDEX_STATUS_ID_INSERT, ob.getStatus().getId());
+			ps.setString(INDEX_SUMMARY_INSERT, ob.getSummary());
+			ps.setString(INDEX_ISSUE_DESCRIPTION_INSERT, ob.getDescription());
+			ps.setInt(INDEX_ISSUE_PROJECT_ID_INSERT, ob.getProject().getId());
+			ps.setInt(INDEX_BUILD_FOUND_INSERT, ob.getBuildFound().getId());
+			ps.setDate(INDEX_CREATE_DATE_INSERT, ob.getCreateDate());
+			ps.setInt(INDEX_CREATED_BY_ID_INSERT, ob.getCreatedBy().getId());
+			ps.setDate(INDEX_MODIFY_DATE_INSERT, ob.getModifyDate());
 			User modifiedBy = ob.getModifiedBy();
 			if(modifiedBy != null){
-				ps.setInt(INDEX_MODIFIED_BY_ID_SELECT, modifiedBy.getId());
+				ps.setInt(INDEX_MODIFIED_BY_ID_INSERT, modifiedBy.getId());
 			}else{
-				ps.setNull(INDEX_MODIFIED_BY_ID_SELECT, Types.INTEGER);
+				ps.setNull(INDEX_MODIFIED_BY_ID_INSERT, Types.INTEGER);
 			}
 			Resolution resolution = ob.getResolution();
 			if(resolution != null){
-				ps.setInt(INDEX_RESOLUTION_ID_SELECT, resolution.getId());
+				ps.setInt(INDEX_RESOLUTION_ID_INSERT, resolution.getId());
 			}else{
-				ps.setNull(INDEX_RESOLUTION_ID_SELECT, Types.INTEGER);
+				ps.setNull(INDEX_RESOLUTION_ID_INSERT, Types.INTEGER);
 			}
 			return ps;
 		}catch(SQLException e){

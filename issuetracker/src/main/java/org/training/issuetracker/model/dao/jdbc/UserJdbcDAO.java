@@ -97,12 +97,11 @@ public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_USER);
-			ps.setInt(Constants.INDEX_ID_SELECT, ob.getId());
-			ps.setString(INDEX_FIRST_NAME_SELECT, ob.getFirstName());
-			ps.setString(INDEX_LAST_NAME_SELECT, ob.getLastName());
-			ps.setString(INDEX_EMAIL_ADDRESS_SELECT, ob.getEmailAddress());
-			ps.setString(INDEX_RESOLUTION_ID_SELECT, ob.getRole().toString());
-			ps.setString(INDEX_PASSWORD_SELECT, ob.getPassword().getEncryptedPassword());
+			ps.setString(INDEX_FIRST_NAME_INSERT, ob.getFirstName());
+			ps.setString(INDEX_LAST_NAME_INSERT, ob.getLastName());
+			ps.setString(INDEX_EMAIL_ADDRESS_INSERT, ob.getEmailAddress());
+			ps.setString(INDEX_ROLE_INSERT, ob.getRole().toString());
+			ps.setString(INDEX_PASSWORD_INSERT, ob.getPassword().getEncryptedPassword());
 			return ps;
 		}catch(SQLException e){
 			throw new DAOException();

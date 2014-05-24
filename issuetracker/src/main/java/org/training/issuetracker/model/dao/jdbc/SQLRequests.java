@@ -146,25 +146,29 @@ public class SQLRequests {
 			+ ")";
 	
 	public static final String INSERT_BUILD = 
-			"INSERT INTO builds VALUES (?,?,?)";
+			"INSERT INTO builds (name, project_id) VALUES (?,?)";
 	
 	public static final String INSERT_ISSUE = 
-			"INSERT INTO issues VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			"INSERT INTO issues "
+				+ "(priority_id, assignee_id, type_id, status_id, summary, description, project_id, "
+				+ "build_found_id, create_date, created_by_id, modify_date, modified_by_id, resolution_id) "
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
 	public static final String INSERT_PRIORITY = 
-			"INSERT INTO priorities VALUES (?,?)";
+			"INSERT INTO priorities (name) VALUES (?)";
 	
 	public static final String INSERT_PROJECT = 
-			"INSERT INTO projects VALUES (?,?,?,?)";
+			"INSERT INTO projects (name, description, manager_id) VALUES (?,?,?)";
 	
 	public static final String INSERT_RESOLUTION = 
-			"INSERT INTO resolutions VALUES (?,?)";
+			"INSERT INTO resolutions (name) VALUES (?)";
 	
 	public static final String INSERT_TYPE = 
-			"INSERT INTO types VALUES (?,?)";
+			"INSERT INTO types (name) VALUES (?)";
 	
 	public static final String INSERT_USER = 
-			"INSERT INTO users VALUES (?,?,?,?,?,?)";
+			"INSERT INTO users (first_name, last_name, email_address, role, password) "
+				+ "VALUES (?,?,?,?,?)";
 	
 	public static final String SELECT_BUILD_BY_ID = 
 			"SELECT * FROM builds WHERE id=";

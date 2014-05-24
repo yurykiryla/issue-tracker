@@ -13,8 +13,8 @@
     <param-value>jdbc</param-value>
   </context-param>
   <context-param>
-  	<param-name>n</param-name>
-  	<param-value>10</param-value>
+    <param-name>n</param-name>
+    <param-value>10</param-value>
   </context-param>
   <servlet>
     <display-name>WelcomePageController</display-name>
@@ -37,9 +37,14 @@
     <servlet-class>org.training.issuetracker.controllers.SubmitIssueController</servlet-class>
   </servlet>
   <servlet>
-  	<display-name>AddIssueController</display-name>
-  	<servlet-name>AddIssueController</servlet-name>
-  	<servlet-class>org.training.issuetracker.controllers.AddIssueController</servlet-class>
+    <display-name>AddIssueController</display-name>
+    <servlet-name>AddIssueController</servlet-name>
+    <servlet-class>org.training.issuetracker.controllers.AddIssueController</servlet-class>
+  </servlet>
+  <servlet>
+  	<display-name>SortIssuesController</display-name>
+  	<servlet-name>SortIssuesController</servlet-name>
+  	<servlet-class>org.training.issuetracker.controllers.SortIssuesController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WelcomePageController</servlet-name>
@@ -58,8 +63,12 @@
     <url-pattern>/SubmitIssueController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>AddIssueController</servlet-name>
-  	<url-pattern>/AddIssueController</url-pattern>
+    <servlet-name>AddIssueController</servlet-name>
+    <url-pattern>/AddIssueController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SortIssuesController</servlet-name>
+  	<url-pattern>/SortIssuesController</url-pattern>
   </servlet-mapping>
   <filter-mapping>
     <filter-name>UsersControlFilter</filter-name>

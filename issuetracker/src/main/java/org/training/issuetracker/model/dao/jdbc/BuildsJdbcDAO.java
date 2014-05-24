@@ -102,9 +102,8 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 		if(projectId != 0){
 			try{
 				PreparedStatement ps = getPreparedStatement(INSERT_BUILD);
-				ps.setInt(INDEX_ID_SELECT, ob.getId());
-				ps.setString(INDEX_NAME_SELECT, ob.getName());
-				ps.setInt(INDEX_BUILD_PROJECT_ID_SELECT, projectId);
+				ps.setString(INDEX_NAME_INSERT, ob.getName());
+				ps.setInt(INDEX_BUILD_PROJECT_ID_INSERT, projectId);
 				return ps;
 			}catch(SQLException e){
 				throw new DAOException();

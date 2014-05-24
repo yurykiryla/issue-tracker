@@ -75,10 +75,9 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 		// TODO Auto-generated method stub
 		try{
 			PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PROJECT);
-			ps.setInt(Constants.INDEX_ID_SELECT, ob.getId());
-			ps.setString(Constants.INDEX_NAME_SELECT, ob.getName());
-			ps.setString(INDEX_PROJECT_DESCRIPTION_SELECT, ob.getDescription());
-			ps.setInt(INDEX_MANAGER_ID_SELECT, ob.getManager().getId());
+			ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+			ps.setString(INDEX_PROJECT_DESCRIPTION_INSERT, ob.getDescription());
+			ps.setInt(INDEX_MANAGER_ID_INSERT, ob.getManager().getId());
 			return ps;
 		}catch(SQLException e){
 			throw new DAOException();
