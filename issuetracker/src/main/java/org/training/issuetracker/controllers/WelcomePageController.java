@@ -15,31 +15,23 @@ import org.training.issuetracker.model.dao.factories.DAOFactory;
 import org.training.issuetracker.model.issues.sort.SortIssues;
 import org.training.issuetracker.model.properties.Config;
 
-/**
- * Servlet implementation class WelcomePageController
- */
 public class WelcomePageController extends AbstractController {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
     public WelcomePageController() {
-        // TODO Auto-generated constructor stub
     }
 
 	@Override
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		try{
+		try {
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute(Constants.KEY_USER);
 			List<Issue> issues = DAOFactory.getIssuesDAO().getIssues(user, Config.getConfig().getN());
 			SortIssues.sort(issues);
 			request.setAttribute(Constants.KEY_ISSUES, issues);
 			forward(Constants.URL_WELCOM_PAGE, request, response);
-		}catch(DAOException e){
+		} catch(DAOException e) {
 			errorForward(e, request, response);
 		}
 	}

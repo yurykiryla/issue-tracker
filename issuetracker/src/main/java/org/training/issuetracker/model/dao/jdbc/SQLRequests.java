@@ -1,12 +1,5 @@
-/**
- * 
- */
 package org.training.issuetracker.model.dao.jdbc;
 
-/**
- * @author Yury
- *
- */
 public class SQLRequests {
 	public static final String CREATE_BUILDS_TABLE = 
 			"CREATE TABLE builds ("

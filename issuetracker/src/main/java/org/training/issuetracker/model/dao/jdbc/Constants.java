@@ -46,4 +46,5 @@ public class Constants {
 	public static final int INDEX_SUMMARY_SELECT = 6;
 	public static final int INDEX_TYPE_ID_INSERT = 3;
 	public static final int INDEX_TYPE_ID_SELECT = 4;
+	public static final String MESSAGE_UNSUPPORTED_OPERATION = "Unsupported operation";
 }

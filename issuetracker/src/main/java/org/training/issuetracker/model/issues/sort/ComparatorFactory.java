@@ -1,17 +1,9 @@
-/**
- * 
- */
 package org.training.issuetracker.model.issues.sort;
 
 import java.util.Comparator;
 
 import org.training.issuetracker.model.beans.Issue;
-import org.training.issuetracker.model.beans.SummaryIssueComparator;
 
-/**
- * @author Yury
- *
- */
 public class ComparatorFactory {
 	public static Comparator<Issue> getIssuesComparator(SortKeys sortKey, SortOrders sortOrder){
 		switch(sortKey){

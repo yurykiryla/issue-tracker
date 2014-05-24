@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.issuetracker.model.dao.factories;
 
 import org.training.issuetracker.model.beans.Build;
@@ -19,17 +16,12 @@ import org.training.issuetracker.model.dao.jdbc.JdbcDAOFactory;
 import org.training.issuetracker.model.dao.xml.XmlDAOFactory;
 import org.training.issuetracker.model.properties.Config;
 
-
-/**
- * @author Yury
- *
- */
 public class DAOFactory {
-	private static AbstractFactory factory= null;
+	private static AbstractFactory factory = null;
 	
-	private static AbstractFactory getFactory(){
-		if(factory == null){
-			switch (Config.getConfig().getImplementation()){
+	private static AbstractFactory getFactory() {
+		if (factory == null) {
+			switch (Config.getConfig().getImplementation()) {
 				case XML:
 					factory = new XmlDAOFactory();
 					break;
@@ -41,47 +33,47 @@ public class DAOFactory {
 		return factory;
 	}
 	
-	public static DAO<Issue> getIssueDAO(){
+	public static DAO<Issue> getIssueDAO() {
 		return getFactory().getIssueDAO();
 	}
 	
-	public static DAO<Priority> getPriorityDAO(){
+	public static DAO<Priority> getPriorityDAO() {
 		return getFactory().getPriorityDAO();
 	}
 	
-	public static DAO<Project> getProjectDAO(){
+	public static DAO<Project> getProjectDAO() {
 		return getFactory().getProjectDAO();
 	}
 	
-	public static DAO<Resolution> getResolutionDAO(){
+	public static DAO<Resolution> getResolutionDAO() {
 		return getFactory().getResolutionDAO();
 	}
 	
-	public static DAO<Status> getStatusDAO(){
+	public static DAO<Status> getStatusDAO() {
 		return getFactory().getStatusDAO();
 	}
 	
-	public static DAO<Type> getTypeDAO(){
+	public static DAO<Type> getTypeDAO() {
 		return getFactory().getTypeDAO();
 	}
 	
-	public static DAO<User> getUserDAO(){
+	public static DAO<User> getUserDAO() {
 		return getFactory().getUserDAO();
 	}
 	
-	public static IssuesDAO getIssuesDAO(){
+	public static IssuesDAO getIssuesDAO() {
 		return getFactory().getIssuesDAO();
 	}
 	
-	public static UsersDAO getUsersDAO(){
+	public static UsersDAO getUsersDAO() {
 		return getFactory().getUsersDAO();
 	}
 	
-	public static DAO<Build> getBuildDAO(){
+	public static DAO<Build> getBuildDAO() {
 		return getFactory().getBuildDAO();
 	}
 	
-	public static BuildsDAO getBuildsDAO(){
+	public static BuildsDAO getBuildsDAO() {
 		return getFactory().getBuildsDAO();
 	}
 }

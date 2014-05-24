@@ -11,27 +11,16 @@ import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.factories.DAOFactory;
 
-/**
- * Servlet implementation class SubmitIssueController
- */
 public class SubmitIssueController extends AbstractController {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
     public SubmitIssueController() {
-        // TODO Auto-generated constructor stub
     }
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.controllers.AbstractController#performTask(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
+    @Override
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		try{
+		try {
 			DAO<Status> statusDAO = DAOFactory.getStatusDAO();
 			Status[] statuses = new Status[2];
 			statuses[0] = statusDAO.getOb(1);
@@ -42,9 +31,8 @@ public class SubmitIssueController extends AbstractController {
 			request.setAttribute("projects", DAOFactory.getProjectDAO().getObs());
 			request.setAttribute("users", DAOFactory.getUserDAO().getObs());
 			forward(Constants.URL_SUBMIT_ISSUE_PAGE, request, response);
-		}catch(DAOException e){
+		} catch (DAOException e) {
 			errorForward(e, request, response);
 		}
 	}
-
 }

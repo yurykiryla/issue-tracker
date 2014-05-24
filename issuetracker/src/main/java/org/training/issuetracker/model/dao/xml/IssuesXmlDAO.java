@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.issuetracker.model.dao.xml;
 
 import java.sql.Date;
@@ -25,34 +22,18 @@ import org.training.issuetracker.model.dao.factories.DAOFactory;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
-/**
- * @author Yury
- *
- */
 public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 
-	/**
-	 * 
-	 */
 	public IssuesXmlDAO() {
-		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.xml.XmlDAO#getFilename()
-	 */
 	@Override
 	protected String getFilename() {
-		// TODO Auto-generated method stub
 		return ISSUES_XML_FILENAME;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.xml.XmlDAO#getOb(org.jdom2.Element)
-	 */
 	@Override
-	protected Issue getOb(Element element) throws DAOException{
-		// TODO Auto-generated method stub
+	protected Issue getOb(Element element) throws DAOException {
 		int id = getId(element);
 		
 		Priority priority = DAOFactory.getPriorityDAO()
@@ -61,7 +42,7 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 		DAO<User> userDAO = DAOFactory.getUserDAO();
 		User assignee = null;
 		String assigneeIdString = element.getChildText(KEY_ASSIGNEE_ID);
-		if(assigneeIdString != null && !assigneeIdString.isEmpty()){
+		if (assigneeIdString != null && !assigneeIdString.isEmpty()) {
 			assignee = userDAO.getOb(Integer.parseInt(assigneeIdString));
 		}
 		
@@ -83,19 +64,19 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 		
 		Date modifyDate = null;
 		String modifyDateString = element.getChildText(KEY_MODIFY_DATE);
-		if(modifyDateString != null && !modifyDateString.isEmpty()){
+		if (modifyDateString != null && !modifyDateString.isEmpty()) {
 			modifyDate = Date.valueOf(modifyDateString);
 		}
 		
 		User modifiedBy = null;
 		String modifiedByString = element.getChildText(KEY_MODIFIED_BY_ID);
-		if(modifiedByString != null && !modifiedByString.isEmpty()){
+		if (modifiedByString != null && !modifiedByString.isEmpty()) {
 			modifiedBy = userDAO.getOb(Integer.parseInt(element.getChildText(KEY_MODIFIED_BY_ID)));
 		}
 		
 		Resolution resolution = null;
 		String resolutionString = element.getChildText(KEY_RESOLUTION_ID);
-		if(resolutionString != null && !resolutionString.isEmpty()){
+		if (resolutionString != null && !resolutionString.isEmpty()) {
 			resolution = DAOFactory.getResolutionDAO().getOb(Integer.parseInt(resolutionString));
 		}
 		
@@ -103,14 +84,10 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 				buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.IssueDAO#getIssues(org.training.issuetracker.model.beans.User, int)
-	 */
 	@Override
 	public List<Issue> getIssues(User user, int n) throws DAOException {
-		// TODO Auto-generated method stub
 		List<Issue> issues = getObs();
-		if(user != null){
+		if (user != null) {
 			Iterator<Issue> iterator = issues.iterator();
 			while(iterator.hasNext() && n > 0){
 				if(iterator.next().getAssignee().getId() != user.getId()){
@@ -119,11 +96,10 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 					n--;
 				}
 			}
-		}else if(issues.size() > n){
+		} else if(issues.size() > n) {
 			Collections.sort(issues, new IssuesCreateDateComparator());
 			issues = new ArrayList<>(issues.subList(0, n));
 		}
 		return issues;
 	}
-
 }

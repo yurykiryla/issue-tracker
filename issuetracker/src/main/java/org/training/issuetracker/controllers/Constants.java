@@ -1,14 +1,7 @@
-/**
- * 
- */
 package org.training.issuetracker.controllers;
 
 import org.training.issuetracker.model.properties.Config;
 
-/**
- * @author Yury Kiryla
- *
- */
 public class Constants {
 	public static final String CONTEXT_PATH = Config.getConfig().getContextPath();
 	public static final String ADD_ISSUE_FORM_ACTION = CONTEXT_PATH + "/AddIssueController";
@@ -35,7 +28,8 @@ public class Constants {
 	public static final String SUBMIT_ISSUE_PAGE_TITLE = "Submit Issue";
 	public static final String URL_ERROR_PAGE = "/jsp/ErrorPage.jsp";
 	public static final String URL_LOGOUT = CONTEXT_PATH + "/LogoutController";
-	public static final String URL_SORT_ISSUES_CONTROLLER = CONTEXT_PATH + "/SortIssuesController?" + KEY_SORT + "=";
+	public static final String URL_SORT_ISSUES_CONTROLLER = CONTEXT_PATH + "/SortIssuesController?" 
+															+ KEY_SORT + "=";
 	public static final String URL_SUBMIT_ISSUE_CONTROLLER = CONTEXT_PATH + "/SubmitIssueController";
 	public static final String URL_SUBMIT_ISSUE_PAGE = "/jsp/SubmitIssuePage.jsp";
 	public static final String URL_WELCOM_PAGE = "/jsp/WelcomePage.jsp";

@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package org.training.issuetracker.controllers;
 
 import java.io.IOException;
@@ -10,24 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @author Yury Kiryla
- *
- */
 public abstract class AbstractController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		performTask(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		performTask(req, resp);
 	}
 
@@ -35,12 +27,12 @@ public abstract class AbstractController extends HttpServlet {
 			throws ServletException, IOException;
 	
 	protected void forward(String url, HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException{
+			throws ServletException, IOException {
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 	
 	protected void errorForward(Throwable e, HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
+			throws ServletException, IOException {
 		request.setAttribute(Constants.KEY_ERROR, e.getMessage());
 		forward(Constants.URL_ERROR_PAGE, request, response);
 	}

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.issuetracker.model.dao.factories;
 
 import org.training.issuetracker.model.beans.Build;
@@ -16,10 +13,6 @@ import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
 import org.training.issuetracker.model.dao.UsersDAO;
 
-/**
- * @author Yury
- *
- */
 public interface AbstractFactory {
 	public DAO<Issue> getIssueDAO();
 	public DAO<Priority> getPriorityDAO();

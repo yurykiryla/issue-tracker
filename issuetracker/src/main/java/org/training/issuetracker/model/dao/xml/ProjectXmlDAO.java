@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.issuetracker.model.dao.xml;
 
 import java.util.List;
@@ -14,34 +11,17 @@ import org.training.issuetracker.model.dao.factories.DAOFactory;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
-/**
- * @author Yury
- *
- */
-public class ProjectXmlDAO extends XmlDAO<Project>{
-
-	/**
-	 * 
-	 */
+public class ProjectXmlDAO extends XmlDAO<Project> {
 	public ProjectXmlDAO() {
-		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.xml.XmlDAO#getFilename()
-	 */
 	@Override
 	protected String getFilename() {
-		// TODO Auto-generated method stub
 		return PROJECTS_XML_FILENAME;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.xml.XmlDAO#getOb(org.jdom2.Element)
-	 */
 	@Override
 	protected Project getOb(Element element) throws DAOException {
-		// TODO Auto-generated method stub
 		int id = getId(element);
 		String name = element.getChildText(KEY_NAME);
 		String description = element.getChildText(KEY_DESCRIPTION);
@@ -49,5 +29,4 @@ public class ProjectXmlDAO extends XmlDAO<Project>{
 		User manager = DAOFactory.getUserDAO().getOb(Integer.parseInt(element.getChildText(KEY_MANAGER_ID)));
 		return new Project(id, name, description, builds, manager);
 	}
-
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.issuetracker.model.dao.jdbc;
 
 import java.sql.PreparedStatement;
@@ -14,54 +11,37 @@ import org.training.issuetracker.model.beans.Beans;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 
-/**
- * @author Yury
- *
- */
 public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 	private DBConnection dbConnection = null;
 	protected ResultSet resultSet = null;
-	/**
-	 * 
-	 */
+	
 	public JdbcDAO() {
-		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.DAO#getOb(int)
-	 */
 	@Override
 	public T getOb(int id) throws DAOException {
-		// TODO Auto-generated method stub
-		try{
+		try {
 			resultSet = getResultSet(getRequestOb() + id);
-			if(resultSet != null && resultSet.next()){
+			if (resultSet != null && resultSet.next()) {
 				return getOb(resultSet);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new DAOException(e);
-		}finally{
+		} finally {
 			closeConnection();
 		}
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.DAO#getObs()
-	 */
 	@Override
 	public List<T> getObs() throws DAOException {
-		// TODO Auto-generated method stub
 		List<T> list = new ArrayList<>();
 		try {
 			resultSet = getResultSet(getRequestObs());
-			while(resultSet != null && resultSet.next()){
+			while (resultSet != null && resultSet.next()) {
 				list.add(getOb(resultSet));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new DAOException(e);
 		} finally {
 			closeConnection();
@@ -69,44 +49,30 @@ public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 		return list;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.training.issuetracker.model.dao.DAO#addOb(org.training.issuetracker.model.beans.Beans)
-	 */
 	@Override
 	public void addOb(T ob) throws DAOException {
-		// TODO Auto-generated method stub
 		try {
 			getPreparedStatement(ob).executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new DAOException(e);
 		}		
 	}
 
 	protected abstract String getRequestOb();
 	protected abstract String getRequestObs();
-	protected abstract T getOb(ResultSet resultSet) throws DAOException;
-	protected abstract PreparedStatement getPreparedStatement(T ob) throws DAOException;
+	protected abstract T getOb(ResultSet resultSet) throws DAOException, SQLException;
+	protected abstract PreparedStatement getPreparedStatement(T ob) throws DAOException, SQLException;
 	
-	protected PreparedStatement getPreparedStatement(String SQLRequest) throws DAOException{
+	protected PreparedStatement getPreparedStatement(String SQLRequest) 
+			throws DAOException, SQLException {
 		dbConnection = new DBConnection();
-		try {
-			return dbConnection.getConnection().prepareStatement(SQLRequest);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new DAOException(e);
-		}
+		return dbConnection.getConnection().prepareStatement(SQLRequest);
 	}
 	
-	protected ResultSet getResultSet(String SQLRequest) throws DAOException{
+	protected ResultSet getResultSet(String SQLRequest) throws DAOException, SQLException{
 		dbConnection = new DBConnection();
 		Statement statement = dbConnection.getStatement();
-		try {
-			return statement.executeQuery(SQLRequest);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new DAOException(e);
-		}
+		return statement.executeQuery(SQLRequest);
 	}
 	
 	protected void closeConnection() throws DAOException{
@@ -115,11 +81,14 @@ public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 				resultSet.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new DAOException(e);
 		}finally{
 			if(dbConnection != null){
-				dbConnection.close();
+				try {
+					dbConnection.close();
+				} catch (SQLException e) {
+					throw new DAOException(e);
+				}
 			}
 		}
 	}
