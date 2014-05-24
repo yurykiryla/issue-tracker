@@ -32,12 +32,12 @@
 				<table class="issues-list">
 					<thead>
 						<tr>
-							<th><a href="#">Id</a></th>
-							<th><a href="#">Priority</a></th>
-							<th><a href="#">Assignee</a></th>
-							<th><a href="#">Type</a></th>
-							<th><a href="#">Status</a></th>
-							<th><a href="#">Summary</a></th>
+							<th><a href="<%=Constants.URL_SORT_ISSUES_CONTROLLER%>id">Id</a></th>
+							<th><a href="<%=Constants.URL_SORT_ISSUES_CONTROLLER%>priority">Priority</a></th>
+							<th><a href="<%=Constants.URL_SORT_ISSUES_CONTROLLER%>assignee">Assignee</a></th>
+							<th><a href="<%=Constants.URL_SORT_ISSUES_CONTROLLER%>type">Type</a></th>
+							<th><a href="<%=Constants.URL_SORT_ISSUES_CONTROLLER%>status">Status</a></th>
+							<th><a href="<%=Constants.URL_SORT_ISSUES_CONTROLLER%>summary">Summary</a></th>
 						</tr>
 					</thead>
 					<c:forEach items="${issues }" var="issue">

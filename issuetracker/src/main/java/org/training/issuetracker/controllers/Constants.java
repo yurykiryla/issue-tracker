@@ -24,6 +24,7 @@ public class Constants {
 	public static final String KEY_PASSWORD = "password";
 	public static final String KEY_PRIORITY = "priority";
 	public static final String KEY_PROJECT = "project";
+	public static final String KEY_SORT = "sortRow";
 	public static final String KEY_STATUS = "status";
 	public static final String KEY_SUMMARY = "summary";
 	public static final String KEY_TYPE = "type";
@@ -34,6 +35,7 @@ public class Constants {
 	public static final String SUBMIT_ISSUE_PAGE_TITLE = "Submit Issue";
 	public static final String URL_ERROR_PAGE = "/jsp/ErrorPage.jsp";
 	public static final String URL_LOGOUT = CONTEXT_PATH + "/LogoutController";
+	public static final String URL_SORT_ISSUES_CONTROLLER = CONTEXT_PATH + "/SortIssuesController?" + KEY_SORT + "=";
 	public static final String URL_SUBMIT_ISSUE_CONTROLLER = CONTEXT_PATH + "/SubmitIssueController";
 	public static final String URL_SUBMIT_ISSUE_PAGE = "/jsp/SubmitIssuePage.jsp";
 	public static final String URL_WELCOM_PAGE = "/jsp/WelcomePage.jsp";

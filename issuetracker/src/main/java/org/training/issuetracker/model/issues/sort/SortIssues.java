@@ -25,7 +25,7 @@ public class SortIssues {
 		Collections.sort(issues);
 	}
 	
-	public static void sort(String key){
+	public static List<Issue> getSortedList(String key){
 		if(issues == null){
 			throw new RuntimeException();
 		}
@@ -36,8 +36,13 @@ public class SortIssues {
 			}else{
 				sortOrder = SortOrders.ASK;
 			}
+		}else{
+			sortOrder = SortOrders.ASK;
 		}
+		SortIssues.sortKey = sortKey;
 		Comparator<Issue> comparator = ComparatorFactory.getIssuesComparator(sortKey, sortOrder);
 		Collections.sort(issues, comparator);
+		
+		return issues;
 	}
 }

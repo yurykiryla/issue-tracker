@@ -187,6 +187,9 @@ public class User implements Beans, Comparable<User>{
 	@Override
 	public int compareTo(User o) {
 		// TODO Auto-generated method stub
+		if(o == null){
+			return 1;
+		}
 		return id - o.id;
 	}
 
