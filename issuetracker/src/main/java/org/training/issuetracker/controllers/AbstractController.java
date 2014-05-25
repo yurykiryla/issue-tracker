@@ -36,4 +36,8 @@ public abstract class AbstractController extends HttpServlet {
 		request.setAttribute(Constants.KEY_ERROR, e.getMessage());
 		forward(Constants.URL_ERROR_PAGE, request, response);
 	}
+	
+	protected static int getId(HttpServletRequest request, String key) {
+		return Integer.parseInt(request.getParameter(key));
+	}
 }

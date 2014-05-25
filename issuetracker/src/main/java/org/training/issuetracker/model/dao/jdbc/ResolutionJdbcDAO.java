@@ -30,10 +30,23 @@ public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Resolution ob)
+	protected PreparedStatement getPreparedStatementAddOb(Resolution ob)
 			throws DAOException, SQLException {
 		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_RESOLUTION);
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+		setCommonValues(ps, ob);
 		return ps;
+	}
+
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(Resolution ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_RESOLUTION);
+		setCommonValues(ps, ob);
+		ps.setInt(Constants.INDEX_ID_RESOLUTION, ob.getId());
+		return null;
+	}
+
+	private static void setCommonValues(PreparedStatement ps, Resolution ob) throws SQLException{
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 	}
 }

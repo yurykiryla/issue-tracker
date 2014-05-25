@@ -30,10 +30,23 @@ public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Priority ob)
+	protected PreparedStatement getPreparedStatementAddOb(Priority ob)
 			throws DAOException, SQLException {
 		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PRIORITY);
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+		setCommonValues(ps, ob);
 		return ps;
+	}
+
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(Priority ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_PRIORITY);
+		setCommonValues(ps, ob);
+		ps.setInt(Constants.INDEX_ID_PRIORITY, ob.getId());
+		return ps;
+	}
+	
+	private static void setCommonValues(PreparedStatement ps, Priority ob) throws SQLException{
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 	}
 }

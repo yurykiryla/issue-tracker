@@ -101,3 +101,57 @@ function changeBuild() {
 function changeAssignee() {
 	document.getElementById("assignedLabel").setAttribute("style", "color:inherit;");
 }
+
+function updateIssue() {
+	var statusSelectValue = document.getElementById("statusSelect").value;
+	
+	if (statusSelectValue == 6){
+		document.getElementById("changeIssueForm").submit();
+	}
+	
+	var valid = true;
+	
+	if (document.getElementById("summaryInput").value.length == 0) {
+		valid = false;
+		document.getElementById("summaryLabel").setAttribute("style", "color: red;");
+	}
+	
+	if (document.getElementById("descriptionInput").value.length == 0) {
+		valid = false;
+		document.getElementById("descriptionLabel").setAttribute("style", "color: red;");
+	}
+	
+	if (statusSelectValue == 4){
+		if (document.getElementById("resolutionSelect").value == 0) {
+			valid = false;
+			document.getElementById("resolutionLabel").setAttribute("style", "color: red;");
+		}
+	}
+	
+	if (statusSelectValue == 5) {
+		if (document.getElementById("resolutionSelect").value == 0) {
+			valid = false;
+			document.getElementById("resolutionLabel").setAttribute("style", "color: red;");
+		}
+	}
+	
+	if (valid) {
+		document.getElementById("changeIssueForm").submit();
+	} else {
+		document.getElementById("notValidForm").setAttribute("style", "color: red;");
+	}
+}
+
+function changeStatus() {
+	var statusSelect = document.getElementById("statusSelect");
+	var resolutionSelect = document.getElementById("resolutionSelect");
+	var notResolved = document.getElementById("notResolved");
+	if (statusSelect.value > 3) {
+		notResolved.style.display = "none";
+		resolutionSelect.style.display = "block";
+	} else {
+		resolutionSelect.style.display = "none";
+		notResolved.style.display = "block";
+		document.getElementById("resolutionLabel").setAttribute("style", "color:inherit;");
+	}
+}

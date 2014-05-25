@@ -43,15 +43,7 @@
 					<c:forEach items="${issues }" var="issue">
 						<tr class="issues-row">
 							<td class="id-tab">
-								<c:choose>
-									<c:when test="${user == null }">
-										<c:set var="idLink" value="#"></c:set>
-									</c:when>
-									<c:otherwise>
-										<c:set var="idLink" value="#"></c:set>
-									</c:otherwise>
-								</c:choose> 
-								<a href="${idLink }">${issue.id }</a></td>
+								<a href="<%=Constants.URL_CHANGE_ISSUE_CONTROLLER%>${issue.id}">${issue.id }</a></td>
 							<c:choose>
 								<c:when test="${issue.priority.id == 1 }">
 									<c:set var="priorityClass" value="priority-critical"></c:set>

@@ -30,10 +30,23 @@ public class TypeJdbcDAO extends JdbcDAO<Type> {
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Type ob)
+	protected PreparedStatement getPreparedStatementAddOb(Type ob)
 			throws DAOException, SQLException {
 		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_TYPE);
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+		setCommonValues(ps, ob);
 		return ps;
+	}
+	
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(Type ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_TYPE);
+		setCommonValues(ps, ob);
+		ps.setInt(Constants.INDEX_ID_TYPE, ob.getId());
+		return ps;
+	}
+
+	private static void setCommonValues(PreparedStatement ps, Type ob) throws SQLException{
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 	}
 }

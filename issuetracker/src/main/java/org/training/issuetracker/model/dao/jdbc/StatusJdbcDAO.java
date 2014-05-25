@@ -30,13 +30,17 @@ public class StatusJdbcDAO extends JdbcDAO<Status>{
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Status ob)
+	protected PreparedStatement getPreparedStatementAddOb(Status ob)
 			throws DAOException {
-		return null;
+		throw new DAOException(Constants.MESSAGE_UNSUPPORTED_OPERATION);
 	}
 
 	@Override
-	public void addOb(Status ob) throws DAOException {
-		throw new DAOException();
+	protected PreparedStatement getPreparedStatementChangeOb(Status ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_STATUS);
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+		ps.setInt(Constants.INDEX_ID_STATUS, ob.getId());
+		return ps;
 	}
 }

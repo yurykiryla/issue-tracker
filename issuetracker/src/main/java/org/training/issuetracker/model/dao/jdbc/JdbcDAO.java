@@ -52,16 +52,26 @@ public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 	@Override
 	public void addOb(T ob) throws DAOException {
 		try {
-			getPreparedStatement(ob).executeUpdate();
+			getPreparedStatementAddOb(ob).executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}		
 	}
 
+	@Override
+	public void changeOb(T ob) throws DAOException {
+		try {
+			getPreparedStatementChangeOb(ob).executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
+
 	protected abstract String getRequestOb();
 	protected abstract String getRequestObs();
 	protected abstract T getOb(ResultSet resultSet) throws DAOException, SQLException;
-	protected abstract PreparedStatement getPreparedStatement(T ob) throws DAOException, SQLException;
+	protected abstract PreparedStatement getPreparedStatementAddOb(T ob) throws DAOException, SQLException;
+	protected abstract PreparedStatement getPreparedStatementChangeOb(T ob) throws DAOException, SQLException;
 	
 	protected PreparedStatement getPreparedStatement(String SQLRequest) 
 			throws DAOException, SQLException {

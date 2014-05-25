@@ -42,9 +42,19 @@
     <servlet-class>org.training.issuetracker.controllers.AddIssueController</servlet-class>
   </servlet>
   <servlet>
-  	<display-name>SortIssuesController</display-name>
-  	<servlet-name>SortIssuesController</servlet-name>
-  	<servlet-class>org.training.issuetracker.controllers.SortIssuesController</servlet-class>
+    <display-name>SortIssuesController</display-name>
+    <servlet-name>SortIssuesController</servlet-name>
+    <servlet-class>org.training.issuetracker.controllers.SortIssuesController</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>ChangeIssueController</display-name>
+    <servlet-name>ChangeIssueController</servlet-name>
+    <servlet-class>org.training.issuetracker.controllers.ChangeIssueController</servlet-class>
+  </servlet>
+  <servlet>
+  	<display-name>UpdateIssueController</display-name>
+  	<servlet-name>UpdateIssueController</servlet-name>
+  	<servlet-class>org.training.issuetracker.controllers.UpdateIssueController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WelcomePageController</servlet-name>
@@ -67,14 +77,25 @@
     <url-pattern>/AddIssueController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>SortIssuesController</servlet-name>
-  	<url-pattern>/SortIssuesController</url-pattern>
+    <servlet-name>SortIssuesController</servlet-name>
+    <url-pattern>/SortIssuesController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ChangeIssueController</servlet-name>
+    <url-pattern>/ChangeIssueController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateIssueController</servlet-name>
+  	<url-pattern>/UpdateIssueController</url-pattern>
   </servlet-mapping>
   <filter-mapping>
     <filter-name>UsersControlFilter</filter-name>
     <servlet-name>SubmitIssueController</servlet-name>
     <servlet-name>AddIssueController</servlet-name>
+    <servlet-name>UpdateIssueController</servlet-name>
     <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
+    <url-pattern>/jsp/OperationResult.jsp</url-pattern>
+    <url-pattern>/jsp/ChangeIssuePage.jsp</url-pattern>
   </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

@@ -38,6 +38,11 @@ public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 		throw new DAOException(Constants.MESSAGE_UNSUPPORTED_OPERATION);
 	}
 
+	@Override
+	public void changeOb(T ob) throws DAOException {
+		throw new DAOException(Constants.MESSAGE_UNSUPPORTED_OPERATION);
+	}
+
 	protected int getId(Element element) {
 		return Integer.parseInt(element.getAttributeValue(Constants.KEY_ID));
 	}

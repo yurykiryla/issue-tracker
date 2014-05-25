@@ -40,12 +40,25 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Project ob)
+	protected PreparedStatement getPreparedStatementAddOb(Project ob)
 			throws DAOException, SQLException {
 		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PROJECT);
+		setCommonValues(ps, ob);
+		return ps;
+	}
+	
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(Project ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_PROJECT);
+		setCommonValues(ps, ob);
+		ps.setInt(INDEX_ID_PROJECT, ob.getId());
+		return ps;
+	}
+
+	private static void setCommonValues(PreparedStatement ps, Project ob) throws SQLException {
 		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 		ps.setString(INDEX_PROJECT_DESCRIPTION_INSERT, ob.getDescription());
 		ps.setInt(INDEX_MANAGER_ID_INSERT, ob.getManager().getId());
-		return ps;
 	}
 }

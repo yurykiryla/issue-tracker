@@ -1,9 +1,7 @@
-<%@page import="org.training.issuetracker.model.beans.Project"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="org.training.issuetracker.controllers.Constants"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +94,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><label id="assignedLabel">Assigned</label></td>
+					<td><label id="assignedLabel">Assignee</label></td>
 					<td>
 						<input type="text" id="notAssigned" value="Select Assigned status" readonly="readonly" style="display: block;">
 						<select name=<%=Constants.KEY_ASSIGNEE%> id="assignedSelect" style="display: none;" onchange="changeAssignee()">

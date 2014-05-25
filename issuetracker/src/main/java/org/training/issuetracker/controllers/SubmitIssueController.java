@@ -23,13 +23,13 @@ public class SubmitIssueController extends AbstractController {
 		try {
 			DAO<Status> statusDAO = DAOFactory.getStatusDAO();
 			Status[] statuses = new Status[2];
-			statuses[0] = statusDAO.getOb(1);
-			statuses[1] = statusDAO.getOb(2);
-			request.setAttribute("statuses", statuses);
-			request.setAttribute("types", DAOFactory.getTypeDAO().getObs());
-			request.setAttribute("priorities", DAOFactory.getPriorityDAO().getObs());
-			request.setAttribute("projects", DAOFactory.getProjectDAO().getObs());
-			request.setAttribute("users", DAOFactory.getUserDAO().getObs());
+			statuses[0] = statusDAO.getOb(Constants.ID_STATUS_NEW);
+			statuses[1] = statusDAO.getOb(Constants.ID_STATUS_ASSIGNED);
+			request.setAttribute(Constants.KEY_STATUSES, statuses);
+			request.setAttribute(Constants.KEY_TYPES, DAOFactory.getTypeDAO().getObs());
+			request.setAttribute(Constants.KEY_PRIORITIES, DAOFactory.getPriorityDAO().getObs());
+			request.setAttribute(Constants.KEY_PROJECTS, DAOFactory.getProjectDAO().getObs());
+			request.setAttribute(Constants.KEY_USERS, DAOFactory.getUserDAO().getObs());
 			forward(Constants.URL_SUBMIT_ISSUE_PAGE, request, response);
 		} catch (DAOException e) {
 			errorForward(e, request, response);

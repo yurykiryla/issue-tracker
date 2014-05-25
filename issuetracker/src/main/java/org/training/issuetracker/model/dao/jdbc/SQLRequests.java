@@ -189,7 +189,7 @@ public class SQLRequests {
 	public static final String SELECT_N_LAST_ISSUES = 
 			"SELECT * FROM "
 			+ "(SELECT issues.*, ROW_NUMBER() OVER() AS rownum "
-				+ "FROM issues ORDER BY create_date DESC) AS tmp "
+				+ "FROM issues ORDER BY id DESC) AS tmp "
 			+ "WHERE rownum <= ";
 	
 	public static final String SELECT_PRIORITIES = 
@@ -233,4 +233,29 @@ public class SQLRequests {
 	
 	public static final String SELECT_USERS = 
 			"SELECT * FROM users";
+	
+	public static final String UPDATE_ISSUE = 
+			"UPDATE issues SET "
+				+ "priority_id=?, assignee_id=?, type_id=?, status_id=?, summary=?, description=?, "
+				+ "project_id=?, build_found_id=?, create_date=?, created_by_id=?, modify_date=?, "
+				+ "modified_by_id=?, resolution_id=? "
+				+ "WHERE id=?";
+	
+	public static final String UPDATE_PRIORITY = 
+			"UPDATE priorities SET name=? WHERE id=?";
+	
+	public static final String UPDATE_PROJECT = 
+			"UPDATE projects SET name=?, description=?, manager_id=? WHERE id=?";
+	
+	public static final String UPDATE_RESOLUTION = 
+			"UPDATE resolutions SET name=? WHERE id=?";
+	
+	public static final String UPDATE_STATUS = 
+			"UPDATE statuses SET name=? WHERE id=?";
+	
+	public static final String UPDATE_TYPE = 
+			"UPDATE types SET name=? WHERE id=?";
+	
+	public static final String UPDATE_USER = 
+			"UPDATE users SET first_name=?, last_name=?, email_address=?, role=?, password=? WHERE id=?";
 }

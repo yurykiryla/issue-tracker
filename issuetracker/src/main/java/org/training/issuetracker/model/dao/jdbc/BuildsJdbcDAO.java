@@ -58,7 +58,7 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Build ob)
+	protected PreparedStatement getPreparedStatementAddOb(Build ob)
 			throws DAOException, SQLException {
 		if (projectId != 0) {
 			PreparedStatement ps = getPreparedStatement(INSERT_BUILD);
@@ -73,5 +73,11 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 	public void addBuild(Build build, int projectId) throws DAOException {
 		this.projectId = projectId;
 		super.addOb(build);
+	}
+
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(Build ob)
+			throws DAOException, SQLException {
+		throw new DAOException(Constants.MESSAGE_UNSUPPORTED_OPERATION);
 	}
 }

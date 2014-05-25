@@ -59,14 +59,27 @@ public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(User ob)
+	protected PreparedStatement getPreparedStatementAddOb(User ob)
 			throws DAOException, SQLException {
 		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_USER);
+		setCommonValues(ps, ob);
+		return ps;
+	}
+	
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(User ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(UPDATE_USER);
+		setCommonValues(ps, ob);
+		ps.setInt(INDEX_ID_USER, ob.getId());
+		return ps;
+	}
+
+	private static void setCommonValues(PreparedStatement ps, User ob) throws SQLException{
 		ps.setString(INDEX_FIRST_NAME_INSERT, ob.getFirstName());
 		ps.setString(INDEX_LAST_NAME_INSERT, ob.getLastName());
 		ps.setString(INDEX_EMAIL_ADDRESS_INSERT, ob.getEmailAddress());
 		ps.setString(INDEX_ROLE_INSERT, ob.getRole().toString());
 		ps.setString(INDEX_PASSWORD_INSERT, ob.getPassword().getEncryptedPassword());
-		return ps;
 	}
 }

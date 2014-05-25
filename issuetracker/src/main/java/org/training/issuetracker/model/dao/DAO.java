@@ -9,4 +9,5 @@ public interface DAO<T extends Beans> {
 	public T getOb(int id) throws DAOException;
 	public List<T> getObs() throws DAOException;
 	public void addOb(T ob) throws DAOException;
+	public void changeOb(T ob) throws DAOException;
 }

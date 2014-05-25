@@ -94,9 +94,23 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatement(Issue ob)
+	protected PreparedStatement getPreparedStatementAddOb(Issue ob)
 			throws DAOException, SQLException {
 		PreparedStatement ps = getPreparedStatement(INSERT_ISSUE);
+		setCommonValues(ps, ob);
+		return ps;
+	}
+
+	@Override
+	protected PreparedStatement getPreparedStatementChangeOb(Issue ob)
+			throws DAOException, SQLException {
+		PreparedStatement ps = getPreparedStatement(UPDATE_ISSUE);
+		setCommonValues(ps, ob);
+		ps.setInt(INDEX_ID_ISSUE, ob.getId());
+		return ps;
+	}
+	
+	private static void setCommonValues(PreparedStatement ps, Issue ob) throws SQLException{
 		ps.setInt(INDEX_PRIORITY_ID_INSERT, ob.getPriority().getId());
 		User assignee = ob.getAssignee();
 		if (assignee != null) {
@@ -125,6 +139,5 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 		} else {
 			ps.setNull(INDEX_RESOLUTION_ID_INSERT, Types.INTEGER);
 		}
-		return ps;
 	}
 }

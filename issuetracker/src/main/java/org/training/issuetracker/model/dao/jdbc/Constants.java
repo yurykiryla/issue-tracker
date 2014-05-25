@@ -15,7 +15,14 @@ public class Constants {
 	public static final int INDEX_EMAIL_ADDRESS_SELECT = 4;
 	public static final int INDEX_FIRST_NAME_INSERT = 1;
 	public static final int INDEX_FIRST_NAME_SELECT = 2;
+	public static final int INDEX_ID_ISSUE = 14;
+	public static final int INDEX_ID_PRIORITY = 2;
+	public static final int INDEX_ID_PROJECT = 3;
+	public static final int INDEX_ID_RESOLUTION = 2;
 	public static final int INDEX_ID_SELECT = 1;
+	public static final int INDEX_ID_STATUS = 2;
+	public static final int INDEX_ID_TYPE = 2;
+	public static final int INDEX_ID_USER = 6;
 	public static final int INDEX_ISSUE_DESCRIPTION_INSERT = 6;
 	public static final int INDEX_ISSUE_DESCRIPTION_SELECT = 7;
 	public static final int INDEX_ISSUE_PROJECT_ID_INSERT = 7;

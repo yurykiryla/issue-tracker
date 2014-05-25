@@ -45,14 +45,11 @@ public class AddIssueController extends AbstractController {
 			Issue issue = new Issue(priority, assignee, type, status, summary, description, project, 
 					buildFound, createdDate, createdBy);
 			DAOFactory.getIssueDAO().addOb(issue);
-			forward(Constants.URL_WELCOM_PAGE_CONTROLLER, request, response);
+			request.setAttribute(Constants.KEY_MESSAGE, Constants.MESSAGE_ADD_ISSUE);
+			forward(Constants.URL_OPERATION_RESULT_PAGE, request, response);
 		} catch (DAOException e) {
 			errorForward(e, request, response);
 		}
 		
-	}
-
-	private static int getId(HttpServletRequest request, String key) {
-		return Integer.parseInt(request.getParameter(key));
 	}
 }
