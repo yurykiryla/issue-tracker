@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td><label id="descriptionLabel">Description</label></td>
-					<td><textarea rows="5" cols="50" name=<%=Constants.KEY_DESCRIPTION%> id="descriptionInput" onchange="changeDescription()"></textarea></td>
+					<td><textarea rows="5" cols="40" name=<%=Constants.KEY_DESCRIPTION%> id="descriptionInput" onchange="changeDescription()"></textarea></td>
 				</tr>
 				<tr>
 					<td><label id="statusLabel">Status</label></td>
@@ -108,12 +108,12 @@
 					</td>
 				</tr>
 			</table>
-			<div id="notValidForm" style="display: none;">
+			<div id="notValidForm" style="display: none;" class="validation-message">
 				Please fill in all fields.
 			</div>
 			<div>
-				<input type="button" value="Add" onclick="addIssueValidation()"/>
-				<input type="button" value="Back" onclick="history.back()"/>
+				<input type="button" value="Add" onclick="addIssueValidation()" class="sub-iss-add-button"/>
+				<input type="button" value="Back" onclick="history.back()" class="sub-iss-back-button"/>
 			</div>
 		</form>
 	</div>

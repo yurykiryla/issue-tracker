@@ -1,21 +1,16 @@
 html {
 	background: gray;
+	height: 100%;
 }
 
 body {
 	width: 800px;
-	padding-left: 50%;
-}
-
-.main {
-	width: 800px;
-	margin-left: -400px;
+	margin: 0px auto;
 	background: #1f8e81;
 	border: 1px solid gray;
-}
-
-html,body,.main {
-	height: 100%;
+	height:auto !important;
+	height:100%;
+  	min-height:100%;
 }
 
 .logo {
@@ -65,12 +60,79 @@ html,body,.main {
 	border-radius: 5px;
 }
 
-.login-button,.submit-issue-button,.search-button {
+.operation-result-message, .error-message {
+	margin: 20px;
+}
+
+.login-button,.submit-issue-button,.search-button, .back-button, .ch-iss-update-button, 
+.ch-iss-back-button, .sub-iss-add-button, .sub-iss-back-button, .operation-result-message button {
 	background: black;
 	color: white;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+.back-button {
+	margin-left: 363px;
+}
+
+.ch-iss-update-button, .ch-iss-back-button, .sub-iss-add-button, .sub-iss-back-button {
+	margin-top: 5px;
+}
+
+.sub-iss-back-button {
+	margin-left: 294px;
+}
+
+.ch-iss-back-button {
+	margin-left: 278px;
+}
+
+.change-issue, .submit-issue {
+	margin: 20px;
+}
+
+.change-issue-table, .submit-issue-table {
+	border-collapse: collapse;
+}
+
+.validation-message {
+	margin: 5px;
+}
+
+.change-issue-table td, .submit-issue-table td {
+	padding: 3px 5px;
+	background-color: #636f6e;
+}
+
+.change-issue-table input, .change-issue-table textarea, .submit-issue-table input, .submit-issue-table textarea {
+	width: 300px
+}
+
+.change-issue-table select, .submit-issue-table select {
+	width: 306px;
+}
+
+.view-issue-table {
+	margin: 20px;
+	width: 400px;
+	border-collapse: collapse;
+	border: 2px solid;
+}
+
+.view-issue-table td{
+	border: 1px solid black;
+	padding: 0px 5px;
+}
+
+ .view-issue-value{
+ 	background-color: white;
+ }
+
+.view-issue-header, .change-issue-header {
+	background-color: #636f6e;
+	
 }
 
 .issues-list {

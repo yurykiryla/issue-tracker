@@ -55,10 +55,10 @@
 					<td>
 						<c:choose>
 							<c:when test="${issue.status.id == 5}">
-								<textarea rows="5" cols="50" readonly="readonly">${issue.description}</textarea>
+								<textarea rows="5" cols="40" readonly="readonly">${issue.description}</textarea>
 							</c:when>
 							<c:otherwise>
-								<textarea rows="5" cols="50" name=<%=Constants.KEY_DESCRIPTION%> id="descriptionInput" onchange="changeDescription()">${issue.description}</textarea>
+								<textarea rows="5" cols="40" name=<%=Constants.KEY_DESCRIPTION%> id="descriptionInput" onchange="changeDescription()">${issue.description}</textarea>
 							</c:otherwise>
 						</c:choose>
 					</td>
@@ -276,12 +276,12 @@
 					</td>
 				</tr>
 			</table>
-			<div id="notValidForm" style="display: none;">
+			<div id="notValidForm" style="display: none;" class="validation-message">
 				Please fill in all fields.
 			</div>
 			<div>
-				<input type="button" value="Update" onclick="updateIssue()"/>
-				<input type="button" value="Back" onclick="history.back()"/>
+				<input type="button" value="Update" onclick="updateIssue()" class="ch-iss-update-button"/>
+				<input type="button" value="Back" onclick="history.back()"  class="ch-iss-back-button"/>
 			</div>
 		</form>
 	</div>

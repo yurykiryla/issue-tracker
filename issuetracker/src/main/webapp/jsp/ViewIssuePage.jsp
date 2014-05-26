@@ -17,71 +17,71 @@
 		<jsp:include page="userMenu.jsp"></jsp:include>
 		<table class="view-issue-table">
 			<tr>
-				<td><label>Id</label></td>
-				<td>${issue.id}</td>
+				<td class="view-issue-header"><label>Id</label></td>
+				<td class="view-issue-value">${issue.id}</td>
 			</tr>
 			<tr>
-				<td><label>Create Date</label></td>
-				<td>${issue.createDate}</td>
+				<td class="view-issue-header"><label>Create Date</label></td>
+				<td class="view-issue-value">${issue.createDate}</td>
 			</tr>
 			<tr>
-				<td><label>Created By</label></td>
-				<td>${issue.createdBy}</td>
+				<td class="view-issue-header"><label>Created By</label></td>
+				<td class="view-issue-value">${issue.createdBy}</td>
 			</tr>
 			<c:if test="${issue.modifyDate != null }">
 				<tr>
-					<td><label>Modify Date</label></td>
-					<td>${issue.modifyDate}</td>
+					<td class="view-issue-header"><label>Modify Date</label></td>
+					<td class="view-issue-value">${issue.modifyDate}</td>
 				</tr>
 			</c:if>
 			<c:if test="${issue.modifiedBy != null }">
 				<tr>
-					<td><label>Modified By</label></td>
-					<td>${issue.modifiedBy}</td>
+					<td class="view-issue-header"><label>Modified By</label></td>
+					<td class="view-issue-value">${issue.modifiedBy}</td>
 				</tr>
 			</c:if>
 			<tr>
-				<td><label>Summary</label></td>
-				<td>${issue.summary}</td>
+				<td class="view-issue-header"><label>Summary</label></td>
+				<td class="view-issue-value">${issue.summary}</td>
 			</tr>
 			<tr>
-				<td><label>Description</label></td>
-				<td>${issue.description}</td>
+				<td class="view-issue-header"><label>Description</label></td>
+				<td class="view-issue-value">${issue.description}</td>
 			</tr>
 			<tr>
-				<td><label>Status</label></td>
-				<td>${issue.status}</td>
+				<td class="view-issue-header"><label>Status</label></td>
+				<td class="view-issue-value">${issue.status}</td>
 			</tr>
 			<c:if test="${issue.resolution != null }">
 				<tr>
-					<td><label>Resolution</label></td>
-					<td>${issue.resolution}</td>
+					<td class="view-issue-header"><label>Resolution</label></td>
+					<td class="view-issue-value">${issue.resolution}</td>
 				</tr>
 			</c:if>
 			<tr>
-				<td><label>Type</label></td>
-				<td>${issue.type}</td>
+				<td class="view-issue-header"><label>Type</label></td>
+				<td class="view-issue-value">${issue.type}</td>
 			</tr>
 			<tr>
-				<td><label>Priority</label></td>
-				<td>${issue.priority}</td>
+				<td class="view-issue-header"><label>Priority</label></td>
+				<td class="view-issue-value">${issue.priority}</td>
 			</tr>
 			<tr>
-				<td><label>Project</label></td>
-				<td>${issue.project}</td>
+				<td class="view-issue-header"><label>Project</label></td>
+				<td class="view-issue-value">${issue.project}</td>
 			</tr>
 			<tr>
-				<td><label>Build found</label></td>
-				<td>${issue.buildFound}</td>
+				<td class="view-issue-header"><label>Build found</label></td>
+				<td class="view-issue-value">${issue.buildFound}</td>
 			</tr>
 			<c:if test="${issue.assignee != null }">
 				<tr>
-					<td><label>Assignee</label></td>
-					<td>${issue.assignee}</td>
+					<td class="view-issue-header"><label>Assignee</label></td>
+					<td class="view-issue-value">${issue.assignee}</td>
 				</tr>
 			</c:if>
 		</table>
-		<input type="button" value="Back" onclick="history.back()"/>
+		<button onclick="history.back()" class="back-button">Back</button>
 	</div>
 </body>
 </html>
