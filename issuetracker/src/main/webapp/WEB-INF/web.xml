@@ -52,9 +52,9 @@
     <servlet-class>org.training.issuetracker.controllers.ChangeIssueController</servlet-class>
   </servlet>
   <servlet>
-  	<display-name>UpdateIssueController</display-name>
-  	<servlet-name>UpdateIssueController</servlet-name>
-  	<servlet-class>org.training.issuetracker.controllers.UpdateIssueController</servlet-class>
+    <display-name>UpdateIssueController</display-name>
+    <servlet-name>UpdateIssueController</servlet-name>
+    <servlet-class>org.training.issuetracker.controllers.UpdateIssueController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WelcomePageController</servlet-name>
@@ -85,8 +85,8 @@
     <url-pattern>/ChangeIssueController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>UpdateIssueController</servlet-name>
-  	<url-pattern>/UpdateIssueController</url-pattern>
+    <servlet-name>UpdateIssueController</servlet-name>
+    <url-pattern>/UpdateIssueController</url-pattern>
   </servlet-mapping>
   <filter-mapping>
     <filter-name>UsersControlFilter</filter-name>
@@ -100,4 +100,9 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <resource-ref>
+    <res-ref-name>jdbc/derbydb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>
