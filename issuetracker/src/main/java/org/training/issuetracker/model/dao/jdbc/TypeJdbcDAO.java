@@ -9,44 +9,42 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class TypeJdbcDAO extends JdbcDAO<Type> {
 
-	public TypeJdbcDAO() {
-	}
-
 	@Override
-	protected String getRequestOb() {
+	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_TYPE_BY_ID;
 	}
 
 	@Override
-	protected String getRequestObs() {
+	protected String getRequestGetObs() throws DAOException {
 		return SQLRequests.SELECT_TYPES;
 	}
 
 	@Override
-	protected Type getOb(ResultSet resultSet) throws DAOException, SQLException {
-		int id = resultSet.getInt(Constants.INDEX_ID_SELECT);
-		String name = resultSet.getString(Constants.INDEX_NAME_SELECT);
+	protected Type getOb(ResultSet rs) throws DAOException, SQLException {
+		int id = rs.getInt(Constants.INDEX_ID_SELECT);
+		String name = rs.getString(Constants.INDEX_NAME_SELECT);
 		return new Type(id, name);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementAddOb(Type ob)
-			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_TYPE);
-		setCommonValues(ps, ob);
-		return ps;
+	protected String getRequestAddOb() throws DAOException {
+		return SQLRequests.INSERT_TYPE;
 	}
-	
+
 	@Override
-	protected PreparedStatement getPreparedStatementChangeOb(Type ob)
+	protected PreparedStatement getFilledPS(PreparedStatement ps, Type ob)
 			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_TYPE);
-		setCommonValues(ps, ob);
-		ps.setInt(Constants.INDEX_ID_TYPE, ob.getId());
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 		return ps;
 	}
 
-	private static void setCommonValues(PreparedStatement ps, Type ob) throws SQLException{
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+	@Override
+	protected String getRequestChangeOb() throws DAOException {
+		return SQLRequests.UPDATE_TYPE;
+	}
+
+	@Override
+	protected int getChangedObId() throws DAOException {
+		return Constants.INDEX_ID_TYPE;
 	}
 }

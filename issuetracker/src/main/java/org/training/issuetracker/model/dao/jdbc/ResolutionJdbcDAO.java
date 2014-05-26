@@ -9,44 +9,42 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 
-	public ResolutionJdbcDAO() {
-	}
-
 	@Override
-	protected String getRequestOb() {
+	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_RESOLUTION_BY_ID;
 	}
 
 	@Override
-	protected String getRequestObs() {
+	protected String getRequestGetObs() throws DAOException {
 		return SQLRequests.SELECT_RESOLUTIONS;
 	}
 
 	@Override
-	protected Resolution getOb(ResultSet resultSet) throws DAOException, SQLException {
-		int id = resultSet.getInt(Constants.INDEX_ID_SELECT);
-		String name = resultSet.getString(Constants.INDEX_NAME_SELECT);
+	protected Resolution getOb(ResultSet rs) throws DAOException, SQLException {
+		int id = rs.getInt(Constants.INDEX_ID_SELECT);
+		String name = rs.getString(Constants.INDEX_NAME_SELECT);
 		return new Resolution(id, name);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementAddOb(Resolution ob)
+	protected String getRequestAddOb() throws DAOException {
+		return SQLRequests.INSERT_RESOLUTION;
+	}
+
+	@Override
+	protected PreparedStatement getFilledPS(PreparedStatement ps, Resolution ob)
 			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_RESOLUTION);
-		setCommonValues(ps, ob);
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 		return ps;
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementChangeOb(Resolution ob)
-			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_RESOLUTION);
-		setCommonValues(ps, ob);
-		ps.setInt(Constants.INDEX_ID_RESOLUTION, ob.getId());
-		return null;
+	protected String getRequestChangeOb() throws DAOException {
+		return SQLRequests.UPDATE_RESOLUTION;
 	}
 
-	private static void setCommonValues(PreparedStatement ps, Resolution ob) throws SQLException{
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+	@Override
+	protected int getChangedObId() {
+		return Constants.INDEX_ID_RESOLUTION;
 	}
 }

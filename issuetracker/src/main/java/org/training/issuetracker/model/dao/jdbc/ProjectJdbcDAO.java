@@ -16,49 +16,47 @@ import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 public class ProjectJdbcDAO extends JdbcDAO<Project> {
 
-	public ProjectJdbcDAO() {
-	}
-
 	@Override
-	protected String getRequestOb() {
+	protected String getRequestGetObById() throws DAOException {
 		return SELECT_PROJECT_BY_ID;
 	}
 
 	@Override
-	protected String getRequestObs() {
+	protected String getRequestGetObs() throws DAOException {
 		return SELECT_PROJECTS;
 	}
 
 	@Override
-	protected Project getOb(ResultSet resultSet) throws DAOException, SQLException {
-		int id = resultSet.getInt(INDEX_ID_SELECT);
-		String name = resultSet.getString(INDEX_NAME_SELECT);
-		String description = resultSet.getString(INDEX_PROJECT_DESCRIPTION_SELECT);
+	protected Project getOb(ResultSet rs) throws DAOException, SQLException {
+		int id = rs.getInt(INDEX_ID_SELECT);
+		String name = rs.getString(INDEX_NAME_SELECT);
+		String description = rs.getString(INDEX_PROJECT_DESCRIPTION_SELECT);
 		List<Build> builds = DAOFactory.getBuildsDAO().getBuilds(id);
-		User manager = DAOFactory.getUserDAO().getOb(resultSet.getInt(INDEX_MANAGER_ID_SELECT));
+		User manager = DAOFactory.getUserDAO().getOb(rs.getInt(INDEX_MANAGER_ID_SELECT));
 		return new Project(id, name, description, builds, manager);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementAddOb(Project ob)
-			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PROJECT);
-		setCommonValues(ps, ob);
-		return ps;
+	protected String getRequestAddOb() throws DAOException {
+		return INSERT_PROJECT;
 	}
-	
+
 	@Override
-	protected PreparedStatement getPreparedStatementChangeOb(Project ob)
+	protected PreparedStatement getFilledPS(PreparedStatement ps, Project ob)
 			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_PROJECT);
-		setCommonValues(ps, ob);
-		ps.setInt(INDEX_ID_PROJECT, ob.getId());
+		ps.setString(INDEX_NAME_INSERT, ob.getName());
+		ps.setString(INDEX_PROJECT_DESCRIPTION_INSERT, ob.getDescription());
+		ps.setInt(INDEX_MANAGER_ID_INSERT, ob.getManager().getId());
 		return ps;
 	}
 
-	private static void setCommonValues(PreparedStatement ps, Project ob) throws SQLException {
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
-		ps.setString(INDEX_PROJECT_DESCRIPTION_INSERT, ob.getDescription());
-		ps.setInt(INDEX_MANAGER_ID_INSERT, ob.getManager().getId());
+	@Override
+	protected String getRequestChangeOb() throws DAOException {
+		return UPDATE_PROJECT;
+	}
+
+	@Override
+	protected int getChangedObId() {
+		return INDEX_ID_PROJECT;
 	}
 }

@@ -11,13 +11,14 @@ public class Constants {
 	public static final int INDEX_CREATE_DATE_SELECT = 10;
 	public static final int INDEX_CREATED_BY_ID_INSERT = 10;
 	public static final int INDEX_CREATED_BY_ID_SELECT = 11;
+	public static final int INDEX_EMAIL_ADDRESS_FIND = 1;
 	public static final int INDEX_EMAIL_ADDRESS_INSERT = 3;
 	public static final int INDEX_EMAIL_ADDRESS_SELECT = 4;
 	public static final int INDEX_FIRST_NAME_INSERT = 1;
 	public static final int INDEX_FIRST_NAME_SELECT = 2;
 	public static final int INDEX_ID_ISSUE = 14;
 	public static final int INDEX_ID_PRIORITY = 2;
-	public static final int INDEX_ID_PROJECT = 3;
+	public static final int INDEX_ID_PROJECT = 4;
 	public static final int INDEX_ID_RESOLUTION = 2;
 	public static final int INDEX_ID_SELECT = 1;
 	public static final int INDEX_ID_STATUS = 2;
@@ -53,5 +54,6 @@ public class Constants {
 	public static final int INDEX_SUMMARY_SELECT = 6;
 	public static final int INDEX_TYPE_ID_INSERT = 3;
 	public static final int INDEX_TYPE_ID_SELECT = 4;
+	public static final String KEY_DEFAULT_SORT = "create_date";
 	public static final String MESSAGE_UNSUPPORTED_OPERATION = "Unsupported operation";
 }

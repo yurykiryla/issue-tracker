@@ -102,4 +102,11 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 		}
 		return issues;
 	}
+
+	@Override
+	public List<Issue> getSortedIssues(User user, int n, String key)
+			throws DAOException {
+		throw new DAOException(MESSAGE_UNSUPPORTED_OPERATION);
+	}
+	
 }

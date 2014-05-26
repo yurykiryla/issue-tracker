@@ -4,6 +4,6 @@
                maxActive="50" maxIdle="30" maxWait="10000"
                username="" password="" 
                driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
-               url="jdbc:derby:e:/URY/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/issuetracker/WEB-INF/classes/projectdb"/>
- 
+               url="jdbc:derby:e:/Epam/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/issuetracker/WEB-INF/classes/projectdb">
+ </Resource>
 </Context>

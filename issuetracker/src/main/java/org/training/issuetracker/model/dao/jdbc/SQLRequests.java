@@ -164,72 +164,58 @@ public class SQLRequests {
 				+ "VALUES (?,?,?,?,?)";
 	
 	public static final String SELECT_BUILD_BY_ID = 
-			"SELECT * FROM builds WHERE id=";
+			"SELECT * FROM builds WHERE id=?";
 	
 	public static final String SELECT_BUILDS = 
-			"SELECT * FROM builds WHERE project_id=";
+			"SELECT * FROM builds";
 	
 	public static final String SELECT_BUILDS_BY_PROJECT_ID = 
-			"SELECT * FROM builds WHERE project_id=";
+			"SELECT * FROM builds WHERE project_id=?";
 	
 	public static final String SELECT_ISSUE_BY_ID = 
-			"SELECT * FROM issues WHERE id=";
+			"SELECT * FROM issues WHERE id=?";
 	
 	public static final String SELECT_ISSUES = 
 			"SELECT * FROM issues";
 	
-	public static final String SELECT_N_ASSIGNED_ISSUES_1 = 
-			"SELECT * FROM "
-			+ "(SELECT issues.*, ROW_NUMBER() OVER() AS rownum "
-				+ "FROM issues WHERE assignee_id=";
-	
-	public static final String SELECT_N_ASSIGNED_ISSUES_2 = 
-			") AS tmp WHERE rownum <= ";
-	
-	public static final String SELECT_N_LAST_ISSUES = 
-			"SELECT * FROM "
-			+ "(SELECT issues.*, ROW_NUMBER() OVER() AS rownum "
-				+ "FROM issues ORDER BY id DESC) AS tmp "
-			+ "WHERE rownum <= ";
+	public static final String SELECT_SORTED_ISSUES = 
+			"SELECT * FROM issues ORDER BY ";
 	
 	public static final String SELECT_PRIORITIES = 
 			"SELECT * FROM priorities";
 	
 	public static final String SELECT_PRIORITY_BY_ID = 
-			"SELECT * FROM priorities WHERE id=";
+			"SELECT * FROM priorities WHERE id=?";
 	
 	public static final String SELECT_PROJECT_BY_ID = 
-			"SELECT * FROM projects WHERE id=";
+			"SELECT * FROM projects WHERE id=?";
 	
 	public static final String SELECT_PROJECTS = 
 			"SELECT * FROM projects";
 	
 	public static final String SELECT_RESOLUTION_BY_ID = 
-			"SELECT * FROM resolutions WHERE id=";
+			"SELECT * FROM resolutions WHERE id=?";
 	
 	public static final String SELECT_RESOLUTIONS = 
 			"SELECT * FROM resolutions";
 	
 	public static final String SELECT_STATUS_BY_ID = 
-			"SELECT * FROM statuses WHERE id=";
+			"SELECT * FROM statuses WHERE id=?";
 	
 	public static final String SELECT_STATUSES = 
 			"SELECT * FROM statuses";
 	
 	public static final String SELECT_TYPE_BY_ID = 
-			"SELECT * FROM types WHERE id=";
+			"SELECT * FROM types WHERE id=?";
 	
 	public static final String SELECT_TYPES = 
 			"SELECT * FROM types";
 	
 	public static final String SELECT_USER_BY_ID = 
-			"SELECT * FROM users WHERE id=";
+			"SELECT * FROM users WHERE id=?";
 	
-	public static final String SELECT_USER_BY_EMAIL_1 = 
-			"SELECT * FROM users WHERE CAST(email_address AS VARCHAR(32672))='";
-	
-	public static final String SELECT_USER_BY_EMAIL_2 = 
-			"'";
+	public static final String SELECT_USER_BY_EMAIL = 
+			"SELECT * FROM users WHERE CAST(email_address AS VARCHAR(32672))=?";
 	
 	public static final String SELECT_USERS = 
 			"SELECT * FROM users";

@@ -8,4 +8,5 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public interface IssuesDAO {
 	public List<Issue> getIssues(User user, int n) throws DAOException;
+	public List<Issue> getSortedIssues(User user, int n, String key) throws DAOException;
 }

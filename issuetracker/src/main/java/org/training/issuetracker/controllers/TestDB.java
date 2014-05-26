@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,6 +55,8 @@ public class TestDB extends AbstractController {
 			if(rs.next()){
 				out.println(rs.getString(2));
 			}
+			
+			
 			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

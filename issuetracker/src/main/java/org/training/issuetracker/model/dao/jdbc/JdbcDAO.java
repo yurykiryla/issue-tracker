@@ -1,5 +1,6 @@
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,28 +8,37 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 import org.training.issuetracker.model.beans.Beans;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
-	private DBConnection dbConnection = null;
-	protected ResultSet resultSet = null;
+	@Resource(name="jdbc/derbydb")
+	protected DataSource ds;
 	
 	public JdbcDAO() {
 	}
 
 	@Override
 	public T getOb(int id) throws DAOException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		try {
-			resultSet = getResultSet(getRequestOb() + id);
-			if (resultSet != null && resultSet.next()) {
-				return getOb(resultSet);
+			con = ds.getConnection();
+			ps = con.prepareStatement(getRequestGetObById());
+			ps.setInt(Constants.INDEX_ID_SELECT, id);
+			rs = ps.executeQuery();
+			if (rs != null && rs.next()) {
+				return getOb(rs);
 			}
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection();
+			closeConnection(rs, ps, con);
 		}
 		return null;
 	}
@@ -36,70 +46,92 @@ public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 	@Override
 	public List<T> getObs() throws DAOException {
 		List<T> list = new ArrayList<>();
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
 		try {
-			resultSet = getResultSet(getRequestObs());
-			while (resultSet != null && resultSet.next()) {
-				list.add(getOb(resultSet));
+			con = ds.getConnection();
+			st = con.createStatement();
+			rs = st.executeQuery(getRequestGetObs());
+			while (rs != null && rs.next()) {
+				list.add(getOb(rs));
 			}
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection();
+			closeConnection(rs, st, con);
 		}
 		return list;
 	}
 	
 	@Override
 	public void addOb(T ob) throws DAOException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		try {
-			getPreparedStatementAddOb(ob).executeUpdate();
+			con = ds.getConnection();
+			ps = con.prepareStatement(getRequestAddOb());
+			ps = getFilledPS(ps, ob);
+			ps.executeUpdate();			
 		} catch (SQLException e) {
 			throw new DAOException(e);
-		}		
+		} finally {
+			closeConnection(ps, con);
+		}
 	}
 
 	@Override
 	public void changeOb(T ob) throws DAOException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		try {
-			getPreparedStatementChangeOb(ob).executeUpdate();
+			con = ds.getConnection();
+			ps = con.prepareStatement(getRequestChangeOb());
+			ps = getFilledPS(ps, ob);
+			ps.setInt(getChangedObId(), ob.getId());
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			throw new DAOException(e);
+		} finally {
+			closeConnection(ps, con);
 		}
 	}
 
-	protected abstract String getRequestOb();
-	protected abstract String getRequestObs();
-	protected abstract T getOb(ResultSet resultSet) throws DAOException, SQLException;
-	protected abstract PreparedStatement getPreparedStatementAddOb(T ob) throws DAOException, SQLException;
-	protected abstract PreparedStatement getPreparedStatementChangeOb(T ob) throws DAOException, SQLException;
+	protected abstract String getRequestGetObById() throws DAOException;
+	protected abstract String getRequestGetObs() throws DAOException;
+	protected abstract T getOb(ResultSet rs) throws DAOException, SQLException;
+	protected abstract String getRequestAddOb() throws DAOException;
+	protected abstract PreparedStatement getFilledPS(PreparedStatement ps, T ob) throws DAOException, SQLException;
+	protected abstract String getRequestChangeOb() throws DAOException;
+	protected abstract int getChangedObId() throws DAOException;
 	
-	protected PreparedStatement getPreparedStatement(String SQLRequest) 
-			throws DAOException, SQLException {
-		dbConnection = new DBConnection();
-		return dbConnection.getConnection().prepareStatement(SQLRequest);
-	}
-	
-	protected ResultSet getResultSet(String SQLRequest) throws DAOException, SQLException{
-		dbConnection = new DBConnection();
-		Statement statement = dbConnection.getStatement();
-		return statement.executeQuery(SQLRequest);
-	}
-	
-	protected void closeConnection() throws DAOException{
-		try{
-			if(resultSet != null){
-				resultSet.close();
+	protected static void closeConnection(Statement st, Connection con) throws DAOException{
+		try {
+			if (st != null) {
+				st.close();
 			}
 		} catch (SQLException e) {
 			throw new DAOException(e);
-		}finally{
-			if(dbConnection != null){
-				try {
-					dbConnection.close();
-				} catch (SQLException e) {
-					throw new DAOException(e);
+		} finally {
+			try{
+				if (con != null){
+					con.close();
 				}
+			} catch (SQLException e) {
+				throw new DAOException(e);
 			}
+		}
+	}
+	
+	protected static void closeConnection(ResultSet rs, Statement st, Connection con) throws DAOException{
+		try{
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			closeConnection(st, con);
 		}
 	}
 }

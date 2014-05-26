@@ -9,44 +9,42 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 
-	public PriorityJdbcDAO() {
-	}
-
 	@Override
-	protected String getRequestOb() {
+	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_PRIORITY_BY_ID;
 	}
 
 	@Override
-	protected String getRequestObs() {
+	protected String getRequestGetObs() throws DAOException {
 		return SQLRequests.SELECT_PRIORITIES;
 	}
 
 	@Override
-	protected Priority getOb(ResultSet resultSet) throws DAOException, SQLException {
-		int id = resultSet.getInt(Constants.INDEX_ID_SELECT);
-		String name = resultSet.getString(Constants.INDEX_NAME_SELECT);
+	protected Priority getOb(ResultSet rs) throws DAOException, SQLException {
+		int id = rs.getInt(Constants.INDEX_ID_SELECT);
+		String name = rs.getString(Constants.INDEX_NAME_SELECT);
 		return new Priority(id, name);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementAddOb(Priority ob)
+	protected String getRequestAddOb() throws DAOException {
+		return SQLRequests.INSERT_PRIORITY;
+	}
+
+	@Override
+	protected PreparedStatement getFilledPS(PreparedStatement ps, Priority ob)
 			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_PRIORITY);
-		setCommonValues(ps, ob);
+		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
 		return ps;
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementChangeOb(Priority ob)
-			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_PRIORITY);
-		setCommonValues(ps, ob);
-		ps.setInt(Constants.INDEX_ID_PRIORITY, ob.getId());
-		return ps;
+	protected String getRequestChangeOb() throws DAOException {
+		return SQLRequests.UPDATE_PRIORITY;
 	}
-	
-	private static void setCommonValues(PreparedStatement ps, Priority ob) throws SQLException{
-		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
+
+	@Override
+	protected int getChangedObId() {
+		return Constants.INDEX_ID_PRIORITY;
 	}
 }

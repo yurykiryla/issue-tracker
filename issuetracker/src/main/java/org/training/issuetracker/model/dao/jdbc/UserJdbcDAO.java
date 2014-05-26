@@ -1,5 +1,6 @@
 package org.training.issuetracker.model.dao.jdbc;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,15 +16,18 @@ import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 
-	public UserJdbcDAO() {
-	}
-
 	@Override
 	public User getUser(String email, String password) throws DAOException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		try {
-			resultSet = getResultSet(SELECT_USER_BY_EMAIL_1 + email + SELECT_USER_BY_EMAIL_2);
-			if(resultSet != null & resultSet.next()){
-				User user = getOb(resultSet);
+			con = ds.getConnection();
+			ps = con.prepareStatement(SELECT_USER_BY_EMAIL);
+			ps.setString(INDEX_EMAIL_ADDRESS_FIND, email);
+			rs = ps.executeQuery();
+			if (rs != null && rs.next()) {
+				User user = getOb(rs);
 				if(user.getPassword().checkPassword(password)){
 					return user;
 				}
@@ -31,55 +35,56 @@ public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection();
+			closeConnection(rs, ps, con);
 		}
 		return null;
 	}
 
 	@Override
-	protected String getRequestOb() {
+	protected String getRequestGetObById() throws DAOException {
 		return SELECT_USER_BY_ID;
 	}
 
 	@Override
-	protected String getRequestObs() {
+	protected String getRequestGetObs() throws DAOException {
 		return SELECT_USERS;
 	}
 
 	@Override
-	protected User getOb(ResultSet resultSet) throws DAOException, SQLException {
-		int id = resultSet.getInt(INDEX_ID_SELECT);
-		String firstName = resultSet.getString(INDEX_FIRST_NAME_SELECT);
-		String lastName = resultSet.getString(INDEX_LAST_NAME_SELECT);
-		String emailAddress = resultSet.getString(INDEX_EMAIL_ADDRESS_SELECT);
-		Role role = Role.valueOf(resultSet.getString(INDEX_ROLE_SELECT));
+	protected User getOb(ResultSet rs) throws DAOException, SQLException {
+		int id = rs.getInt(INDEX_ID_SELECT);
+		String firstName = rs.getString(INDEX_FIRST_NAME_SELECT);
+		String lastName = rs.getString(INDEX_LAST_NAME_SELECT);
+		String emailAddress = rs.getString(INDEX_EMAIL_ADDRESS_SELECT);
+		Role role = Role.valueOf(rs.getString(INDEX_ROLE_SELECT));
 		Password password = new Password();
-		password.setEncryptedPassword(resultSet.getString(INDEX_PASSWORD_SELECT));
+		password.setEncryptedPassword(rs.getString(INDEX_PASSWORD_SELECT));
 		return new User(id, firstName, lastName, emailAddress, role, password);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementAddOb(User ob)
-			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.INSERT_USER);
-		setCommonValues(ps, ob);
-		return ps;
-	}
-	
-	@Override
-	protected PreparedStatement getPreparedStatementChangeOb(User ob)
-			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(UPDATE_USER);
-		setCommonValues(ps, ob);
-		ps.setInt(INDEX_ID_USER, ob.getId());
-		return ps;
+	protected String getRequestAddOb() throws DAOException {
+		return INSERT_USER;
 	}
 
-	private static void setCommonValues(PreparedStatement ps, User ob) throws SQLException{
+	@Override
+	protected PreparedStatement getFilledPS(PreparedStatement ps, User ob)
+			throws DAOException, SQLException {
 		ps.setString(INDEX_FIRST_NAME_INSERT, ob.getFirstName());
 		ps.setString(INDEX_LAST_NAME_INSERT, ob.getLastName());
 		ps.setString(INDEX_EMAIL_ADDRESS_INSERT, ob.getEmailAddress());
 		ps.setString(INDEX_ROLE_INSERT, ob.getRole().toString());
 		ps.setString(INDEX_PASSWORD_INSERT, ob.getPassword().getEncryptedPassword());
+		return ps;
+	}
+
+	@Override
+	protected String getRequestChangeOb() throws DAOException {
+		return UPDATE_USER;
+	}
+
+	@Override
+	protected int getChangedObId() throws DAOException {
+		return INDEX_ID_USER;
 	}
 }

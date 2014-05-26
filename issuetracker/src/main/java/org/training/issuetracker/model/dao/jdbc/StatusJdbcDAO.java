@@ -9,38 +9,42 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class StatusJdbcDAO extends JdbcDAO<Status>{
 
-	public StatusJdbcDAO() {
-	}
-
 	@Override
-	protected String getRequestOb() {
+	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_STATUS_BY_ID;
 	}
 
 	@Override
-	protected String getRequestObs() {
+	protected String getRequestGetObs() throws DAOException {
 		return SQLRequests.SELECT_STATUSES;
 	}
 
 	@Override
-	protected Status getOb(ResultSet resultSet) throws DAOException, SQLException {
-		int id = resultSet.getInt(Constants.INDEX_ID_SELECT);
-		String name = resultSet.getString(Constants.INDEX_NAME_SELECT);
+	protected Status getOb(ResultSet rs) throws DAOException, SQLException {
+		int id = rs.getInt(Constants.INDEX_ID_SELECT);
+		String name = rs.getString(Constants.INDEX_NAME_SELECT);
 		return new Status(id, name);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementAddOb(Status ob)
-			throws DAOException {
+	protected String getRequestAddOb() throws DAOException {
 		throw new DAOException(Constants.MESSAGE_UNSUPPORTED_OPERATION);
 	}
 
 	@Override
-	protected PreparedStatement getPreparedStatementChangeOb(Status ob)
+	protected PreparedStatement getFilledPS(PreparedStatement ps, Status ob)
 			throws DAOException, SQLException {
-		PreparedStatement ps = getPreparedStatement(SQLRequests.UPDATE_STATUS);
 		ps.setString(Constants.INDEX_NAME_INSERT, ob.getName());
-		ps.setInt(Constants.INDEX_ID_STATUS, ob.getId());
 		return ps;
+	}
+
+	@Override
+	protected String getRequestChangeOb() throws DAOException {
+		return SQLRequests.UPDATE_STATUS;
+	}
+
+	@Override
+	protected int getChangedObId() {
+		return Constants.INDEX_ID_STATUS;
 	}
 }
