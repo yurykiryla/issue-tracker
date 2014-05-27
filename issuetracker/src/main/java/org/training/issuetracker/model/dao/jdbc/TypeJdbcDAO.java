@@ -9,6 +9,10 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class TypeJdbcDAO extends JdbcDAO<Type> {
 
+	public TypeJdbcDAO() throws DAOException {
+		super();
+	}
+
 	@Override
 	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_TYPE_BY_ID;

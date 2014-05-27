@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.training.issuetracker.model.beans.Beans;
@@ -16,10 +18,16 @@ import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
-	@Resource(name="jdbc/derbydb")
-	private DataSource ds;
+
+	protected DataSource ds;
 	
-	public JdbcDAO() {
+	public JdbcDAO() throws DAOException {
+		try {
+			Context ctx = new InitialContext();
+			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/projectdb");
+		} catch (NamingException e){
+			throw new DAOException(e);
+		}
 	}
 
 	@Override

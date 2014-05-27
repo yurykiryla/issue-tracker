@@ -16,6 +16,10 @@ import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 public class ProjectJdbcDAO extends JdbcDAO<Project> {
 
+	public ProjectJdbcDAO() throws DAOException {
+		super();
+	}
+
 	@Override
 	protected String getRequestGetObById() throws DAOException {
 		return SELECT_PROJECT_BY_ID;

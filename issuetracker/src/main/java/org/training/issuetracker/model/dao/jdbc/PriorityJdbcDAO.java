@@ -9,6 +9,10 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 
+	public PriorityJdbcDAO() throws DAOException {
+		super();
+	}
+
 	@Override
 	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_PRIORITY_BY_ID;

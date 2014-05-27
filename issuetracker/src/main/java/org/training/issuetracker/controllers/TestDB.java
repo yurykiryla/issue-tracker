@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.jdbc.DBConnection;
+
 /**
  * Servlet implementation class TestDB
  */
@@ -25,8 +28,7 @@ import javax.sql.DataSource;
 public class TestDB extends AbstractController {
 	private static final long serialVersionUID = 1L;
 	
-	@Resource(name="jdbc/derbydb")
-	private DataSource ds;
+	
 	
 
     /**
@@ -46,19 +48,10 @@ public class TestDB extends AbstractController {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = resp.getWriter();
-		out.println("Hello\n");
-		try {
-			Connection con = ds.getConnection();
-			Statement st = con.createStatement();
-			
-			ResultSet rs = st.executeQuery("SELECT * FROM types");
-			if(rs.next()){
-				out.println(rs.getString(2));
-			}
-			
-			
-			con.close();
-		} catch (SQLException e) {
+		
+		try (DBConnection dbConnection = new DBConnection()) {
+			out.println("Hello\n");
+		} catch (SQLException | DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

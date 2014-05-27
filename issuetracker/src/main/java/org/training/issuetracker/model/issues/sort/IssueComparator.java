@@ -25,7 +25,7 @@ public abstract class IssueComparator<T extends Comparable<T>> implements Compar
 		if (t2 == null) {
 			return -1;
 		}
-		if (sortOrder == SortOrders.ASK) {
+		if (sortOrder == SortOrders.ASC) {
 			return t1.compareTo(t2);
 		}
 		return t2.compareTo(t1);

@@ -5,13 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
@@ -34,13 +30,15 @@ import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 	private static SortKeys sortKey;
 	private static SortOrders sortOrder;
-	@Resource(name="jdbc/derbydb")
-	private DataSource ds;
 	
+	public IssuesJdbcDAO() throws DAOException {
+		super();
+	}
+
 	@Override
 	public List<Issue> getIssues(User user, int n) throws DAOException {
 		sortKey = SortKeys.CREATE_DATE;
-		sortOrder = SortOrders.ASK;
+		sortOrder = SortOrders.ASC;
 		return getSortedIssues(user, n, KEY_DEFAULT_SORT);
 	}
 
@@ -49,24 +47,31 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 			throws DAOException {
 		List<Issue> issues = new ArrayList<>();
 		Connection con = null;
-		Statement st = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
+		
 		try {
 			con = ds.getConnection();
-			st = con.createStatement();
-			st.setMaxRows(n);
 			SortKeys sortKey = SortKeys.valueOf(key.toUpperCase());
 			if (sortKey == IssuesJdbcDAO.sortKey) {
-				if (sortOrder == SortOrders.ASK) {
-					sortOrder = SortOrders.DESK;
+				if (sortOrder == SortOrders.ASC) {
+					sortOrder = SortOrders.DESC;
 				} else {
-					sortOrder = SortOrders.ASK;
+					sortOrder = SortOrders.ASC;
 				}
 			} else {
-				sortOrder = SortOrders.ASK;
+				sortOrder = SortOrders.ASC;
 			}
 			IssuesJdbcDAO.sortKey = sortKey;
-			rs = st.executeQuery(SELECT_SORTED_ISSUES + sortKey + " " + sortOrder);
+			String sql = sortKey + " " + sortOrder;
+			if (user == null) {
+				ps = con.prepareStatement(SELECT_SORTED_ISSUES + sql);
+			} else {
+				ps = con.prepareStatement(SELECT_SORTED_ISSUES_BY_ASSIGNEE + sql);
+				ps.setInt(INDEX_ID_SELECT, user.getId());
+			}
+			ps.setMaxRows(n);
+			rs = ps.executeQuery();
 			while (rs != null && rs.next()) {
 				issues.add(getOb(rs));
 			}
@@ -74,7 +79,7 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 			e.printStackTrace();
 			throw new DAOException(e);
 		} finally {
-			closeConnection(rs, st, con);
+			closeConnection(rs, ps, con);
 		}
 		return issues;
 	}

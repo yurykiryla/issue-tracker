@@ -15,7 +15,7 @@ public class SQLRequests {
 				+ "assignee_id INT,"
 				+ "type_id INT NOT NULL,"
 				+ "status_id INT NOT NULL,"
-				+ "summary LONG VARCHAR NOT NULL,"
+				+ "summary VARCHAR(32672) NOT NULL,"
 				+ "description LONG VARCHAR NOT NULL,"
 				+ "project_id INT NOT NULL,"
 				+ "build_found_id INT NOT NULL,"
@@ -180,6 +180,9 @@ public class SQLRequests {
 	
 	public static final String SELECT_SORTED_ISSUES = 
 			"SELECT * FROM issues ORDER BY ";
+	
+	public static final String SELECT_SORTED_ISSUES_BY_ASSIGNEE = 
+			"SELECT * FROM issues WHERE assignee_id=? ORDER BY ";
 	
 	public static final String SELECT_PRIORITIES = 
 			"SELECT * FROM priorities";

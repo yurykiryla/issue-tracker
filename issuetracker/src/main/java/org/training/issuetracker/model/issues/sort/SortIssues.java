@@ -14,7 +14,7 @@ public class SortIssues {
 	public static void sort(List<Issue> issues) {
 		SortIssues.issues = issues;
 		sortKey = SortKeys.ID;
-		sortOrder = SortOrders.ASK;
+		sortOrder = SortOrders.ASC;
 		Collections.sort(issues);
 	}
 	
@@ -24,13 +24,13 @@ public class SortIssues {
 		}
 		SortKeys sortKey = SortKeys.valueOf(key.toUpperCase());
 		if (sortKey == SortIssues.sortKey) {
-			if (sortOrder == SortOrders.ASK) {
-				sortOrder = SortOrders.DESK;
+			if (sortOrder == SortOrders.ASC) {
+				sortOrder = SortOrders.DESC;
 			} else {
-				sortOrder = SortOrders.ASK;
+				sortOrder = SortOrders.ASC;
 			}
 		} else {
-			sortOrder = SortOrders.ASK;
+			sortOrder = SortOrders.ASC;
 		}
 		SortIssues.sortKey = sortKey;
 		Comparator<Issue> comparator = ComparatorFactory.getIssuesComparator(sortKey, sortOrder);

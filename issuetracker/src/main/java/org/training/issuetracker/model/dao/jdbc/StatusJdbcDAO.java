@@ -9,6 +9,10 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class StatusJdbcDAO extends JdbcDAO<Status>{
 
+	public StatusJdbcDAO() throws DAOException {
+		super();
+	}
+
 	@Override
 	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_STATUS_BY_ID;

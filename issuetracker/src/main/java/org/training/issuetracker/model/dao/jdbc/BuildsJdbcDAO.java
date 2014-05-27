@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-
 import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.dao.BuildsDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
@@ -18,10 +15,9 @@ import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
-	@Resource(name="jdbc/derbydb")
-	private DataSource ds;
-	
-	public BuildsJdbcDAO() {
+		
+	public BuildsJdbcDAO() throws DAOException {
+		super();
 	}
 
 	@Override

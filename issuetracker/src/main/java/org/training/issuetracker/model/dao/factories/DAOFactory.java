@@ -12,6 +12,7 @@ import org.training.issuetracker.model.dao.BuildsDAO;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
 import org.training.issuetracker.model.dao.UsersDAO;
+import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.jdbc.JdbcDAOFactory;
 import org.training.issuetracker.model.dao.xml.XmlDAOFactory;
 import org.training.issuetracker.model.properties.Config;
@@ -33,47 +34,47 @@ public class DAOFactory {
 		return factory;
 	}
 	
-	public static DAO<Issue> getIssueDAO() {
+	public static DAO<Issue> getIssueDAO() throws DAOException {
 		return getFactory().getIssueDAO();
 	}
 	
-	public static DAO<Priority> getPriorityDAO() {
+	public static DAO<Priority> getPriorityDAO() throws DAOException {
 		return getFactory().getPriorityDAO();
 	}
 	
-	public static DAO<Project> getProjectDAO() {
+	public static DAO<Project> getProjectDAO() throws DAOException {
 		return getFactory().getProjectDAO();
 	}
 	
-	public static DAO<Resolution> getResolutionDAO() {
+	public static DAO<Resolution> getResolutionDAO() throws DAOException {
 		return getFactory().getResolutionDAO();
 	}
 	
-	public static DAO<Status> getStatusDAO() {
+	public static DAO<Status> getStatusDAO() throws DAOException {
 		return getFactory().getStatusDAO();
 	}
 	
-	public static DAO<Type> getTypeDAO() {
+	public static DAO<Type> getTypeDAO() throws DAOException {
 		return getFactory().getTypeDAO();
 	}
 	
-	public static DAO<User> getUserDAO() {
+	public static DAO<User> getUserDAO() throws DAOException {
 		return getFactory().getUserDAO();
 	}
 	
-	public static IssuesDAO getIssuesDAO() {
+	public static IssuesDAO getIssuesDAO() throws DAOException {
 		return getFactory().getIssuesDAO();
 	}
 	
-	public static UsersDAO getUsersDAO() {
+	public static UsersDAO getUsersDAO() throws DAOException {
 		return getFactory().getUsersDAO();
 	}
 	
-	public static DAO<Build> getBuildDAO() {
+	public static DAO<Build> getBuildDAO() throws DAOException {
 		return getFactory().getBuildDAO();
 	}
 	
-	public static BuildsDAO getBuildsDAO() {
+	public static BuildsDAO getBuildsDAO() throws DAOException {
 		return getFactory().getBuildsDAO();
 	}
 }

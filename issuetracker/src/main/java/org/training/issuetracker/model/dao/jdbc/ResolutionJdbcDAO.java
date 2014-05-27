@@ -9,6 +9,10 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 
+	public ResolutionJdbcDAO() throws DAOException {
+		super();
+	}
+
 	@Override
 	protected String getRequestGetObById() throws DAOException {
 		return SQLRequests.SELECT_RESOLUTION_BY_ID;
