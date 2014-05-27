@@ -17,7 +17,7 @@ import org.training.issuetracker.model.dao.exceptions.DAOException;
 
 public abstract class JdbcDAO<T extends Beans> implements DAO<T> {
 	@Resource(name="jdbc/derbydb")
-	protected DataSource ds;
+	private DataSource ds;
 	
 	public JdbcDAO() {
 	}

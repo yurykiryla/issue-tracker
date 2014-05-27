@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 import org.training.issuetracker.model.beans.Password;
 import org.training.issuetracker.model.beans.User;
 import org.training.issuetracker.model.dao.UsersDAO;
@@ -15,6 +18,8 @@ import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
 public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
+	@Resource(name="jdbc/derbydb")
+	private DataSource ds;
 
 	@Override
 	public User getUser(String email, String password) throws DAOException {

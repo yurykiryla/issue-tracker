@@ -10,6 +10,9 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 import org.training.issuetracker.model.beans.Build;
 import org.training.issuetracker.model.beans.Issue;
 import org.training.issuetracker.model.beans.Priority;
@@ -31,6 +34,8 @@ import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 	private static SortKeys sortKey;
 	private static SortOrders sortOrder;
+	@Resource(name="jdbc/derbydb")
+	private DataSource ds;
 	
 	@Override
 	public List<Issue> getIssues(User user, int n) throws DAOException {
@@ -66,6 +71,7 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 				issues.add(getOb(rs));
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new DAOException(e);
 		} finally {
 			closeConnection(rs, st, con);
