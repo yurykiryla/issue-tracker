@@ -7,8 +7,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 	<div class="user-auth">
@@ -57,7 +57,7 @@
 				</c:if>
 				<div class="submit-issue-block">
 					<button class="submit-issue-button" 
-							onclick="location.href='<%=Constants.URL_SUBMIT_ISSUE_CONTROLLER%>'">
+							onclick="location.href='jsp/SubmitIssuePage.jsp'">
 						Submit Issue
 					</button>
 				</div>

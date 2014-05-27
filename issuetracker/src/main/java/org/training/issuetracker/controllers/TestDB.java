@@ -3,20 +3,12 @@ package org.training.issuetracker.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import org.training.issuetracker.model.dao.exceptions.DAOException;
 import org.training.issuetracker.model.dao.jdbc.DBConnection;

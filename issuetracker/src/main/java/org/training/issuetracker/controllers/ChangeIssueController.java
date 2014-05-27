@@ -32,12 +32,6 @@ public class ChangeIssueController extends AbstractController {
 			issue.setModifyDate(new Date(new java.util.Date().getTime()));
 			issue.setModifiedBy((User)request.getSession().getAttribute(Constants.KEY_USER));
 			request.setAttribute(Constants.KEY_ISSUE, issue);
-			request.setAttribute(Constants.KEY_STATUSES, DAOFactory.getStatusDAO().getObs());
-			request.setAttribute(Constants.KEY_RESOLUTIONS, DAOFactory.getResolutionDAO().getObs());
-			request.setAttribute(Constants.KEY_TYPES, DAOFactory.getTypeDAO().getObs());
-			request.setAttribute(Constants.KEY_PRIORITIES, DAOFactory.getPriorityDAO().getObs());
-			request.setAttribute(Constants.KEY_PROJECTS, DAOFactory.getProjectDAO().getObs());
-			request.setAttribute(Constants.KEY_USERS, DAOFactory.getUserDAO().getObs());
 			forward(Constants.URL_CHANGE_ISSUE_PAGE, request, response);
 		} catch (DAOException e) {
 				errorForward(e, request, response);

@@ -9,11 +9,13 @@
 <title><%=Constants.SUBMIT_ISSUE_PAGE_TITLE %></title>
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/styles.css">
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
 </head>
 <body>
 	<div class="main">
-		<jsp:include page="header.jsp"></jsp:include>
+		<div class="logo">
+			<img src="../images/issue-tracker-name.gif" alt="Logo">
+		</div>
 		<jsp:include page="userMenu.jsp"></jsp:include>
 		<form id="submitIssueForm" class="submit-issue" action=<%=Constants.ADD_ISSUE_FORM_ACTION%>>
 			<table class="submit-issue-table">
@@ -30,11 +32,8 @@
 					<td>
 						<select name=<%=Constants.KEY_STATUS%> id="statusSelect" onchange="changedStatus()">
 							<option selected="selected" disabled="disabled" value="0">Select Status</option>
-							<c:forEach var="status" items="${statuses}">
-								<option value="${status.id}">
-									<c:out value="${status}"></c:out>
-								</option>
-							</c:forEach>
+							<option value="${statuses[0].id}"><c:out value="${statuses[0]}"></c:out></option>
+							<option value="${statuses[1].id}"><c:out value="${statuses[1]}"></c:out></option>
 						</select>
 					</td>
 				</tr>
