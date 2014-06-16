@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>issuetracker</display-name>
-  <listener>
-    <listener-class>org.training.issuetracker.controllers.listeners.PropertiesListener</listener-class>
-  </listener>
-  <filter>
-    <filter-name>UsersControlFilter</filter-name>
-    <filter-class>org.training.issuetracker.controllers.filters.UsersControlFilter</filter-class>
-  </filter>
-  <filter>
-  	<filter-name>IssuesOperationFilter</filter-name>
-  	<filter-class>org.training.issuetracker.controllers.filters.IssuesOperationFilter</filter-class>
-  </filter>
   <context-param>
     <param-name>implementation</param-name>
-    <param-value>jdbc</param-value>
+    <param-value>hibernate</param-value>
   </context-param>
   <context-param>
     <param-name>n</param-name>
     <param-value>10</param-value>
   </context-param>
+  <filter>
+    <filter-name>UsersControlFilter</filter-name>
+    <filter-class>org.training.issuetracker.controllers.filters.UsersControlFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>IssuesOperationFilter</filter-name>
+    <filter-class>org.training.issuetracker.controllers.filters.IssuesOperationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UsersControlFilter</filter-name>
+    <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>IssuesOperationFilter</filter-name>
+    <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>org.training.issuetracker.controllers.listeners.PropertiesListener</listener-class>
+  </listener>
   <servlet>
     <display-name>WelcomePageController</display-name>
     <servlet-name>WelcomePageController</servlet-name>
@@ -83,20 +91,6 @@
     <servlet-name>UpdateIssueController</servlet-name>
     <url-pattern>/UpdateIssueController</url-pattern>
   </servlet-mapping>
-  <filter-mapping>
-    <filter-name>UsersControlFilter</filter-name>
-    <servlet-name>AddIssueController</servlet-name>
-    <servlet-name>UpdateIssueController</servlet-name>
-    <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
-    <url-pattern>/jsp/OperationResult.jsp</url-pattern>
-    <url-pattern>/jsp/ChangeIssuePage.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-  	<filter-name>IssuesOperationFilter</filter-name>
-    <servlet-name>ChangeIssueController</servlet-name>
-  	<url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
-  	<url-pattern>/jsp/ChangeIssuePage.jsp</url-pattern>
-  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

@@ -13,6 +13,7 @@ import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssuesDAO;
 import org.training.issuetracker.model.dao.UsersDAO;
 import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.hibernate.HibernateDAOFactory;
 import org.training.issuetracker.model.dao.jdbc.JdbcDAOFactory;
 import org.training.issuetracker.model.dao.xml.XmlDAOFactory;
 import org.training.issuetracker.model.properties.Config;
@@ -28,6 +29,9 @@ public class DAOFactory {
 					break;
 				case JDBC:
 					factory = new JdbcDAOFactory();
+					break;
+				case HIBERNATE:
+					factory = new HibernateDAOFactory();
 					break;
 			}
 		}
