@@ -1,30 +1,39 @@
 package org.training.issuetracker.model.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "status", catalog = "issuetracker")
 public class Status implements Beans, Comparable<Status> {
-	private final int id;
+	private static final long serialVersionUID = 1L;
+	private int id;
 	private String name;
 	
-	public Status(String name) {
+	public Status() {
 		super();
-		id = 0;
-		this.name = name;
 	}
-
-	public Status(int id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-
-	@Override
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	@Column(name = "name", nullable = false, length = 50)
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -33,7 +42,7 @@ public class Status implements Beans, Comparable<Status> {
 	public String toString() {
 		return name;
 	}
-
+	
 	@Override
 	public int compareTo(Status o) {
 		if(o == null){

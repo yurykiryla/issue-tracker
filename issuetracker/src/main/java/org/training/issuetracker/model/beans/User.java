@@ -1,90 +1,88 @@
 package org.training.issuetracker.model.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import org.training.issuetracker.model.enums.Role;
 
+@Entity
+@Table(name = "users", catalog = "issuetracker", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "EMAIL")
+})
 public class User implements Beans, Comparable<User> {
-	private final int id;
+	private static final long serialVersionUID = 1L;
+	private int id;
 	private String firstName;
 	private String lastName;
-	private String emailAddress;
+	private String email;
 	private Role role;
-	private Password password;
+	private String password;
 	
-	public User(String firstName, String lastName, String emailAddress,
-			Role role, Password password) {
+	public User() {
 		super();
-		id = 0;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailAddress = emailAddress;
-		this.role = role;
-		this.password = password;
 	}
 
-	public User(int id, String firstName, String lastName, String emailAddress,
-			Role role) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailAddress = emailAddress;
-		this.role = role;
-	}
-	
-	public User(int id, String firstName, String lastName, String emailAddress,
-			Role role, Password password) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailAddress = emailAddress;
-		this.role = role;
-		this.password = password;
-	}
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Column(name = "first_name", nullable = false, length = 150)
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
+	@Column(name = "last_name", nullable = false, length = 150)
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public String getEmailAddress() {
-		return emailAddress;
+
+	@Column(name = "email", unique = true, nullable = false, length = 320)
+	public String getEmail() {
+		return email;
 	}
-	
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
+	@Column(name = "role", nullable = false, length = 50)
+	@Enumerated(EnumType.STRING)
 	public Role getRole() {
 		return role;
 	}
-	
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
 
-	
-	public Password getPassword() {
+	@Column(name = "password", nullable = false, length = 100)
+	public String getPassword() {
 		return password;
 	}
 
-	
-	public void setPassword(Password password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

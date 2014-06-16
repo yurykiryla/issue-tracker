@@ -16,6 +16,6 @@ public class TypeXmlDAO extends XmlDAO<Type> {
 	@Override
 	protected Type getOb(Element element) {
 		String name = element.getChildText(Constants.KEY_NAME);
-		return new Type(getId(element), name);
+		return new Type();
 	}
 }

@@ -56,7 +56,7 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 	protected Build getOb(ResultSet rs) throws DAOException, SQLException {
 		int id = rs.getInt(INDEX_ID_SELECT);
 		String name = rs.getString(INDEX_NAME_SELECT);
-		return new Build(id, name);
+		return new Build();
 	}
 
 	@Override

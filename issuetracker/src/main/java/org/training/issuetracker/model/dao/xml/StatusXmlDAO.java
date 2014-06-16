@@ -15,6 +15,6 @@ public class StatusXmlDAO extends XmlDAO<Status> {
 	@Override
 	protected Status getOb(Element element) {
 		String name = element.getChildText(Constants.KEY_NAME);
-		return new Status(getId(element), name);
+		return new Status();
 	}
 }

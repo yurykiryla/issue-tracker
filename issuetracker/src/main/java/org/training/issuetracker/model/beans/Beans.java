@@ -1,5 +1,7 @@
 package org.training.issuetracker.model.beans;
 
-public interface Beans {
+import java.io.Serializable;
+
+public interface Beans extends Serializable {
 	public int getId();
 }

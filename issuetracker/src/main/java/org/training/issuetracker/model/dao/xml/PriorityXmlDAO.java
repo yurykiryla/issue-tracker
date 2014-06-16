@@ -16,6 +16,6 @@ public class PriorityXmlDAO extends XmlDAO<Priority> {
 	@Override
 	protected Priority getOb(Element element) {
 		String name = element.getChildText(Constants.KEY_NAME);
-		return new Priority(getId(element), name);
+		return new Priority();
 	}
 }

@@ -23,7 +23,7 @@ public class BuildXmlDAO extends XmlDAO<Build> implements BuildsDAO{
 	@Override
 	protected Build getOb(Element element) throws DAOException {
 		String name = element.getChildText(KEY_NAME); 
-		return new Build(getId(element), name);
+		return new Build();
 	}
 
 	@Override

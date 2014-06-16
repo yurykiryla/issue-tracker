@@ -15,6 +15,6 @@ public class ResolutionXmlDAO extends XmlDAO<Resolution>{
 	@Override
 	protected Resolution getOb(Element element) {
 		String name = element.getChildText(Constants.KEY_NAME);
-		return new Resolution(getId(element), name);
+		return new Resolution();
 	}
 }

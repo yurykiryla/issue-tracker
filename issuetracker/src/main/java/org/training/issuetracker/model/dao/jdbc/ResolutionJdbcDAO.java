@@ -27,7 +27,7 @@ public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 	protected Resolution getOb(ResultSet rs) throws DAOException, SQLException {
 		int id = rs.getInt(Constants.INDEX_ID_SELECT);
 		String name = rs.getString(Constants.INDEX_NAME_SELECT);
-		return new Resolution(id, name);
+		return new Resolution();
 	}
 
 	@Override

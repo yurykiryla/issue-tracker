@@ -27,7 +27,7 @@ public class StatusJdbcDAO extends JdbcDAO<Status>{
 	protected Status getOb(ResultSet rs) throws DAOException, SQLException {
 		int id = rs.getInt(Constants.INDEX_ID_SELECT);
 		String name = rs.getString(Constants.INDEX_NAME_SELECT);
-		return new Status(id, name);
+		return new Status();
 	}
 
 	@Override

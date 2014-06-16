@@ -1,7 +1,6 @@
 package org.training.issuetracker.controllers;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +25,6 @@ public class UpdateIssueController extends AbstractController {
 			int id = getId(request, Constants.KEY_ID);
 			Issue issue = DAOFactory.getIssueDAO().getOb(id);
 			issue.setModifiedBy((User)request.getSession().getAttribute(Constants.KEY_USER));
-			issue.setModifyDate(new Date(new java.util.Date().getTime()));
 			if (statusId == Constants.ID_STATUS_REOPENED) {
 				issue.setStatus(DAOFactory.getStatusDAO().getOb(Constants.ID_STATUS_NEW));
 				issue.setAssignee(null);

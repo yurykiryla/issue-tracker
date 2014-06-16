@@ -126,8 +126,7 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 			
 		Resolution resolution = DAOFactory.getResolutionDAO().getOb(rs.getInt(INDEX_RESOLUTION_ID_SELECT));
 			
-		return new Issue(id, priority, assignee, type, status, summary, description, project,
-				buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution);
+		return new Issue();
 	}
 
 	@Override

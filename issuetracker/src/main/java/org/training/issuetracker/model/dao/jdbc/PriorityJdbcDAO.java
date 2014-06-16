@@ -27,7 +27,7 @@ public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 	protected Priority getOb(ResultSet rs) throws DAOException, SQLException {
 		int id = rs.getInt(Constants.INDEX_ID_SELECT);
 		String name = rs.getString(Constants.INDEX_NAME_SELECT);
-		return new Priority(id, name);
+		return new Priority();
 	}
 
 	@Override

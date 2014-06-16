@@ -27,6 +27,6 @@ public class ProjectXmlDAO extends XmlDAO<Project> {
 		String description = element.getChildText(KEY_DESCRIPTION);
 		List<Build> builds = DAOFactory.getBuildsDAO().getBuilds(id);
 		User manager = DAOFactory.getUserDAO().getOb(Integer.parseInt(element.getChildText(KEY_MANAGER_ID)));
-		return new Project(id, name, description, builds, manager);
+		return new Project();
 	}
 }

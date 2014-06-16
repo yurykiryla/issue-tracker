@@ -80,8 +80,7 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 			resolution = DAOFactory.getResolutionDAO().getOb(Integer.parseInt(resolutionString));
 		}
 		
-		return new Issue(id, priority, assignee, type, status, summary, description, project, 
-				buildFound, createDate, createdBy, modifyDate, modifiedBy, resolution);
+		return new Issue();
 	}
 
 	@Override

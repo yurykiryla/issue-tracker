@@ -37,7 +37,7 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 		String description = rs.getString(INDEX_PROJECT_DESCRIPTION_SELECT);
 		List<Build> builds = DAOFactory.getBuildsDAO().getBuilds(id);
 		User manager = DAOFactory.getUserDAO().getOb(rs.getInt(INDEX_MANAGER_ID_SELECT));
-		return new Project(id, name, description, builds, manager);
+		return new Project();
 	}
 
 	@Override
