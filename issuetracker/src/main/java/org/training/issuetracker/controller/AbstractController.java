@@ -1,0 +1,42 @@
+package org.training.issuetracker.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public abstract class AbstractController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		performTask(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		performTask(req, resp);
+	}
+
+	abstract protected void  performTask(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException;
+	
+	protected void forward(String url, HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		getServletContext().getRequestDispatcher(url).forward(request, response);
+	}
+	
+	protected void errorForward(Throwable e, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute(Constants.KEY_ERROR, e.getMessage());
+		forward(Constants.URL_ERROR_PAGE, request, response);
+	}
+	
+	protected static int getId(HttpServletRequest request, String key) {
+		return Integer.parseInt(request.getParameter(key));
+	}
+}

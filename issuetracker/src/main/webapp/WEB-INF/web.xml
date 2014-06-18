@@ -11,11 +11,11 @@
   </context-param>
   <filter>
     <filter-name>UsersControlFilter</filter-name>
-    <filter-class>org.training.issuetracker.controllers.filters.UsersControlFilter</filter-class>
+    <filter-class>org.training.issuetracker.controller.filters.UsersControlFilter</filter-class>
   </filter>
   <filter>
     <filter-name>IssuesOperationFilter</filter-name>
-    <filter-class>org.training.issuetracker.controllers.filters.IssuesOperationFilter</filter-class>
+    <filter-class>org.training.issuetracker.controller.filters.IssuesOperationFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>UsersControlFilter</filter-name>
@@ -24,44 +24,46 @@
   <filter-mapping>
     <filter-name>IssuesOperationFilter</filter-name>
     <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
+    <url-pattern>/jsp/ChangeIssuePage.jsp</url-pattern>
+    <servlet-name>ChangeIssueController</servlet-name>
   </filter-mapping>
   <listener>
-    <listener-class>org.training.issuetracker.controllers.listeners.PropertiesListener</listener-class>
+    <listener-class>org.training.issuetracker.controller.listeners.IssueTrackerContextListener</listener-class>
   </listener>
   <servlet>
     <display-name>WelcomePageController</display-name>
     <servlet-name>WelcomePageController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.WelcomePageController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.WelcomePageController</servlet-class>
   </servlet>
   <servlet>
     <display-name>LoginController</display-name>
     <servlet-name>LoginController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.LoginController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.LoginController</servlet-class>
   </servlet>
   <servlet>
     <display-name>LogoutController</display-name>
     <servlet-name>LogoutController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.LogoutController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.LogoutController</servlet-class>
   </servlet>
   <servlet>
     <display-name>AddIssueController</display-name>
     <servlet-name>AddIssueController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.AddIssueController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.AddIssueController</servlet-class>
   </servlet>
   <servlet>
     <display-name>SortIssuesController</display-name>
     <servlet-name>SortIssuesController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.SortIssuesController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.SortIssuesController</servlet-class>
   </servlet>
   <servlet>
     <display-name>ChangeIssueController</display-name>
     <servlet-name>ChangeIssueController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.ChangeIssueController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.ChangeIssueController</servlet-class>
   </servlet>
   <servlet>
     <display-name>UpdateIssueController</display-name>
     <servlet-name>UpdateIssueController</servlet-name>
-    <servlet-class>org.training.issuetracker.controllers.UpdateIssueController</servlet-class>
+    <servlet-class>org.training.issuetracker.controller.servlets.UpdateIssueController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WelcomePageController</servlet-name>
@@ -94,9 +96,4 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <resource-ref>
-    <res-ref-name>jdbc/projectdb</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
 </web-app>

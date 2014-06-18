@@ -1,41 +1,27 @@
 package org.training.issuetracker.model.dao.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.training.issuetracker.model.beans.Beans;
 import org.training.issuetracker.model.dao.DAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.exception.DAOException;
 
-public class HibernateDAO<T extends Beans> implements DAO<T>{
-	private static final SessionFactory SESSION_FACTORY;
-	
-	static {
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		SESSION_FACTORY = configuration.buildSessionFactory(serviceRegistry);
-	}
-	
-	public HibernateDAO() {
-		
-	}
+public abstract class HibernateDAO<T> implements DAO<T> {
 
 	@Override
 	public T getOb(int id) throws DAOException {
 		Session session = null;
 		try {
-			session = SESSION_FACTORY.openSession();
-			return (T) session.load(getClass(), id);
+			session = HibernateUtil.getSessionFactory().openSession();
+			return getDAOClass().cast(session.get(getDAOClass(), id));
 		} catch (HibernateException e) {
 			throw new DAOException(e);
 		} finally {
-			session.close();
+			if (session != null) {
+				session.close();
+			}
 		}
 	}
 
@@ -43,12 +29,15 @@ public class HibernateDAO<T extends Beans> implements DAO<T>{
 	public List<T> getObs() throws DAOException {
 		Session session = null;
 		try {
-			session = SESSION_FACTORY.openSession();
-			return session.createCriteria(getClass()).list();
+			session = HibernateUtil.getSessionFactory().openSession();
+			List<?> list = session.createCriteria(getDAOClass()).list();
+			return castList(list);
 		} catch (HibernateException e) {
 			throw new DAOException(e);
 		} finally {
-			session.close();
+			if (session != null) {
+				session.close();
+			}
 		}
 	}
 
@@ -56,14 +45,16 @@ public class HibernateDAO<T extends Beans> implements DAO<T>{
 	public void addOb(T ob) throws DAOException {
 		Session session = null;
 		try {
-			session = SESSION_FACTORY.openSession();
+			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			session.save(ob);
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			throw new DAOException(e);
 		} finally {
-			session.close();
+			if (session != null) {
+				session.close();
+			}
 		}
 	}
 
@@ -71,15 +62,26 @@ public class HibernateDAO<T extends Beans> implements DAO<T>{
 	public void changeOb(T ob) throws DAOException {
 		Session session = null;
 		try {
-			session = SESSION_FACTORY.openSession();
+			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			session.update(ob);
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			throw new DAOException(e);
 		} finally {
-			session.close();
-		}
+			if (session != null) {
+				session.close();
+			}
+		}		
 	}
-
+	
+	protected abstract Class<T> getDAOClass();
+	
+	protected List<T> castList(List<?> list) {
+		List<T> obs = new ArrayList<>();
+		for (Object ob : list) {
+			obs.add(getDAOClass().cast(ob));
+		}
+		return obs;
+	}
 }

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<builds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/Builds.xsd">
-  <build id="1">
-    <name>beta1</name>
-    <project-id>1</project-id>
-  </build>
-</builds>

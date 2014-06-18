@@ -1,9 +1,0 @@
-<Context>
- 
-  <Resource name="jdbc/projectdb" auth="Container" type="javax.sql.DataSource"
-               maxActive="50" maxIdle="30" maxWait="10000"
-               username="" password="" 
-               driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
-               url="jdbc:derby:c:\Users\yury_kiryla\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\issuetracker\WEB-INF\classes\projectdb">
- </Resource>
-</Context>
