@@ -9,7 +9,7 @@
 <title><%=Constants.SUBMIT_ISSUE_PAGE_TITLE %></title>
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/styles.css">
-<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 	<div class="main">
