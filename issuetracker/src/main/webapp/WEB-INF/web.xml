@@ -19,12 +19,12 @@
   </filter>
   <filter-mapping>
     <filter-name>UsersControlFilter</filter-name>
-    <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
+    <url-pattern>/SubmitIssuePage.jsp</url-pattern>
   </filter-mapping>
   <filter-mapping>
     <filter-name>IssuesOperationFilter</filter-name>
-    <url-pattern>/jsp/SubmitIssuePage.jsp</url-pattern>
-    <url-pattern>/jsp/ChangeIssuePage.jsp</url-pattern>
+    <url-pattern>/SubmitIssuePage.jsp</url-pattern>
+    <url-pattern>/ChangeIssuePage.jsp</url-pattern>
     <servlet-name>ChangeIssueController</servlet-name>
   </filter-mapping>
   <listener>

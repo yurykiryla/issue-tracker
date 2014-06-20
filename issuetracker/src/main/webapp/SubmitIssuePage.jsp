@@ -14,7 +14,7 @@
 <body>
 	<div class="main">
 		<div class="logo">
-			<img src="../images/issue-tracker-name.gif" alt="Logo">
+			<img src="images/issue-tracker-name.gif" alt="Logo">
 		</div>
 		<jsp:include page="userMenu.jsp"></jsp:include>
 		<form id="submitIssueForm" class="submit-issue" action=<%=Constants.ADD_ISSUE_FORM_ACTION%>>
