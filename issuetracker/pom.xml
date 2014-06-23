@@ -4,13 +4,13 @@
     <groupId>org.training</groupId>
     <artifactId>issuetracker</artifactId>
     <packaging>war</packaging>
-    <version>0.3.0</version>
+    <version>0.3.6</version>
     <name>Issue Tracker</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java-version>1.7</java-version>
+        <java-version>1.6</java-version>
     </properties>
 
     <dependencies>

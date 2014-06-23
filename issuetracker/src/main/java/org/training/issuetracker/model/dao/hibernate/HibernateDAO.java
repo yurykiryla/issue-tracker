@@ -78,7 +78,7 @@ public abstract class HibernateDAO<T> implements DAO<T> {
 	protected abstract Class<T> getDAOClass();
 	
 	protected List<T> castList(List<?> list) {
-		List<T> obs = new ArrayList<>();
+		List<T> obs = new ArrayList<T>();
 		for (Object ob : list) {
 			obs.add(getDAOClass().cast(ob));
 		}

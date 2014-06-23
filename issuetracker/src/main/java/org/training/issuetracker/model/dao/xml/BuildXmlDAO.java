@@ -28,7 +28,7 @@ public class BuildXmlDAO extends XmlDAO<Build> implements BuildsDAO{
 
 	@Override
 	public List<Build> getBuilds(int projectId) throws DAOException {
-		List<Build> builds = new ArrayList<>();
+		List<Build> builds = new ArrayList<org.training.issuetracker.model.dao.xml.Build>();
 		for (Element element : getElements()) {
 			if (projectId == Integer.parseInt(element.getChildText(KEY_PROJECT_ID))) {
 				builds.add(getOb(element));

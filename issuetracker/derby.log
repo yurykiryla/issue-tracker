@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Mon Jun 23 11:38:24 VET 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0146-c97c-4bc1-000002e70b38 
+on database directory D:\databases\projectdb with class loader WebappClassLoader
+  context: /issuetracker
+  delegate: false
+  repositories:
+----------> Parent Classloader:
+ClassRealm[plugin>org.apache.tomcat.maven:tomcat7-maven-plugin:2.0, parent: sun.misc.Launcher$AppClassLoader@63c78e57]
+ 
+Loaded from file:/C:/Users/yury_kiryla/.m2/repository/org/apache/derby/derby/10.10.2.0/derby-10.10.2.0.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_45-b06
+user.dir=D:\repositories\issue-tracker\issuetracker
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

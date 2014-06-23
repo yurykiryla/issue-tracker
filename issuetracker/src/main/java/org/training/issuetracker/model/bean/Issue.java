@@ -39,7 +39,7 @@ public class Issue implements Serializable, Comparable<Issue> {
 	private Project project;
 	private Build buildFound;
 	private User assignee;
-	private Set<Comment> comments = new HashSet<>(0);
+	private Set<Comment> comments = new HashSet<Comment>(0);
 	
 
 	public Issue() {

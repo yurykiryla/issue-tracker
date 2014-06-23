@@ -30,7 +30,7 @@ public class AssigneeContoller extends AbstractController {
 		try {
 			List<User> users = DAOFactory.getUserDAO().getObs();
 			
-			Map<Integer, String> usersMap = new HashMap<>();
+			Map<Integer, String> usersMap = new HashMap<Integer, String>();
 			for (User user : users) {
 				usersMap.put(user.getId(), user.toString());
 			}

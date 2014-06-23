@@ -27,7 +27,7 @@ public class BuildsController extends AbstractController {
 		int id = getId(request, Constants.KEY_PROJECT);
 		try {
 			Project project = DAOFactory.getProjectDAO().getOb(id);
-			Map<Integer, String> builds = new HashMap<>();
+			Map<Integer, String> builds = new HashMap<Integer, String>();
 			for (Build build : project.getBuilds()) {
 				builds.put(build.getId(), build.getName());
 			}
