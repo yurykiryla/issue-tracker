@@ -4,8 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.training.issuetracker.model.beans.Priority;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.bean.Priority;
+import org.training.issuetracker.model.dao.exception.DAOException;
+
 
 public class PriorityJdbcDAO extends JdbcDAO<Priority>{
 

@@ -1,7 +1,8 @@
 package org.training.issuetracker.model.issues.sort;
 
-import org.training.issuetracker.model.beans.Issue;
-import org.training.issuetracker.model.beans.Priority;
+import org.training.issuetracker.model.bean.Issue;
+import org.training.issuetracker.model.bean.Priority;
+
 
 public class PriorityIssueComparator extends IssueComparator<Priority> {
 	public PriorityIssueComparator(SortOrders sortOrder) {

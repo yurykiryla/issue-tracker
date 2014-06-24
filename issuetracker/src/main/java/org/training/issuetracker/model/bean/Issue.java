@@ -1,6 +1,5 @@
 package org.training.issuetracker.model.bean;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +21,7 @@ import org.hibernate.annotations.GenerationTime;
 
 @Entity
 @Table(name = "issue", catalog = "issuetracker")
-public class Issue implements Serializable, Comparable<Issue> {
+public class Issue implements Comparable<Issue>, Bean {
 	private static final long serialVersionUID = 1L;
 	
 	private int id;

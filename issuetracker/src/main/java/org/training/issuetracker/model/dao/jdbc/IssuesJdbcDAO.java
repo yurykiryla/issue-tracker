@@ -9,25 +9,37 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.training.issuetracker.model.beans.Build;
-import org.training.issuetracker.model.beans.Issue;
-import org.training.issuetracker.model.beans.Priority;
-import org.training.issuetracker.model.beans.Project;
-import org.training.issuetracker.model.beans.Resolution;
-import org.training.issuetracker.model.beans.Status;
-import org.training.issuetracker.model.beans.Type;
-import org.training.issuetracker.model.beans.User;
+
+
+
+
+
+
+
+
+
+
+
+
+import org.training.issuetracker.model.bean.Build;
+import org.training.issuetracker.model.bean.Issue;
+import org.training.issuetracker.model.bean.Priority;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.bean.Resolution;
+import org.training.issuetracker.model.bean.Status;
+import org.training.issuetracker.model.bean.Type;
+import org.training.issuetracker.model.bean.User;
 import org.training.issuetracker.model.dao.DAO;
-import org.training.issuetracker.model.dao.IssuesDAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.dao.factories.DAOFactory;
+import org.training.issuetracker.model.dao.IssueDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
+import org.training.issuetracker.model.dao.factory.DAOFactory;
 import org.training.issuetracker.model.issues.sort.SortKeys;
 import org.training.issuetracker.model.issues.sort.SortOrders;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
-public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
+public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssueDAO {
 	private static SortKeys sortKey;
 	private static SortOrders sortOrder;
 	
@@ -45,7 +57,7 @@ public class IssuesJdbcDAO extends JdbcDAO<Issue> implements IssuesDAO {
 	@Override
 	public List<Issue> getSortedIssues(User user, int n, String key)
 			throws DAOException {
-		List<Issue> issues = new ArrayList<>();
+		List<Issue> issues = new ArrayList<Issue>();
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;

@@ -1,7 +1,5 @@
 package org.training.issuetracker.model.bean;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "build", catalog = "issuetracker")
-public class Build implements Serializable{
+public class Build implements Bean {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;

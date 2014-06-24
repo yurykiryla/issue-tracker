@@ -1,16 +1,17 @@
 package org.training.issuetracker.model.dao.factory;
 
 import org.training.issuetracker.controller.Configuration;
-import org.training.issuetracker.model.bean.Build;
 import org.training.issuetracker.model.bean.Comment;
 import org.training.issuetracker.model.bean.Priority;
 import org.training.issuetracker.model.bean.Project;
 import org.training.issuetracker.model.bean.Resolution;
 import org.training.issuetracker.model.bean.Status;
 import org.training.issuetracker.model.bean.Type;
+import org.training.issuetracker.model.dao.BuildDAO;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssueDAO;
 import org.training.issuetracker.model.dao.UserDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
 import org.training.issuetracker.model.dao.hibernate.HibernateFactory;
 
 public class DAOFactory {
@@ -33,7 +34,7 @@ public class DAOFactory {
 		return factory;
 	}
 	
-	public static DAO<Build> getBuildDAO() {
+	public static BuildDAO getBuildDAO() throws DAOException {
 		return getFactory().getBuildDAO();
 	}
 
@@ -41,31 +42,31 @@ public class DAOFactory {
 		return getFactory().getCommentDAO();
 	}
 
-	public static IssueDAO getIssueDAO() {
+	public static IssueDAO getIssueDAO() throws DAOException {
 		return getFactory().getIssueDAO();
 	}
 
-	public static DAO<Priority> getPriorityDAO() {
+	public static DAO<Priority> getPriorityDAO() throws DAOException {
 		return getFactory().getPriorityDAO();
 	}
 
-	public static DAO<Project> getProjectDAO() {
+	public static DAO<Project> getProjectDAO() throws DAOException {
 		return getFactory().getProjectDAO();
 	}
 
-	public static DAO<Resolution> getResolutionDAO() {
+	public static DAO<Resolution> getResolutionDAO() throws DAOException {
 		return getFactory().getResolutionDAO();
 	}
 
-	public static DAO<Status> getStatusDAO() {
+	public static DAO<Status> getStatusDAO() throws DAOException {
 		return getFactory().getStatusDAO();
 	}
 
-	public static DAO<Type> getTypeDAO() {
+	public static DAO<Type> getTypeDAO() throws DAOException {
 		return getFactory().getTypeDAO();
 	}
 
-	public static UserDAO getUserDAO() {
+	public static UserDAO getUserDAO() throws DAOException {
 		return getFactory().getUserDAO();
 	}
 }

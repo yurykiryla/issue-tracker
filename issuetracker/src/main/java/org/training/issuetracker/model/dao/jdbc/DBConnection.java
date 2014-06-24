@@ -5,16 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.properties.Config;
+import org.training.issuetracker.controller.Configuration;
+import org.training.issuetracker.model.dao.exception.DAOException;
+
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
-public class DBConnection implements AutoCloseable{
+public class DBConnection {
 	private Connection connection = null;
 	private Statement statement = null;
 	
 	private static final String DRIVER_NAME = "org.apache.derby.jdbc.EmbeddedDriver";
-	private static final String DATA_RESOURCE = "jdbc:derby:" + Config.getConfig().getPath() + "projectdb";
+	private static final String DATA_RESOURCE = "jdbc:derby:" + Configuration.get().getPath() + "projectdb";
 	private static final String CREATE_DB = ";create=true";
 	
 	public DBConnection() throws SQLException, DAOException{
@@ -77,7 +78,6 @@ public class DBConnection implements AutoCloseable{
 		return statement;
 	}
 
-	@Override
 	public void close() throws SQLException{
 		if (statement != null) {
 			statement.close();

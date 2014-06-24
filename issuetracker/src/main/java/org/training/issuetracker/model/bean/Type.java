@@ -1,7 +1,5 @@
 package org.training.issuetracker.model.bean;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "type", catalog = "issuetracker")
-public class Type implements Serializable {
+public class Type implements Bean, Comparable<Type> {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
@@ -53,5 +51,10 @@ public class Type implements Serializable {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(Type o) {
+		return id - o.id;
 	}
 }

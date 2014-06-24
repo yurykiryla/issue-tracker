@@ -4,8 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.training.issuetracker.model.beans.Resolution;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.bean.Resolution;
+import org.training.issuetracker.model.dao.exception.DAOException;
 
 public class ResolutionJdbcDAO extends JdbcDAO<Resolution> {
 

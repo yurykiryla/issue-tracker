@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.dao.UsersDAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.bean.User;
+import org.training.issuetracker.model.dao.UserDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
 import org.training.issuetracker.model.enums.Role;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
-public class UserJdbcDAO extends JdbcDAO<User> implements UsersDAO {
+public class UserJdbcDAO extends JdbcDAO<User> implements UserDAO {
 
 	public UserJdbcDAO() throws DAOException {
 		super();

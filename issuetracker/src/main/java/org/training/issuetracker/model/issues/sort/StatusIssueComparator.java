@@ -1,7 +1,8 @@
 package org.training.issuetracker.model.issues.sort;
 
-import org.training.issuetracker.model.beans.Issue;
-import org.training.issuetracker.model.beans.Status;
+import org.training.issuetracker.model.bean.Issue;
+import org.training.issuetracker.model.bean.Status;
+
 
 public class StatusIssueComparator extends IssueComparator<Status> {
 	public StatusIssueComparator(SortOrders sortOrder) {

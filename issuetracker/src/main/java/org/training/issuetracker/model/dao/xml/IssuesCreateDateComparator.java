@@ -2,7 +2,8 @@ package org.training.issuetracker.model.dao.xml;
 
 import java.util.Comparator;
 
-import org.training.issuetracker.model.beans.Issue;
+import org.training.issuetracker.model.bean.Issue;
+
 
 public class IssuesCreateDateComparator implements Comparator<Issue> {
 

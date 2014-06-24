@@ -1,25 +1,25 @@
 package org.training.issuetracker.model.dao.xml;
 
-import org.training.issuetracker.model.beans.Build;
-import org.training.issuetracker.model.beans.Issue;
-import org.training.issuetracker.model.beans.Priority;
-import org.training.issuetracker.model.beans.Project;
-import org.training.issuetracker.model.beans.Resolution;
-import org.training.issuetracker.model.beans.Status;
-import org.training.issuetracker.model.beans.Type;
-import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.dao.BuildsDAO;
+import org.training.issuetracker.model.bean.Comment;
+import org.training.issuetracker.model.bean.Priority;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.bean.Resolution;
+import org.training.issuetracker.model.bean.Status;
+import org.training.issuetracker.model.bean.Type;
+import org.training.issuetracker.model.dao.BuildDAO;
 import org.training.issuetracker.model.dao.DAO;
-import org.training.issuetracker.model.dao.IssuesDAO;
-import org.training.issuetracker.model.dao.UsersDAO;
-import org.training.issuetracker.model.dao.factories.AbstractFactory;
+import org.training.issuetracker.model.dao.IssueDAO;
+import org.training.issuetracker.model.dao.UserDAO;
+import org.training.issuetracker.model.dao.factory.AbstractFactory;
+
+
 
 public class XmlDAOFactory implements AbstractFactory {
 	public XmlDAOFactory() {
 	}
 
 	@Override
-	public DAO<Issue> getIssueDAO() {
+	public IssueDAO getIssueDAO() {
 		return new IssuesXmlDAO();
 	}
 
@@ -49,27 +49,17 @@ public class XmlDAOFactory implements AbstractFactory {
 	}
 
 	@Override
-	public DAO<User> getUserDAO() {
+	public UserDAO getUserDAO() {
 		return new UserXmlDAO();
 	}
 
 	@Override
-	public IssuesDAO getIssuesDAO() {
-		return new IssuesXmlDAO();
-	}
-
-	@Override
-	public UsersDAO getUsersDAO() {
-		return new UserXmlDAO();
-	}
-
-	@Override
-	public DAO<Build> getBuildDAO() {
+	public BuildDAO getBuildDAO() {
 		return new BuildXmlDAO();
 	}
 
 	@Override
-	public BuildsDAO getBuildsDAO() {
-		return new BuildXmlDAO();
+	public DAO<Comment> getCommentDAO() {
+		return null;
 	}
 }

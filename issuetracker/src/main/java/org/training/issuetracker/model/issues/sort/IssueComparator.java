@@ -2,7 +2,8 @@ package org.training.issuetracker.model.issues.sort;
 
 import java.util.Comparator;
 
-import org.training.issuetracker.model.beans.Issue;
+import org.training.issuetracker.model.bean.Issue;
+
 public abstract class IssueComparator<T extends Comparable<T>> implements Comparator<Issue> {
 	private SortOrders sortOrder;
 	

@@ -1,7 +1,7 @@
 package org.training.issuetracker.model.dao.xml;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Resolution;
+import org.training.issuetracker.model.bean.Resolution;
 
 public class ResolutionXmlDAO extends XmlDAO<Resolution>{
 	public ResolutionXmlDAO() {

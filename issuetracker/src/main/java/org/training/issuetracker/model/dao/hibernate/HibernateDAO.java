@@ -5,10 +5,11 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.training.issuetracker.model.bean.Bean;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exception.DAOException;
 
-public abstract class HibernateDAO<T> implements DAO<T> {
+public abstract class HibernateDAO<T extends Bean> implements DAO<T> {
 
 	@Override
 	public T getOb(int id) throws DAOException {

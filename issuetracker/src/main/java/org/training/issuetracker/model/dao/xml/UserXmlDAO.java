@@ -1,14 +1,14 @@
 package org.training.issuetracker.model.dao.xml;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.dao.UsersDAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.bean.User;
+import org.training.issuetracker.model.dao.UserDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
 import org.training.issuetracker.model.enums.Role;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
-public class UserXmlDAO extends XmlDAO<User> implements UsersDAO {
+public class UserXmlDAO extends XmlDAO<User> implements UserDAO {
 	@Override
 	public User getUser(String email, String password) throws DAOException {
 		for (User user : getObs()) {

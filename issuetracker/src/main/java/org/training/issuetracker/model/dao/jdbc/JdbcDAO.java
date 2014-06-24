@@ -13,11 +13,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import org.training.issuetracker.model.beans.Beans;
+import org.training.issuetracker.model.bean.Bean;
 import org.training.issuetracker.model.dao.DAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.dao.exception.DAOException;
 
-public abstract class JdbcDAO<T> implements DAO<T> {
+public abstract class JdbcDAO<T extends Bean> implements DAO<T> {
 
 	protected DataSource ds;
 	
@@ -53,7 +53,7 @@ public abstract class JdbcDAO<T> implements DAO<T> {
 
 	@Override
 	public List<T> getObs() throws DAOException {
-		List<T> list = new ArrayList<>();
+		List<T> list = new ArrayList<T>();
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;
@@ -105,7 +105,7 @@ public abstract class JdbcDAO<T> implements DAO<T> {
 		}
 	}
 
-	protected abstract String getRequestGetObById() throws DAOException;
+	protected abstract String getRequestGetObById() throws DAOException, org.training.issuetracker.model.dao.exception.DAOException;
 	protected abstract String getRequestGetObs() throws DAOException;
 	protected abstract T getOb(ResultSet rs) throws DAOException, SQLException;
 	protected abstract String getRequestAddOb() throws DAOException;

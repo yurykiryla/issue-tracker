@@ -1,7 +1,7 @@
 package org.training.issuetracker.model.dao.xml;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Type;
+import org.training.issuetracker.model.bean.Type;
 
 public class TypeXmlDAO extends XmlDAO<Type> {
 	public TypeXmlDAO() {

@@ -1,7 +1,7 @@
 package org.training.issuetracker.model.dao.xml;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Status;
+import org.training.issuetracker.model.bean.Status;
 
 public class StatusXmlDAO extends XmlDAO<Status> {
 	public StatusXmlDAO() {

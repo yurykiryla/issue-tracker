@@ -1,7 +1,7 @@
 package org.training.issuetracker.model.dao.xml;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Priority;
+import org.training.issuetracker.model.bean.Priority;
 
 public class PriorityXmlDAO extends XmlDAO<Priority> {
 	public PriorityXmlDAO() {

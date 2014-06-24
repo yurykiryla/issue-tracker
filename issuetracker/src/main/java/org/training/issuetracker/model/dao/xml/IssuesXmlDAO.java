@@ -7,22 +7,25 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Build;
-import org.training.issuetracker.model.beans.Issue;
-import org.training.issuetracker.model.beans.Priority;
-import org.training.issuetracker.model.beans.Project;
-import org.training.issuetracker.model.beans.Resolution;
-import org.training.issuetracker.model.beans.Status;
-import org.training.issuetracker.model.beans.Type;
-import org.training.issuetracker.model.beans.User;
+import org.training.issuetracker.model.bean.Build;
+import org.training.issuetracker.model.bean.Issue;
+import org.training.issuetracker.model.bean.Priority;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.bean.Resolution;
+import org.training.issuetracker.model.bean.Status;
+import org.training.issuetracker.model.bean.Type;
+import org.training.issuetracker.model.bean.User;
 import org.training.issuetracker.model.dao.DAO;
-import org.training.issuetracker.model.dao.IssuesDAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.dao.factories.DAOFactory;
+
+
+
+import org.training.issuetracker.model.dao.IssueDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
+import org.training.issuetracker.model.dao.factory.DAOFactory;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
-public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
+public class IssuesXmlDAO extends XmlDAO<Issue> implements IssueDAO{
 
 	public IssuesXmlDAO() {
 	}
@@ -97,7 +100,7 @@ public class IssuesXmlDAO extends XmlDAO<Issue> implements IssuesDAO{
 			}
 		} else if(issues.size() > n) {
 			Collections.sort(issues, new IssuesCreateDateComparator());
-			issues = new ArrayList<>(issues.subList(0, n));
+			issues = new ArrayList<Issue>(issues.subList(0, n));
 		}
 		return issues;
 	}

@@ -8,12 +8,12 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import org.training.issuetracker.model.beans.Beans;
+import org.training.issuetracker.controller.Configuration;
+import org.training.issuetracker.model.bean.Bean;
 import org.training.issuetracker.model.dao.DAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.properties.Config;
+import org.training.issuetracker.model.dao.exception.DAOException;
 
-public abstract class XmlDAO<T extends Beans> implements DAO<T> {
+public abstract class XmlDAO<T extends Bean> implements DAO<T> {
 	@Override
 	public T getOb(int id) throws DAOException {
 		for (Element element : getElements()) {
@@ -26,7 +26,7 @@ public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 
 	@Override
 	public List<T> getObs() throws DAOException {
-		List<T> list = new ArrayList<>();
+		List<T> list = new ArrayList<T>();
 		for (Element element :getElements()) {
 			list.add(getOb(element));
 		}
@@ -53,9 +53,11 @@ public abstract class XmlDAO<T extends Beans> implements DAO<T> {
 	protected List<Element> getElements() throws DAOException {
 		try {
 			SAXBuilder builder = new SAXBuilder();
-			Document document = builder.build(Config.getConfig().getPath() + getFilename());
+			Document document = builder.build(Configuration.get().getPath() + getFilename());
 			return document.getRootElement().getChildren();
-		} catch(JDOMException | IOException e) {
+		} catch(JDOMException e) {
+			throw new DAOException(e);
+		} catch (IOException e) {
 			throw new DAOException(e);
 		}
 	}

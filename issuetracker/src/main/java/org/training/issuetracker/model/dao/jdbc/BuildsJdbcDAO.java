@@ -9,27 +9,33 @@ import java.util.List;
 
 
 
+
+
+
 import org.training.issuetracker.model.bean.Build;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.dao.BuildDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
 
-public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
-		
+public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildDAO{
+
 	public BuildsJdbcDAO() throws DAOException {
 		super();
 	}
 
 	@Override
-	public List<Build> getBuilds(int projectId) throws DAOException {
-		List<Build> builds = new ArrayList<>();
+	public List<Build> getBuilds(Project project) throws DAOException {
+		List<Build> builds = new ArrayList<Build>();
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(SELECT_BUILDS_BY_PROJECT_ID);
-			ps.setInt(INDEX_ID_SELECT, projectId);
+			ps.setInt(INDEX_ID_SELECT, project.getId());
 			rs = ps.executeQuery();
 			while (rs != null && rs.next()) {
 				builds.add(getOb(rs));
@@ -60,23 +66,6 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 	}
 
 	@Override
-	public void addBuild(Build build, int projectId) throws DAOException {
-		Connection con = null;
-		PreparedStatement ps = null;
-		try {
-			con = ds.getConnection();
-			ps = con.prepareStatement(SQLRequests.INSERT_BUILD);
-			ps.setString(INDEX_NAME_INSERT, build.getName());
-			ps.setInt(INDEX_BUILD_PROJECT_ID_INSERT, projectId);
-			ps.executeUpdate();			
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		} finally {
-			closeConnection(ps, con);
-		}
-	}
-
-	@Override
 	protected String getRequestAddOb() throws DAOException {
 		throw new DAOException(MESSAGE_UNSUPPORTED_OPERATION);
 	}
@@ -96,6 +85,5 @@ public class BuildsJdbcDAO extends JdbcDAO<Build> implements BuildsDAO{
 	protected int getChangedObId() throws DAOException {
 		throw new DAOException(MESSAGE_UNSUPPORTED_OPERATION);
 	}
-	
-	
+
 }

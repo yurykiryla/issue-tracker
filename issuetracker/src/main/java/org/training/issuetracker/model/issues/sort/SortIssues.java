@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.training.issuetracker.model.beans.Issue;
+import org.training.issuetracker.model.bean.Issue;
 
 public class SortIssues {
 	private static List<Issue> issues = null;

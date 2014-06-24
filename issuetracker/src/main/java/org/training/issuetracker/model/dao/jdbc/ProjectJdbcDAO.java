@@ -5,11 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.training.issuetracker.model.beans.Build;
-import org.training.issuetracker.model.beans.Project;
-import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.dao.factories.DAOFactory;
+
+
+
+
+
+
+import org.training.issuetracker.model.bean.Build;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.bean.User;
+import org.training.issuetracker.model.dao.exception.DAOException;
+import org.training.issuetracker.model.dao.factory.DAOFactory;
 
 import static org.training.issuetracker.model.dao.jdbc.Constants.*;
 import static org.training.issuetracker.model.dao.jdbc.SQLRequests.*;
@@ -35,7 +41,7 @@ public class ProjectJdbcDAO extends JdbcDAO<Project> {
 		int id = rs.getInt(INDEX_ID_SELECT);
 		String name = rs.getString(INDEX_NAME_SELECT);
 		String description = rs.getString(INDEX_PROJECT_DESCRIPTION_SELECT);
-		List<Build> builds = DAOFactory.getBuildsDAO().getBuilds(id);
+		List<Build> builds = DAOFactory.getBuildDAO().getBuilds(new Project());
 		User manager = DAOFactory.getUserDAO().getOb(rs.getInt(INDEX_MANAGER_ID_SELECT));
 		return new Project();
 	}

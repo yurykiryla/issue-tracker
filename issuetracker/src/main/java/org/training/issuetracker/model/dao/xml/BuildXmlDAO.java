@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Build;
-import org.training.issuetracker.model.dao.BuildsDAO;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
+import org.training.issuetracker.model.bean.Build;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.dao.BuildDAO;
+import org.training.issuetracker.model.dao.exception.DAOException;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
-public class BuildXmlDAO extends XmlDAO<Build> implements BuildsDAO{
+public class BuildXmlDAO extends XmlDAO<Build> implements BuildDAO{
 
 	public BuildXmlDAO() {
 	}
@@ -22,23 +23,18 @@ public class BuildXmlDAO extends XmlDAO<Build> implements BuildsDAO{
 
 	@Override
 	protected Build getOb(Element element) throws DAOException {
-		String name = element.getChildText(KEY_NAME); 
 		return new Build();
 	}
 
 	@Override
-	public List<Build> getBuilds(int projectId) throws DAOException {
-		List<Build> builds = new ArrayList<org.training.issuetracker.model.dao.xml.Build>();
+	public List<Build> getBuilds(Project project) throws DAOException {
+		List<Build> builds = new ArrayList<Build>();
 		for (Element element : getElements()) {
-			if (projectId == Integer.parseInt(element.getChildText(KEY_PROJECT_ID))) {
+			if (project.getId() == Integer.parseInt(element.getChildText(KEY_PROJECT_ID))) {
 				builds.add(getOb(element));
 			}
 		}
 		return builds;
 	}
 
-	@Override
-	public void addBuild(Build build, int projectId) throws DAOException {
-		throw new DAOException(MESSAGE_UNSUPPORTED_OPERATION);
-	}
 }

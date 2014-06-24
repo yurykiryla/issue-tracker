@@ -1,7 +1,5 @@
 package org.training.issuetracker.model.bean;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,7 +17,7 @@ import org.training.issuetracker.model.enums.Role;
 @Table(name = "users", catalog = "issuetracker", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "EMAIL")
 })
-public class User implements Serializable {
+public class User implements Bean, Comparable<User> {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String firstName;
@@ -107,5 +105,10 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return firstName + " " + lastName;
+	}
+
+	@Override
+	public int compareTo(User o) {
+		return id - o.id;
 	}
 }

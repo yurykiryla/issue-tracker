@@ -3,11 +3,11 @@ package org.training.issuetracker.model.dao.xml;
 import java.util.List;
 
 import org.jdom2.Element;
-import org.training.issuetracker.model.beans.Build;
-import org.training.issuetracker.model.beans.Project;
-import org.training.issuetracker.model.beans.User;
-import org.training.issuetracker.model.dao.exceptions.DAOException;
-import org.training.issuetracker.model.dao.factories.DAOFactory;
+import org.training.issuetracker.model.bean.Build;
+import org.training.issuetracker.model.bean.Project;
+import org.training.issuetracker.model.bean.User;
+import org.training.issuetracker.model.dao.exception.DAOException;
+import org.training.issuetracker.model.dao.factory.DAOFactory;
 
 import static org.training.issuetracker.model.dao.xml.Constants.*;
 
@@ -25,7 +25,7 @@ public class ProjectXmlDAO extends XmlDAO<Project> {
 		int id = getId(element);
 		String name = element.getChildText(KEY_NAME);
 		String description = element.getChildText(KEY_DESCRIPTION);
-		List<Build> builds = DAOFactory.getBuildsDAO().getBuilds(id);
+		List<Build> builds = DAOFactory.getBuildDAO().getBuilds(new Project());
 		User manager = DAOFactory.getUserDAO().getOb(Integer.parseInt(element.getChildText(KEY_MANAGER_ID)));
 		return new Project();
 	}

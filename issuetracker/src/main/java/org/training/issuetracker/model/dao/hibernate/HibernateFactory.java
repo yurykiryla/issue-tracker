@@ -1,12 +1,12 @@
 package org.training.issuetracker.model.dao.hibernate;
 
-import org.training.issuetracker.model.bean.Build;
 import org.training.issuetracker.model.bean.Comment;
 import org.training.issuetracker.model.bean.Priority;
 import org.training.issuetracker.model.bean.Project;
 import org.training.issuetracker.model.bean.Resolution;
 import org.training.issuetracker.model.bean.Status;
 import org.training.issuetracker.model.bean.Type;
+import org.training.issuetracker.model.dao.BuildDAO;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.IssueDAO;
 import org.training.issuetracker.model.dao.UserDAO;
@@ -15,7 +15,7 @@ import org.training.issuetracker.model.dao.factory.AbstractFactory;
 public class HibernateFactory implements AbstractFactory {
 
 	@Override
-	public DAO<Build> getBuildDAO() {
+	public BuildDAO getBuildDAO() {
 		return new BuildHibernateDAO();
 	}
 

@@ -1,6 +1,5 @@
 package org.training.issuetracker.model.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,7 +17,7 @@ import org.hibernate.annotations.GenerationTime;
 
 @Entity
 @Table(name = "comment", catalog = "issuetracker")
-public class Comment implements Serializable {
+public class Comment implements Bean {
 	private static final long serialVersionUID = 1L;
 	
 	private int id;

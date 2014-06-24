@@ -1,6 +1,5 @@
 package org.training.issuetracker.model.bean;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "project", catalog = "issuetracker")
-public class Project implements Serializable {
+public class Project implements Bean {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
