@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String temp(Map<String, Object> map) {
 		map.put("test", "testing");
 		
 		return "main";
+	}
+	
+	@RequestMapping("/")
+	public String home() {
+		return "redirect:/index";
 	}
 }
