@@ -1,19 +1,14 @@
 package org.training.issuetracker.model.dao.hibernate;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import org.hibernate.cfg.AnnotationConfiguration;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory = null;
 	
 	public static void buildSessionFactory() {
 		if (sessionFactory == null) {
-			Configuration configuration = new Configuration();
-			configuration.configure();
-			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		}
 	}
 	
