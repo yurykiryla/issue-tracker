@@ -13,7 +13,6 @@ import org.training.issuetracker.model.enums.Implementations;
  * Application Lifecycle Listener implementation class IssueTrackerContextListener
  *
  */
-@WebListener
 public class IssueTrackerContextListener implements ServletContextListener {
 
     /**

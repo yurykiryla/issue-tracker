@@ -32,7 +32,7 @@ import org.training.issuetracker.model.dao.hibernate.UserHibernateDAO;
 import org.training.issuetracker.model.enums.Role;
 
 
-@WebServlet("/CreateDB")
+//@WebServlet("/CreateDB")
 public class CreateDB extends AbstractController {
 	private static final long serialVersionUID = 1L;
 
