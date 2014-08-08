@@ -5,12 +5,19 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.training.issuetracker.model.bean.Bean;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exception.DAOException;
 
+@Repository
 public abstract class HibernateDAO<T extends Bean> implements DAO<T> {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	@Override
 	public T getOb(int id) throws DAOException {
 		Session session = null;
@@ -28,18 +35,8 @@ public abstract class HibernateDAO<T extends Bean> implements DAO<T> {
 
 	@Override
 	public List<T> getObs() throws DAOException {
-		Session session = null;
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			List<?> list = session.createCriteria(getDAOClass()).list();
-			return castList(list);
-		} catch (HibernateException e) {
-			throw new DAOException(e);
-		} finally {
-			if (session != null) {
-				session.close();
-			}
-		}
+		List<?> list = sessionFactory.getCurrentSession().createCriteria(getDAOClass()).list();
+		return castList(list);
 	}
 
 	@Override

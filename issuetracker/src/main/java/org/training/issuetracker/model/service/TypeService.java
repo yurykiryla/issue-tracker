@@ -1,16 +1,15 @@
-package org.training.issuetracker.model.dao.spring;
+package org.training.issuetracker.model.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.training.issuetracker.model.bean.Type;
 import org.training.issuetracker.model.dao.DAO;
 import org.training.issuetracker.model.dao.exception.DAOException;
 
-@Service
-public class TypeSpringDAO implements TypeDAO {
+@org.springframework.stereotype.Service
+public class TypeService implements Service<Type> {
 
 	@Autowired
 	private DAO<Type> typeDao;
@@ -24,7 +23,6 @@ public class TypeSpringDAO implements TypeDAO {
 	@Override
 	@Transactional
 	public List<Type> getObs() throws DAOException {
-		// TODO Auto-generated method stub
 		return typeDao.getObs();
 	}
 
